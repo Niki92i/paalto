@@ -5,7 +5,6 @@ description: Translates PRDs into wireframes, copy, and dev-handoff specs. Does 
 tools: [filesystem, mcp:figma, mcp:notion]
 skills:
   - skills/designer/ux-copy.md
-  # v0.3+
   - skills/designer/wireframe-drafter.md
   - skills/designer/figma-spec-generator.md
   - skills/designer/design-system-auditor.md

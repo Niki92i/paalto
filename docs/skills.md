@@ -28,12 +28,20 @@ Reference example: [examples/feedback-to-roadmap/](../examples/feedback-to-roadm
 
 PM · Market Radar (trend ingestion from Hacker News / Product Hunt / Substack)
 
-## v0.3 — Designer with teeth (planned)
+## v0.3 — Designer suite (shipped)
 
-Designer · Wireframe Drafter · Figma Spec Generator · Design-system Auditor · A11y Reviewer
-Integrations · Figma Dev Mode MCP
+| Role | Skill | Path |
+|---|---|---|
+| Designer | Wireframe Drafter | [skills/designer/wireframe-drafter.md](../skills/designer/wireframe-drafter.md) |
+| Designer | Figma Spec Generator | [skills/designer/figma-spec-generator.md](../skills/designer/figma-spec-generator.md) |
+| Designer | Design-system Auditor | [skills/designer/design-system-auditor.md](../skills/designer/design-system-auditor.md) |
+| Designer | A11y Reviewer | [skills/designer/a11y-reviewer.md](../skills/designer/a11y-reviewer.md) |
 
-## v0.4 — Analytics & multi-squad (planned)
+Integrations added: Figma Dev Mode (MCP).
+
+Reference example: [examples/prd-to-figma-handoff/](../examples/prd-to-figma-handoff/README.md)
+
+## v0.4 — Engineer & Analytics (planned)
 
 PM · Metrics Reporter
 Engineer · Code Reviewer · Test Plan Writer · Repo Scout
