@@ -52,7 +52,12 @@
 
     .hero { min-height: calc(100vh - 56px); display: grid; grid-template-rows: auto 1fr auto; }
     .hero-meta { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--black); }
-    .hero-meta div { min-height: 72px; padding: 14px 18px; border-right: 1px solid var(--black); }
+    .hero-meta div { min-height: 72px; padding: 14px 18px; border-right: 1px solid var(--black); position: relative; transition: background 160ms ease, color 160ms ease; }
+    .hero-meta div::after { content: ""; position: absolute; left: 18px; right: 18px; bottom: 0; height: 0; background: var(--signal); transition: height 160ms ease; }
+    .hero-meta div:hover { background: var(--black); color: var(--white); }
+    .hero-meta div:hover::after { height: 6px; }
+    .hero-meta div:hover .kicker { color: var(--signal); }
+    .hero-meta div:hover .value { color: var(--white); }
     .hero-meta div:last-child { border-right: 0; }
     .kicker, .panel-label { font-family: var(--mono); font-size: 12px; line-height: 1.4; text-transform: uppercase; color: var(--gray-70); }
     .value { display: block; margin-top: 6px; font-family: var(--sans); font-size: 15px; color: var(--black); text-transform: none; }
