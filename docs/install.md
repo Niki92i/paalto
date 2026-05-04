@@ -21,27 +21,39 @@ paalto runs as markdown agents inside Claude Code on your machine. There's no se
 git clone https://github.com/Niki92i/paalto.git
 cd paalto
 
-# 2. Configure
+# 2. Verify the local project before adding secrets
+npm run doctor
+npm run demo
+
+# 3. Configure real integrations when ready
 cp .env.example .env
 $EDITOR .env       # fill day-one keys first; optional integrations can stay blank
 
-# 3. Wire MCP servers into Claude Code
+# 4. Wire MCP servers into Claude Code
 #    Either point Claude Code at integrations/mcp.json,
 #    or copy its `mcpServers` block into your Claude Code config.
 
-# 4. Open this folder in Claude Code and verify
+# 5. Open this folder in Claude Code and verify
 #    In chat: "List the agents in agents/." — Claude Code should respond with
 #    orchestrator, pm, designer, engineer.
 ```
 
 ## Verify the install
 
-Run the reference example: [examples/loom-to-pr/README.md](../examples/loom-to-pr/README.md).
+Run the no-API demo first:
+
+```bash
+npm run demo
+```
+
+It writes a local `runs/<timestamp>__demo__loom-to-pr__<id>/` folder with `transcript.md`, `events.jsonl`, and reference artifacts. Nothing is sent to GitHub, Linear, Notion, or Slack.
+
+Then run the real reference example in Claude Code: [examples/loom-to-pr/README.md](../examples/loom-to-pr/README.md).
 
 For a fast structural check before connecting real APIs, run the same validation the repo uses in CI:
 
 ```bash
-node scripts/validate-skills.mjs
+npm run validate
 ```
 
 If you reach a green-CI draft PR in under 60 minutes, the install is good. If not, see [docs/quickstart.md](quickstart.md) for the common failure points.

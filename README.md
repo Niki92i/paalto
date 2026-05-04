@@ -62,14 +62,16 @@ All orchestrated by [`agents/orchestrator.md`](agents/orchestrator.md), which kn
 ```bash
 git clone https://github.com/Niki92i/paalto.git
 cd paalto
-cp .env.example .env       # add your API keys
+npm run doctor             # checks structure, Node, MCP config, and setup gaps
+npm run demo               # creates a local no-API run in runs/<id>/
+cp .env.example .env       # add API keys when you are ready for real tool writes
 # open this folder in Claude Code, then in chat:
 #   "run workflows/ship-a-feature.md on examples/loom-to-pr"
 ```
 
-The reference example takes a real Loom transcript and produces a PRD in Notion, four Linear tickets, a draft PR on GitHub, and a release-note draft in Slack — without auto-merging anything. Target: under 60 minutes on a fresh clone.
+The no-API demo proves the local run folder and audit trail without touching external services. A real Claude Code run takes the Loom transcript and can produce a PRD in Notion, Linear tickets, a draft GitHub PR, and a Slack release-note draft — without auto-merging anything. Target: under 60 minutes on a fresh clone after keys are configured.
 
-Full setup: [docs/install.md](docs/install.md) · [docs/quickstart.md](docs/quickstart.md)
+Full setup: [docs/install.md](docs/install.md) · [docs/quickstart.md](docs/quickstart.md) · [docs/how-it-works.md](docs/how-it-works.md)
 
 ## Capability coverage
 
@@ -85,8 +87,8 @@ Every agent action is appended to `runs/<timestamp>/transcript.md` and a structu
 
 ## Two paths
 
-- **Done for you.** We deploy paalto on your machine, wire it to your stack, and run the motion alongside your team. → book a call.
-- **Open source.** This repo. MIT license. Documented setup. Pull new skills any time. Community support via Discussions and Discord.
+- **Done for you.** We deploy paalto on your machine, wire it to your stack, and run the motion alongside your team. → email `hellopaalto@gmail.com`.
+- **Open source.** This repo. MIT license. Documented setup. Pull new skills any time. Community support via GitHub Discussions.
 
 ---
 

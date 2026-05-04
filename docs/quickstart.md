@@ -2,7 +2,27 @@
 
 After [install](install.md), the fastest way to feel paalto is to run the reference example end-to-end.
 
-## 60-minute path
+## 5-minute no-API path
+
+This is the fastest way to prove the repo is real before you trust it with keys:
+
+```bash
+git clone https://github.com/Niki92i/paalto.git
+cd paalto
+npm run doctor
+npm run demo
+```
+
+Open the generated `runs/<timestamp>__demo__loom-to-pr__<id>/` folder and inspect:
+
+- `events.jsonl` — structured audit events.
+- `transcript.md` — demo narrative.
+- `prd.md`, `tickets.md`, `copy.md`, `pr-description.md`, `release-notes.md` — reference artifacts.
+- `slack-draft.json` — a draft payload with `send: false`.
+
+No external API is called in this path.
+
+## 60-minute real-tool path
 
 1. **Make sure all four day-one keys are in `.env`** (GITHUB, LINEAR, NOTION, SLACK).
 2. **Pick a sandbox repo on GitHub** that you don't mind paalto opening draft PRs against. (Don't point it at production on day one.) Set it as `GITHUB_DEFAULT_REPO` in `.env`.
@@ -23,7 +43,8 @@ After [install](install.md), the fastest way to feel paalto is to run the refere
 Before wiring real tools, run:
 
 ```bash
-node scripts/validate-skills.mjs
+npm run doctor
+npm run validate
 ```
 
 This confirms every skill has the required frontmatter, `Procedure`, `Hard rules`, `Refusal`, and `events.jsonl` audit instruction; it also verifies every agent-listed skill file exists.
@@ -38,7 +59,8 @@ This confirms every skill has the required frontmatter, `Procedure`, `Hard rules
 | GitHub 403 on PR open | PAT is not fine-grained, or scopes wrong | Recreate as fine-grained, target one repo, `contents` + `pull_requests` write. |
 | Slack 403 | Bot not in channel | Invite your bot user to `SLACK_DEFAULT_CHANNEL`. |
 | CI red after 3 fix attempts | Engineer escalates by design | Read `runs/<id>/plan.md` and `events.jsonl`; fix locally and push, or revise the PRD. |
-| Skill listed but not found | Agent wiring drift | Run `node scripts/validate-skills.mjs`; fix the missing path before running workflows. |
+| Skill listed but not found | Agent wiring drift | Run `npm run validate`; fix the missing path before running workflows. |
+| Unsure whether the repo is safe to try | You have not run the dry path yet | Run `npm run doctor && npm run demo`; inspect the generated ignored run folder before adding keys. |
 
 ## Next
 

@@ -23,6 +23,18 @@ loom-to-pr/
 
 ## Run it
 
+### No-key local demo
+
+From the repo root:
+
+```bash
+npm run demo
+```
+
+This creates a local `runs/<timestamp>__demo__loom-to-pr__<id>/` folder using this example's inputs and expected artifacts. It does not call GitHub, Linear, Notion, or Slack.
+
+### Real Claude Code run
+
 1. Make sure `.env` is filled in for **GitHub, Linear, Notion, Slack** (see `../../.env.example`).
 2. Open the `paalto/` repo root in Claude Code.
 3. In chat, paste:

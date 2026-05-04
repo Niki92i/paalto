@@ -1,0 +1,15 @@
+{
+	"name": "paalto",
+	"version": "0.8.0",
+	"description": "Open-source product team operating system for Claude Code.",
+	"license": "MIT",
+	"private": false,
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"validate": "node scripts/validate-skills.mjs",
+		"doctor": "node scripts/doctor.mjs",
+		"demo": "node scripts/demo-run.mjs"
+	}
+}

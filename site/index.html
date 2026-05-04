@@ -327,13 +327,13 @@
       <div class="wrap section-grid">
         <div class="section-index"><p class="kicker">04 / Install</p></div>
         <div class="section-body">
-          <h2 class="section-title">Clone, configure, run the reference flow.</h2>
-          <p class="section-intro">The bar is simple: a stranger should be able to clone the repo, fill in .env, and reach a green-CI draft PR using the Loom-to-PR example.</p>
+          <h2 class="section-title">Clone, inspect, run a local demo.</h2>
+          <p class="section-intro">The bar is simple: a stranger should be able to clone the repo, run a no-key demo, inspect the audit trail, then decide whether to connect real tools.</p>
           <div class="install-grid">
             <div class="install-cell"><p class="panel-label">Open source</p><h3>Run it yourself.</h3><pre><code>git clone https://github.com/Niki92i/paalto.git
 cd paalto
-cp .env.example .env
-node scripts/validate-skills.mjs</code></pre><div class="button-row actions"><a class="button primary" href="https://github.com/Niki92i/paalto">GitHub <span aria-hidden="true">-&gt;</span></a></div></div>
+npm run doctor
+npm run demo</code></pre><div class="button-row actions"><a class="button primary" href="https://github.com/Niki92i/paalto">GitHub <span aria-hidden="true">-&gt;</span></a></div></div>
             <div class="install-cell"><p class="panel-label">Implementation</p><h3>Wire it into your stack.</h3><ul style="margin-top: 28px; display: grid; gap: 12px;"><li>Connect GitHub, Linear, Notion, Slack.</li><li>Add Figma, Posthog, Jira, Intercom, Zendesk as needed.</li><li>Load your design system and product voice.</li><li>Run the first workflow with your team.</li></ul><div class="button-row actions"><a class="button primary" href="mailto:hellopaalto@gmail.com?subject=We%20run%20your%20product%20team">Get help <span aria-hidden="true">-&gt;</span></a></div></div>
           </div>
         </div>

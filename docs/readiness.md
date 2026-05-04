@@ -14,6 +14,8 @@ This is the current "world-class open source" checklist for paalto. It is intent
 | Audit trail | Green | Every skill requires `events.jsonl`; `runs/README.md` documents schema. |
 | MCP integrations | Green | GitHub, Linear, Notion, Slack, Intercom, Zendesk, Figma, Posthog, Jira in `integrations/mcp.json`. |
 | Examples | Green | End-to-end Loom-to-PR, feedback-to-roadmap, PRD-to-Figma handoff examples. |
+| No-key local run | Green | `npm run demo` creates a local ignored run folder with `events.jsonl` and reference artifacts. |
+| Setup doctor | Green | `npm run doctor` checks Node, required files, skill wiring, MCP config, env template, and run-artifact safety. |
 | OSS trust files | Green | MIT license, contributing guide, security policy, support guide, code of conduct, roadmap, changelog. |
 | CI validation | Green | GitHub Actions validates skill structure and agent wiring on push/PR. |
 
@@ -21,16 +23,16 @@ This is the current "world-class open source" checklist for paalto. It is intent
 
 These are product roadmap items, not blockers for design partners:
 
-- Add real CLI scaffolding (`paalto init`, `paalto doctor`) so setup is less manual.
+- Promote `npm run doctor` and `npm run demo` into a packaged CLI (`paalto init`, `paalto doctor`, `paalto demo`).
 - Add recorded demo assets for every reference example.
 - Add integration-specific docs per service (`integrations/github.md`, `integrations/linear.md`, etc.) once the exact MCP server APIs stabilize.
-- Add a test fixture runner that executes examples in dry-run mode without external API writes.
+- Expand `npm run demo` into a fixture runner for all examples, not only Loom-to-PR.
 - Publish a design-partner onboarding checklist that maps their existing stack to the `.env` and MCP setup.
 
 ## Validation Command
 
 ```bash
-node scripts/validate-skills.mjs
+npm run validate
 ```
 
 Expected output:

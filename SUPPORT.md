@@ -11,7 +11,8 @@
 Run:
 
 ```bash
-node scripts/validate-skills.mjs
+npm run doctor
+npm run validate
 ```
 
 Then include:
