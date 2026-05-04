@@ -102,9 +102,14 @@
     .role-entry { display: grid; grid-template-columns: 56px 1fr; min-height: 64px; height: 100%; align-items: stretch; }
     .role-number { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--gray-20); font-family: var(--mono); font-size: 13px; color: var(--gray-70); }
     .role-text { display: flex; align-items: center; padding: 12px 20px; font-size: clamp(16px, 1.55vw, 20px); line-height: 1.25; }
-    .property { min-height: 230px; padding: 22px; }
+    .property { min-height: 230px; padding: 22px; position: relative; transition: background 160ms ease, color 160ms ease; }
+    .property::after { content: ""; position: absolute; left: 22px; right: 22px; bottom: 0; height: 0; background: var(--signal); transition: height 160ms ease; }
+    .property:hover { background: var(--gray-10); color: var(--black); }
+    .property:hover::after { height: 8px; }
+    .property:hover .panel-label { color: var(--signal); }
     .property h3 { margin-top: 28px; max-width: 460px; font-size: 27px; line-height: 1.05; font-weight: 500; }
     .property p { margin-top: 14px; max-width: 520px; color: var(--gray-70); }
+    .property:hover p { color: var(--gray-90); }
 
     .install-grid { margin-top: 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; border: 1px solid var(--black); }
     .install-cell { padding: 24px; min-height: 360px; border-right: 1px solid var(--black); display: flex; flex-direction: column; }
