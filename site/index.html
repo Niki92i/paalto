@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>paalto — your product team operating system, from Claude Code</title>
+  <meta name="description" content="One conversation replaces the swivel-chair work between PM, Designer, and Engineer. paalto lives on your machine, uses your data, and gets sharper every time you ship." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="paalto" />
+  <meta property="og:description" content="The product team operating system, from Claude Code." />
+  <meta property="og:image" content="/og.png" />
+  <meta property="og:url" content="https://paalto.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --acid: #D4FF00; --ink: #0A0A0A; --bone: #FAFAF7; }
+    html { background: var(--bone); color: var(--ink); }
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; font-feature-settings: 'ss01', 'cv11'; }
+    .accent { background: var(--acid); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .underline-acid { background-image: linear-gradient(transparent 65%, var(--acid) 65%); background-repeat: no-repeat; }
+    @media (prefers-reduced-motion: no-preference) {
+      .pulse { animation: pulse 2.4s ease-in-out infinite; }
+      @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.55 } }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+  <a href="/" class="flex items-center gap-2 font-semibold text-lg tracking-tight">
+    <span class="inline-block w-6 h-6 accent rounded-sm"></span>
+    paalto
+  </a>
+  <nav class="hidden sm:flex items-center gap-6 text-sm text-neutral-700">
+    <a href="#agents" class="hover:text-black">Agents</a>
+    <a href="#edges" class="hover:text-black">Edges</a>
+    <a href="#install" class="hover:text-black">Install</a>
+    <a href="https://github.com/Niki92i/paalto" class="hover:text-black">GitHub</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="max-w-6xl mx-auto px-6 pt-10 pb-24">
+  <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-6">v0.5 · open source · MIT</p>
+  <h1 class="text-5xl sm:text-7xl font-semibold tracking-tight leading-[0.95]">
+    Your product team<br />operating system,<br />
+    <span class="underline-acid">from Claude Code.</span>
+  </h1>
+  <p class="mt-8 max-w-2xl text-lg text-neutral-700 leading-relaxed">
+    One conversation replaces the swivel-chair work between PM, Designer, and Engineer.
+    paalto lives on your machine, uses your data, and gets sharper every time you ship.
+  </p>
+
+  <div class="mt-10 flex flex-wrap items-center gap-3">
+    <a href="#install" class="accent text-black font-medium px-6 py-3 rounded-sm hover:opacity-90">Clone the repo →</a>
+    <a href="mailto:hi@paalto.dev?subject=We%20run%20your%20product%20team" class="border border-black px-6 py-3 rounded-sm hover:bg-black hover:text-white">We run your product team</a>
+  </div>
+
+  <p class="mt-12 mono text-sm text-neutral-500">
+    Humans own the edges. The system compounds the middle. PRs ship as drafts. <span class="text-black font-medium">Always.</span>
+  </p>
+</section>
+
+<!-- ============ FLOW ============ -->
+<section id="agents" class="border-t border-black/10 bg-white">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">01 · the team</p>
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">An entire product team. Zero headcount.</h2>
+    <p class="mt-4 max-w-2xl text-neutral-700">Three role agents, configured as plain markdown files you own. Orchestrated by one flow with five named human gates.</p>
+
+    <div class="mt-12 grid sm:grid-cols-3 gap-6">
+      <div class="border border-black/10 p-6 rounded-sm">
+        <p class="mono text-xs uppercase tracking-widest text-neutral-500">DISCOVER</p>
+        <h3 class="text-2xl font-semibold mt-2">PM</h3>
+        <ul class="mt-4 space-y-2 text-sm text-neutral-700">
+          <li>Interview Synthesizer</li>
+          <li>Competitor Teardown</li>
+          <li>PRD Drafter</li>
+          <li>Ticket Breaker</li>
+          <li>Feedback Triager</li>
+          <li>Metrics Reporter</li>
+          <li>Cross-squad Rollup</li>
+        </ul>
+      </div>
+      <div class="border border-black/10 p-6 rounded-sm">
+        <p class="mono text-xs uppercase tracking-widest text-neutral-500">DESIGN</p>
+        <h3 class="text-2xl font-semibold mt-2">Designer</h3>
+        <ul class="mt-4 space-y-2 text-sm text-neutral-700">
+          <li>Wireframe Drafter</li>
+          <li>UX Copy Writer</li>
+          <li>Figma Spec Generator</li>
+          <li>Design-system Auditor</li>
+          <li>A11y Reviewer</li>
+        </ul>
+      </div>
+      <div class="border border-black/10 p-6 rounded-sm relative">
+        <p class="mono text-xs uppercase tracking-widest text-neutral-500">SHIP</p>
+        <h3 class="text-2xl font-semibold mt-2">Engineer</h3>
+        <ul class="mt-4 space-y-2 text-sm text-neutral-700">
+          <li>Repo Scout</li>
+          <li>PR Builder <span class="mono text-xs accent px-1.5 py-0.5 ml-1">draft only</span></li>
+          <li>Code Reviewer</li>
+          <li>Test Plan Writer</li>
+          <li>Release Note Generator</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDGES ============ -->
+<section id="edges" class="border-t border-black/10">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">02 · the line</p>
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Humans own the edges.<br />The system compounds the middle.</h2>
+    <p class="mt-6 max-w-2xl text-neutral-700">Every AI coding agent wants to own the whole pipeline — from idea to merged PR. We think the opposite. Vision is human. Taste is human. Trust is human. Repeatable work in the middle is what a system should do.</p>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-6 text-sm">
+      <div class="border border-black/10 p-6">
+        <p class="mono text-xs uppercase tracking-widest text-neutral-500">FIRST MILE · OPERATORS</p>
+        <h3 class="text-lg font-semibold mt-2">The bet</h3>
+        <ul class="mt-3 space-y-1.5 text-neutral-700">
+          <li>→ Define the ICP</li>
+          <li>→ Pick the play</li>
+          <li>→ Set the measure</li>
+          <li>→ Decide what NOT to build</li>
+        </ul>
+      </div>
+      <div class="border border-black p-6 bg-black text-white">
+        <p class="mono text-xs uppercase tracking-widest text-neutral-400">MIDDLE · SYSTEM</p>
+        <h3 class="text-lg font-semibold mt-2">The work</h3>
+        <ul class="mt-3 space-y-1.5 text-neutral-200">
+          <li>→ Synthesize interviews</li>
+          <li>→ Draft PRDs and tickets</li>
+          <li>→ Scaffold draft PRs</li>
+          <li>→ Write release notes</li>
+          <li>→ Log, audit, report</li>
+        </ul>
+      </div>
+      <div class="border border-black/10 p-6">
+        <p class="mono text-xs uppercase tracking-widest text-neutral-500">LAST MILE · OPERATORS</p>
+        <h3 class="text-lg font-semibold mt-2">The close</h3>
+        <ul class="mt-3 space-y-1.5 text-neutral-700">
+          <li>→ Approve the merge</li>
+          <li>→ Talk to the customer</li>
+          <li>→ Send the launch post</li>
+          <li>→ Read the signal</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-10 mono text-sm text-neutral-600">The system never auto-merges. The operator never wastes a Tuesday on ticket grooming.</p>
+  </div>
+</section>
+
+<!-- ============ PROPERTIES ============ -->
+<section class="border-t border-black/10 bg-white">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">03 · how it behaves</p>
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Six properties, not features.</h2>
+
+    <div class="mt-12 grid sm:grid-cols-2 gap-x-12 gap-y-10">
+      <div>
+        <p class="mono text-xs text-neutral-500">01 · AGNOSTIC</p>
+        <h3 class="text-xl font-semibold mt-1">Your data, your stack, your models.</h3>
+        <p class="mt-2 text-neutral-700">Works with whatever repo, CRM, warehouse, or model you already run. Not locked to any vendor, including us.</p>
+      </div>
+      <div>
+        <p class="mono text-xs text-neutral-500">02 · INTEROPERABLE</p>
+        <h3 class="text-xl font-semibold mt-1">Talks to everything with an API.</h3>
+        <p class="mt-2 text-neutral-700">GitHub, Linear, Notion, Slack on day one. Figma, Posthog, Jira shipped. Anything with an MCP plugs in.</p>
+      </div>
+      <div>
+        <p class="mono text-xs text-neutral-500">03 · INTELLIGENT</p>
+        <h3 class="text-xl font-semibold mt-1">Frontier models under the hood.</h3>
+        <p class="mt-2 text-neutral-700">Claude by default. Updated as new models ship. The system inherits their intelligence directly.</p>
+      </div>
+      <div>
+        <p class="mono text-xs text-neutral-500">04 · COMPOUNDING</p>
+        <h3 class="text-xl font-semibold mt-1">Every run sharpens the next.</h3>
+        <p class="mt-2 text-neutral-700">Every action lands in <span class="mono">runs/&lt;id&gt;</span> as a transcript and structured events. What worked becomes default.</p>
+      </div>
+      <div>
+        <p class="mono text-xs text-neutral-500">05 · MODIFIABLE</p>
+        <h3 class="text-xl font-semibold mt-1">Markdown configs, code you own.</h3>
+        <p class="mt-2 text-neutral-700">Skills, agents, prompts — all <span class="mono">.md</span> files. Fork it, extend it, prune it. No magic. No lock-in.</p>
+      </div>
+      <div>
+        <p class="mono text-xs text-neutral-500">06 · HEADLESS</p>
+        <h3 class="text-xl font-semibold mt-1">Chat is the interface.</h3>
+        <p class="mt-2 text-neutral-700">No dashboard to fight. Conversation is how you operate it. The transcript is your audit trail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTALL ============ -->
+<section id="install" class="border-t border-black/10">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">04 · get running</p>
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">In 60 minutes, on a fresh clone.</h2>
+    <p class="mt-4 max-w-2xl text-neutral-700">A stranger should be able to clone the repo, fill in <span class="mono">.env</span>, and reach a green-CI draft PR using the <span class="mono">loom-to-pr</span> example. If they can't, the README is broken — open an issue.</p>
+
+    <div class="mt-10 grid md:grid-cols-2 gap-6">
+      <div class="border border-black/10 p-6 rounded-sm bg-white">
+        <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">SELF-SERVE · OPEN SOURCE</p>
+        <h3 class="text-2xl font-semibold">Clone the repo</h3>
+        <pre class="mono text-sm bg-neutral-100 p-4 mt-4 overflow-x-auto rounded-sm"><code>git clone https://github.com/Niki92i/paalto.git
+cd paalto
+cp .env.example .env
+# open in Claude Code, then:
+#   "run workflows/ship-a-feature.md
+#    on examples/loom-to-pr"</code></pre>
+        <a href="https://github.com/Niki92i/paalto" class="inline-block mt-4 text-sm font-medium underline">github.com/Niki92i/paalto →</a>
+      </div>
+      <div class="border border-black p-6 rounded-sm bg-black text-white">
+        <p class="mono text-xs uppercase tracking-widest text-neutral-400 mb-3">DONE FOR YOU</p>
+        <h3 class="text-2xl font-semibold">We run your product team</h3>
+        <ul class="mt-4 space-y-2 text-sm text-neutral-200">
+          <li>→ Full install on your machine</li>
+          <li>→ Your data sources connected with your keys</li>
+          <li>→ Your design system + voice loaded</li>
+          <li>→ Live walkthrough with your team</li>
+          <li>→ Ongoing support</li>
+        </ul>
+        <a href="mailto:hi@paalto.dev?subject=We%20run%20your%20product%20team" class="inline-block mt-6 accent text-black font-medium px-5 py-2.5 rounded-sm hover:opacity-90">Book a call →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUDIT ============ -->
+<section class="border-t border-black/10 bg-white">
+  <div class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-10">
+    <div>
+      <p class="mono text-xs uppercase tracking-widest text-neutral-500">HUMAN GUARDRAILS</p>
+      <h3 class="text-xl font-semibold mt-2">Five named gates.</h3>
+      <p class="mt-2 text-neutral-700 text-sm">Vision · Prioritization · Design taste · Merge approval · Launch comms. Skippable: never.</p>
+    </div>
+    <div>
+      <p class="mono text-xs uppercase tracking-widest text-neutral-500">FULL AUDIT TRAIL</p>
+      <h3 class="text-xl font-semibold mt-2">Every action is a line of JSON.</h3>
+      <p class="mt-2 text-neutral-700 text-sm">Each agent appends to <span class="mono">runs/&lt;id&gt;/events.jsonl</span>. Diff, grep, ship.</p>
+    </div>
+    <div>
+      <p class="mono text-xs uppercase tracking-widest text-neutral-500">SCOPED ACCESS</p>
+      <h3 class="text-xl font-semibold mt-2">Minimum permissions, by default.</h3>
+      <p class="mt-2 text-neutral-700 text-sm">GitHub fine-grained PAT, one repo. Notion shared per-database. Slack one channel. No admin.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="border-t border-black/10">
+  <div class="max-w-3xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">05 · questions</p>
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Questions.</h2>
+
+    <dl class="mt-10 space-y-8">
+      <div>
+        <dt class="font-semibold">Do I need to be technical?</dt>
+        <dd class="mt-2 text-neutral-700">No. You drive paalto in plain English in Claude Code. If you can describe the outcome, the system can run it. The Engineer agent handles the code.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold">Where does my data live?</dt>
+        <dd class="mt-2 text-neutral-700">On your machine. paalto runs locally. Your transcripts, PRDs, and keys never go to a paalto backend — there isn't one. Model API calls go directly from your machine to your model provider.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold">Will it auto-merge my code?</dt>
+        <dd class="mt-2 text-neutral-700"><span class="font-semibold">No.</span> Every PR opens as draft. The PR Builder skill is hard-coded to refuse merge calls. Merge approval is a named human gate.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold">What's the difference between paid and OSS?</dt>
+        <dd class="mt-2 text-neutral-700">Time and friction. The OSS repo is free and documented; getting it fully wired into your stack takes a few hours of setup. The paid implementation compresses that into a single session with the team that runs paalto every day.</dd>
+      </div>
+      <div>
+        <dt class="font-semibold">Can I add my own skills?</dt>
+        <dd class="mt-2 text-neutral-700">Yes — that's the whole point. A skill is a single <span class="mono">.md</span> file. See <a href="https://github.com/Niki92i/paalto/blob/main/CONTRIBUTING.md" class="underline">CONTRIBUTING.md</a>.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="border-t border-black/10 bg-black text-white">
+  <div class="max-w-6xl mx-auto px-6 py-24 text-center">
+    <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.05]">
+      Be one of the first teams<br />running product the AI-native way.
+    </h2>
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+      <a href="https://github.com/Niki92i/paalto" class="accent text-black font-medium px-6 py-3 rounded-sm hover:opacity-90">Clone the repo →</a>
+      <a href="mailto:hi@paalto.dev?subject=We%20run%20your%20product%20team" class="border border-white px-6 py-3 rounded-sm hover:bg-white hover:text-black">We run your product team</a>
+    </div>
+    <p class="mt-12 mono text-sm text-neutral-500">PRs ship as drafts. <span class="text-white">Always.</span></p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-black/10">
+  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-wrap items-center justify-between text-sm text-neutral-600 gap-4">
+    <p>© 2026 paalto · MIT</p>
+    <nav class="flex flex-wrap gap-6">
+      <a href="https://github.com/Niki92i/paalto" class="hover:text-black">GitHub</a>
+      <a href="https://github.com/Niki92i/paalto/discussions" class="hover:text-black">Discussions</a>
+      <a href="https://github.com/Niki92i/paalto/blob/main/docs/security.md" class="hover:text-black">Security</a>
+      <a href="mailto:hi@paalto.dev" class="hover:text-black">hi@paalto.dev</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
