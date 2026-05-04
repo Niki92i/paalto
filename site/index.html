@@ -81,23 +81,27 @@
     .section-body { min-width: 0; padding: 32px 0 56px 32px; }
     .section-title { font-size: clamp(34px, 4vw, 58px); line-height: 1; font-weight: 500; max-width: 760px; }
     .section-intro { margin-top: 18px; max-width: 720px; color: var(--gray-70); font-size: 18px; }
-    .line-grid, .capability-grid, .properties { margin-top: 40px; display: grid; border-top: 1px solid var(--black); border-left: 1px solid var(--black); }
+    .line-grid, .properties { margin-top: 40px; display: grid; border-top: 1px solid var(--black); border-left: 1px solid var(--black); }
     .line-grid { grid-template-columns: repeat(3, 1fr); }
-    .capability-grid { grid-template-columns: repeat(3, 1fr); }
     .properties { grid-template-columns: repeat(2, 1fr); }
-    .line-cell, .capability, .property { border-right: 1px solid var(--black); border-bottom: 1px solid var(--black); }
+    .line-cell, .property { border-right: 1px solid var(--black); border-bottom: 1px solid var(--black); }
     .line-cell { min-height: 360px; padding: 22px; display: flex; flex-direction: column; }
     .line-cell.dark { background: var(--black); color: var(--white); }
     .line-cell.dark .panel-label { color: #bdbdbd; }
     .line-cell h3 { margin-top: 26px; font-size: 28px; line-height: 1; font-weight: 500; }
     .line-cell ul { margin-top: auto; }
     .line-cell li { border-top: 1px solid currentColor; padding: 10px 0; font-size: 15px; }
-    .capability-head { padding: 18px; border-bottom: 1px solid var(--black); min-height: 118px; }
-    .capability-head h3 { margin-top: 18px; font-size: 32px; line-height: 1; font-weight: 500; }
-    .skill-list li { display: grid; grid-template-columns: 34px 1fr; border-bottom: 1px solid var(--gray-20); min-height: 38px; align-items: center; font-size: 14px; }
-    .skill-list li span:first-child { height: 100%; border-right: 1px solid var(--gray-20); display: flex; align-items: center; justify-content: center; color: var(--gray-70); font-family: var(--mono); font-size: 11px; }
-    .skill-list li span:last-child { padding: 8px 12px; }
-    .skill-list li:last-child { border-bottom: 0; }
+    .role-matrix-wrap { margin-top: 40px; overflow-x: auto; }
+    .role-matrix { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1px solid var(--black); }
+    .role-matrix th { height: 150px; padding: 26px 30px; text-align: left; vertical-align: top; border: 1px solid var(--black); font-weight: 500; }
+    .role-matrix th strong { display: block; margin-top: 28px; font-size: 42px; line-height: 1; font-weight: 600; }
+    .role-matrix td { height: 64px; padding: 0; border: 1px solid var(--gray-20); vertical-align: middle; }
+    .role-matrix tbody td:nth-child(2), .role-matrix tbody td:nth-child(3) { border-left-color: var(--black); }
+    .role-matrix tbody tr:last-child td { border-bottom-color: var(--black); }
+    .role-matrix tbody tr:hover td { background: #fbfbfb; }
+    .role-entry { display: grid; grid-template-columns: 56px 1fr; min-height: 64px; height: 100%; align-items: stretch; }
+    .role-number { display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--gray-20); font-family: var(--mono); font-size: 13px; color: var(--gray-70); }
+    .role-text { display: flex; align-items: center; padding: 12px 20px; font-size: clamp(16px, 1.55vw, 20px); line-height: 1.25; }
     .property { min-height: 230px; padding: 22px; }
     .property h3 { margin-top: 28px; max-width: 460px; font-size: 27px; line-height: 1.05; font-weight: 500; }
     .property p { margin-top: 14px; max-width: 520px; color: var(--gray-70); }
@@ -140,7 +144,11 @@
       .hero-copy { padding-right: 0; }
       .hero-panel, .section-index { border-left: 0; border-right: 0; border-top: 1px solid var(--black); }
       .section-body { padding-left: 0; }
-      .capability-grid, .line-grid, .properties, .audit-strip { grid-template-columns: 1fr; }
+      .line-grid, .properties, .audit-strip { grid-template-columns: 1fr; }
+      .role-matrix th { height: 128px; padding: 20px; }
+      .role-matrix th strong { font-size: 32px; }
+      .role-entry { grid-template-columns: 44px 1fr; }
+      .role-text { padding: 10px 14px; }
       .install-cell { border-right: 0; border-bottom: 1px solid var(--black); }
       .install-cell:last-child { border-bottom: 0; }
       .thesis, .footer-grid { display: block; }
@@ -223,10 +231,48 @@
         <div class="section-body">
           <h2 class="section-title">A product team expressed as files.</h2>
           <p class="section-intro">Agents, skills, and workflows are plain markdown. You can inspect the instructions, change the rules, remove what you do not need, and add the skills your company runs on.</p>
-          <div class="capability-grid">
-            <article class="capability"><div class="capability-head"><p class="panel-label">Discover / define</p><h3>PM</h3></div><ul class="skill-list"><li><span>01</span><span>Interview synthesis</span></li><li><span>02</span><span>Market radar</span></li><li><span>03</span><span>PRD drafting</span></li><li><span>04</span><span>Roadmaps and OKRs</span></li><li><span>05</span><span>Experiments and readouts</span></li><li><span>06</span><span>Launch, decisions, pricing</span></li></ul></article>
-            <article class="capability"><div class="capability-head"><p class="panel-label">Design / specify</p><h3>Designer</h3></div><ul class="skill-list"><li><span>01</span><span>Wireframes</span></li><li><span>02</span><span>UX and content design</span></li><li><span>03</span><span>Figma handoff</span></li><li><span>04</span><span>Design critique</span></li><li><span>05</span><span>A11y and QA</span></li><li><span>06</span><span>Design ops</span></li></ul></article>
-            <article class="capability"><div class="capability-head"><p class="panel-label">Build / operate</p><h3>Engineer</h3></div><ul class="skill-list"><li><span>01</span><span>Repo scout</span></li><li><span>02</span><span>Tech specs and ADRs</span></li><li><span>03</span><span>Migrations and PRs</span></li><li><span>04</span><span>Tests and review</span></li><li><span>05</span><span>Security and performance</span></li><li><span>06</span><span>PRR, runbooks, incidents</span></li></ul></article>
+          <div class="role-matrix-wrap">
+            <table class="role-matrix" aria-label="Role agent capability matrix">
+              <thead>
+                <tr>
+                  <th scope="col"><span class="panel-label">Discover / define</span><strong>PM</strong></th>
+                  <th scope="col"><span class="panel-label">Design / specify</span><strong>Designer</strong></th>
+                  <th scope="col"><span class="panel-label">Build / operate</span><strong>Engineer</strong></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="role-entry"><span class="role-number">01</span><span class="role-text">Interview synthesis</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">01</span><span class="role-text">Wireframes</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">01</span><span class="role-text">Repo scout</span></div></td>
+                </tr>
+                <tr>
+                  <td><div class="role-entry"><span class="role-number">02</span><span class="role-text">Market radar</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">02</span><span class="role-text">UX and content design</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">02</span><span class="role-text">Tech specs and ADRs</span></div></td>
+                </tr>
+                <tr>
+                  <td><div class="role-entry"><span class="role-number">03</span><span class="role-text">PRD drafting</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">03</span><span class="role-text">Figma handoff</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">03</span><span class="role-text">Migrations and PRs</span></div></td>
+                </tr>
+                <tr>
+                  <td><div class="role-entry"><span class="role-number">04</span><span class="role-text">Roadmaps and OKRs</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">04</span><span class="role-text">Design critique</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">04</span><span class="role-text">Tests and review</span></div></td>
+                </tr>
+                <tr>
+                  <td><div class="role-entry"><span class="role-number">05</span><span class="role-text">Experiments and readouts</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">05</span><span class="role-text">A11y and QA</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">05</span><span class="role-text">Security and performance</span></div></td>
+                </tr>
+                <tr>
+                  <td><div class="role-entry"><span class="role-number">06</span><span class="role-text">Launch, decisions, pricing</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">06</span><span class="role-text">Design ops</span></div></td>
+                  <td><div class="role-entry"><span class="role-number">06</span><span class="role-text">PRR, runbooks, incidents</span></div></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
