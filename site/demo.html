@@ -58,13 +58,14 @@
     .input-block { padding: clamp(22px, 3vw, 34px); border-bottom: 1px solid var(--black); }
     .input-title { margin-top: 16px; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.05; font-weight: 500; }
     .transcript { margin-top: 22px; padding: 18px; max-height: 300px; overflow: auto; background: var(--gray-10); border: 1px solid var(--black); font-family: var(--mono); font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
-    .run-status { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--black); }
-    .step { min-height: 120px; padding: 18px; border-right: 1px solid var(--black); position: relative; background: var(--white); transition: background 160ms ease, color 160ms ease; }
+    .run-status { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--black); border-bottom: 1px solid var(--black); background: var(--white); }
+    .step { min-height: 96px; padding: 16px 18px 18px; border-right: 1px solid var(--black); position: relative; background: var(--white); display: flex; flex-direction: column; justify-content: space-between; gap: 18px; transition: background 160ms ease, color 160ms ease; }
     .step:last-child { border-right: 0; }
     .step::after { content: ""; position: absolute; left: 18px; right: 18px; bottom: 0; height: 0; background: var(--signal); transition: height 160ms ease; }
     .step.done { background: var(--black); color: var(--white); }
-    .step.done::after { height: 8px; }
-    .step-name { display: block; margin-top: 18px; font-size: 17px; line-height: 1.15; }
+    .step.done .kicker { color: var(--signal); }
+    .step.done::after { height: 6px; }
+    .step-name { display: block; font-size: clamp(15px, 1.35vw, 18px); line-height: 1.12; overflow-wrap: anywhere; }
     .outputs { border-top: 1px solid var(--black); }
     .outputs-grid { display: grid; grid-template-columns: minmax(220px, 0.28fr) minmax(0, 1fr); }
     .tabs { border-right: 1px solid var(--black); }
@@ -83,7 +84,7 @@
     .handoff-cell:hover p, .handoff-cell:hover .kicker { color: #d0d0d0; }
     footer { border-top: 1px solid var(--black); }
     .footer-grid { min-height: 92px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; }
-    @media (max-width: 980px) { .hero, .outputs-grid, .handoff { grid-template-columns: 1fr; } .hero-copy { padding-right: var(--gutter); } .hero-panel, .tabs { border-left: 0; border-right: 0; border-top: 1px solid var(--black); } .run-status { grid-template-columns: 1fr; } .step { min-height: 86px; border-right: 0; border-bottom: 1px solid var(--black); } .step:last-child { border-bottom: 0; } .nav-links { display: none; } }
+    @media (max-width: 980px) { .hero, .outputs-grid, .handoff { grid-template-columns: 1fr; } .hero-copy { padding-right: var(--gutter); } .hero-panel, .tabs { border-left: 0; border-right: 0; border-top: 1px solid var(--black); } .run-status { grid-template-columns: 1fr; border-bottom: 0; } .step { min-height: 74px; border-right: 0; border-bottom: 1px solid var(--black); } .step:last-child { border-bottom: 0; } .nav-links { display: none; } }
     @media (max-width: 560px) { .actions { width: 100%; } .button { width: 100%; border-right: 0; border-bottom: 1px solid var(--black); } .button:last-child { border-bottom: 0; } h1 { max-width: 100%; overflow-wrap: anywhere; } }
   </style>
 </head>
