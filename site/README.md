@@ -4,7 +4,7 @@ Single-file static site. Deploy anywhere — Vercel, Netlify, GitHub Pages, your
 
 ## Structure
 
-- `index.html` — the whole site, one page, semantic HTML, Tailwind via CDN.
+- `index.html` — the whole site, one page, semantic HTML, no build step.
 - `og.svg` — Open Graph image source. Render to PNG at 1200×630 before launch.
 - `favicon.svg` — square logomark.
 
@@ -34,8 +34,8 @@ git subtree push --prefix site origin gh-pages
 
 ## Brand
 
-- Background: `#FAFAF7` (warm off-white)
-- Text: `#0A0A0A`
-- Accent: `#D4FF00` (acid)
-- Type: system-ui stack with `font-feature-settings: 'ss01', 'cv11'`
-- One accent at a time. No gradients. No shadows.
+- Background: `#fff`
+- Text: `#000`
+- Lines: `#000` hard grid, 1px borders
+- Type: IBM Plex Sans + IBM Plex Mono
+- No accent color, gradients, shadows, rounded cards, or decorative illustrations.

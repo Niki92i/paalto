@@ -3,342 +3,291 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>paalto — your product team operating system, from Claude Code</title>
-  <meta name="description" content="One conversation replaces the swivel-chair work between PM, Designer, and Engineer. paalto lives on your machine, uses your data, and gets sharper every time you ship." />
+  <title>paalto - product team operating system</title>
+  <meta name="description" content="Open-source product team operating system for Claude Code. PM, Designer, Engineer, and Orchestrator agents with human gates, draft PRs, and a local audit trail." />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta property="og:title" content="paalto" />
-  <meta property="og:description" content="The product team operating system, from Claude Code." />
+  <meta property="og:description" content="Open-source product team operating system for Claude Code." />
   <meta property="og:image" content="/og.png" />
   <meta property="og:url" content="https://paalto.dev" />
   <meta name="twitter:card" content="summary_large_image" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root { --acid: #D4FF00; --ink: #0A0A0A; --bone: #FAFAF7; }
-    html { background: var(--bone); color: var(--ink); }
-    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; font-feature-settings: 'ss01', 'cv11'; }
-    .accent { background: var(--acid); }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-    .underline-acid { background-image: linear-gradient(transparent 65%, var(--acid) 65%); background-repeat: no-repeat; }
-    @media (prefers-reduced-motion: no-preference) {
-      .pulse { animation: pulse 2.4s ease-in-out infinite; }
-      @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.55 } }
+    :root {
+      --black: #000;
+      --white: #fff;
+      --gray-90: #1f1f1f;
+      --gray-70: #525252;
+      --gray-20: #d9d9d9;
+      --gray-10: #f4f4f4;
+      --max: 1280px;
+      --gutter: clamp(16px, 3vw, 48px);
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--white); color: var(--black); scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--sans); font-size: 16px; line-height: 1.45; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    p, h1, h2, h3 { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    code, pre, .mono { font-family: var(--mono); }
+    pre, code { max-width: 100%; }
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+    .site-header { border-bottom: 1px solid var(--black); background: var(--white); position: sticky; top: 0; z-index: 10; }
+    .nav { min-height: 56px; display: grid; grid-template-columns: 1fr auto; align-items: stretch; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+    .brand-mark { width: 28px; height: 28px; border: 1px solid var(--black); display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); }
+    .brand-mark span:nth-child(1), .brand-mark span:nth-child(4) { background: var(--black); }
+    .nav-links { display: flex; align-items: stretch; border-left: 1px solid var(--black); }
+    .nav-links a { display: flex; align-items: center; padding: 0 18px; border-right: 1px solid var(--black); font-size: 14px; }
+    .nav-links a:last-child { background: var(--black); color: var(--white); }
+
+    .hero { min-height: calc(100vh - 56px); display: grid; grid-template-rows: auto 1fr auto; }
+    .hero-meta { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--black); }
+    .hero-meta div { min-height: 72px; padding: 14px 18px; border-right: 1px solid var(--black); }
+    .hero-meta div:last-child { border-right: 0; }
+    .kicker, .panel-label { font-family: var(--mono); font-size: 12px; line-height: 1.4; text-transform: uppercase; color: var(--gray-70); }
+    .value { display: block; margin-top: 6px; font-family: var(--sans); font-size: 15px; color: var(--black); text-transform: none; }
+    .hero-main { display: grid; grid-template-columns: minmax(0, 7fr) minmax(280px, 3fr); border-bottom: 1px solid var(--black); }
+    .hero-copy { min-width: 0; padding: clamp(48px, 8vw, 112px) clamp(24px, 6vw, 96px) clamp(48px, 8vw, 104px) 0; }
+    h1 { font-size: clamp(54px, 9vw, 124px); line-height: 0.94; font-weight: 500; max-width: 10ch; overflow-wrap: normal; }
+    .lede { margin-top: 32px; max-width: 720px; color: var(--gray-90); font-size: clamp(20px, 2vw, 27px); line-height: 1.32; }
+    .actions { display: flex; flex-wrap: wrap; margin-top: 44px; border: 1px solid var(--black); width: fit-content; max-width: 100%; }
+    .button { min-width: 0; min-height: 52px; display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 22px; font-weight: 500; border-right: 1px solid var(--black); }
+    .button:last-child { border-right: 0; }
+    .button.primary { background: var(--black); color: var(--white); }
+    .button:hover { text-decoration: none; background: var(--gray-10); color: var(--black); }
+    .button.primary:hover { background: var(--gray-90); color: var(--white); }
+    .hero-panel { border-left: 1px solid var(--black); display: flex; flex-direction: column; }
+    .panel-block { padding: 24px; border-bottom: 1px solid var(--black); min-height: 168px; }
+    .panel-block:last-child { border-bottom: 0; flex: 1; }
+    .panel-number { margin-top: 18px; font-size: clamp(38px, 6vw, 72px); line-height: 1; font-weight: 500; }
+    .panel-copy { margin-top: 14px; color: var(--gray-70); max-width: 26ch; }
+    .thesis { padding-top: 18px; padding-bottom: 18px; font-family: var(--mono); font-size: 13px; color: var(--gray-70); display: flex; justify-content: space-between; gap: 24px; }
+    .thesis strong { color: var(--black); font-weight: 500; }
+
+    section { border-top: 1px solid var(--black); }
+    .section-grid { display: grid; grid-template-columns: 280px minmax(0, 1fr); }
+    .section-index { padding: 32px 24px 32px 0; border-right: 1px solid var(--black); min-height: 100%; }
+    .section-body { min-width: 0; padding: 32px 0 56px 32px; }
+    .section-title { font-size: clamp(34px, 4vw, 58px); line-height: 1; font-weight: 500; max-width: 760px; }
+    .section-intro { margin-top: 18px; max-width: 720px; color: var(--gray-70); font-size: 18px; }
+    .line-grid, .capability-grid, .properties { margin-top: 40px; display: grid; border-top: 1px solid var(--black); border-left: 1px solid var(--black); }
+    .line-grid { grid-template-columns: repeat(3, 1fr); }
+    .capability-grid { grid-template-columns: repeat(3, 1fr); }
+    .properties { grid-template-columns: repeat(2, 1fr); }
+    .line-cell, .capability, .property { border-right: 1px solid var(--black); border-bottom: 1px solid var(--black); }
+    .line-cell { min-height: 360px; padding: 22px; display: flex; flex-direction: column; }
+    .line-cell.dark { background: var(--black); color: var(--white); }
+    .line-cell.dark .panel-label { color: #bdbdbd; }
+    .line-cell h3 { margin-top: 26px; font-size: 28px; line-height: 1; font-weight: 500; }
+    .line-cell ul { margin-top: auto; }
+    .line-cell li { border-top: 1px solid currentColor; padding: 10px 0; font-size: 15px; }
+    .capability-head { padding: 18px; border-bottom: 1px solid var(--black); min-height: 118px; }
+    .capability-head h3 { margin-top: 18px; font-size: 32px; line-height: 1; font-weight: 500; }
+    .skill-list li { display: grid; grid-template-columns: 34px 1fr; border-bottom: 1px solid var(--gray-20); min-height: 38px; align-items: center; font-size: 14px; }
+    .skill-list li span:first-child { height: 100%; border-right: 1px solid var(--gray-20); display: flex; align-items: center; justify-content: center; color: var(--gray-70); font-family: var(--mono); font-size: 11px; }
+    .skill-list li span:last-child { padding: 8px 12px; }
+    .skill-list li:last-child { border-bottom: 0; }
+    .property { min-height: 230px; padding: 22px; }
+    .property h3 { margin-top: 28px; max-width: 460px; font-size: 27px; line-height: 1.05; font-weight: 500; }
+    .property p { margin-top: 14px; max-width: 520px; color: var(--gray-70); }
+
+    .install-grid { margin-top: 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; border: 1px solid var(--black); }
+    .install-cell { padding: 24px; min-height: 360px; border-right: 1px solid var(--black); display: flex; flex-direction: column; }
+    .install-cell:last-child { border-right: 0; background: var(--black); color: var(--white); }
+    pre { margin: 28px 0 0; padding: 18px; overflow-x: auto; background: var(--gray-10); border: 1px solid var(--black); font-size: 13px; line-height: 1.55; }
+    .install-cell h3 { margin-top: 24px; font-size: 30px; font-weight: 500; line-height: 1; }
+    .install-cell p, .install-cell li { color: var(--gray-70); }
+    .install-cell:last-child p, .install-cell:last-child li { color: #d0d0d0; }
+    .button-row { margin-top: auto; }
+    .audit-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--black); }
+    .audit-item { min-height: 190px; padding: 22px; border-right: 1px solid var(--black); }
+    .audit-item:last-child { border-right: 0; }
+    .audit-item h3 { margin-top: 24px; font-size: 22px; line-height: 1.1; font-weight: 500; }
+    .audit-item p { margin-top: 12px; color: var(--gray-70); font-size: 14px; }
+    .faq { max-width: 860px; }
+    .faq-item { border-top: 1px solid var(--black); padding: 22px 0; display: grid; grid-template-columns: 260px 1fr; gap: 32px; }
+    .faq-item dt { font-weight: 500; }
+    .faq-item dd { margin: 0; color: var(--gray-70); }
+    .final { background: var(--black); color: var(--white); }
+    .final .section-index { border-color: var(--white); }
+    .final .kicker, .final .section-intro { color: #bdbdbd; }
+    .final .actions { border-color: var(--white); }
+    .final .button { border-color: var(--white); color: var(--white); }
+    .final .button.primary { background: var(--white); color: var(--black); }
+    footer { border-top: 1px solid var(--black); }
+    .footer-grid { min-height: 92px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; color: var(--gray-70); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .nav { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero { min-height: auto; }
+      .hero-meta { grid-template-columns: repeat(2, 1fr); }
+      .hero-meta div:nth-child(2) { border-right: 0; }
+      .hero-meta div:nth-child(1), .hero-meta div:nth-child(2) { border-bottom: 1px solid var(--black); }
+      .hero-main, .section-grid, .install-grid, .faq-item { grid-template-columns: 1fr; }
+      .hero-copy { padding-right: 0; }
+      .hero-panel, .section-index { border-left: 0; border-right: 0; border-top: 1px solid var(--black); }
+      .section-body { padding-left: 0; }
+      .capability-grid, .line-grid, .properties, .audit-strip { grid-template-columns: 1fr; }
+      .install-cell { border-right: 0; border-bottom: 1px solid var(--black); }
+      .install-cell:last-child { border-bottom: 0; }
+      .thesis, .footer-grid { display: block; }
+      .footer-links { margin-top: 18px; }
+      h1 { max-width: 8ch; }
+    }
+
+    @media (max-width: 560px) {
+      .hero-meta { grid-template-columns: 1fr; }
+      .hero-meta div { border-right: 0; border-bottom: 1px solid var(--black); }
+      .hero-meta div:last-child { border-bottom: 0; }
+      .actions { width: 100%; }
+      h1 { font-size: clamp(48px, 16vw, 68px); max-width: 100%; overflow-wrap: anywhere; }
+      .button { width: 100%; border-right: 0; border-bottom: 1px solid var(--black); }
+      .button:last-child { border-bottom: 0; }
     }
   </style>
 </head>
-<body class="antialiased">
-
-<!-- ============ NAV ============ -->
-<header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-  <a href="/" class="flex items-center gap-2 font-semibold text-lg tracking-tight">
-    <span class="inline-block w-6 h-6 accent rounded-sm"></span>
-    paalto
-  </a>
-  <nav class="hidden sm:flex items-center gap-6 text-sm text-neutral-700">
-    <a href="#agents" class="hover:text-black">Agents</a>
-    <a href="#edges" class="hover:text-black">Edges</a>
-    <a href="#install" class="hover:text-black">Install</a>
-    <a href="https://github.com/Niki92i/paalto" class="hover:text-black">GitHub</a>
-  </nav>
-</header>
-
-<!-- ============ HERO ============ -->
-<section class="max-w-6xl mx-auto px-6 pt-10 pb-24">
-  <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-6">v0.5 · open source · MIT</p>
-  <h1 class="text-5xl sm:text-7xl font-semibold tracking-tight leading-[0.95]">
-    Your product team<br />operating system,<br />
-    <span class="underline-acid">from Claude Code.</span>
-  </h1>
-  <p class="mt-8 max-w-2xl text-lg text-neutral-700 leading-relaxed">
-    One conversation replaces the swivel-chair work between PM, Designer, and Engineer.
-    paalto lives on your machine, uses your data, and gets sharper every time you ship.
-  </p>
-
-  <div class="mt-10 flex flex-wrap items-center gap-3">
-    <a href="#install" class="accent text-black font-medium px-6 py-3 rounded-sm hover:opacity-90">Clone the repo →</a>
-    <a href="mailto:hi@paalto.dev?subject=We%20run%20your%20product%20team" class="border border-black px-6 py-3 rounded-sm hover:bg-black hover:text-white">We run your product team</a>
-  </div>
-
-  <p class="mt-12 mono text-sm text-neutral-500">
-    Humans own the edges. The system compounds the middle. PRs ship as drafts. <span class="text-black font-medium">Always.</span>
-  </p>
-</section>
-
-<!-- ============ FLOW ============ -->
-<section id="agents" class="border-t border-black/10 bg-white">
-  <div class="max-w-6xl mx-auto px-6 py-20">
-    <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">01 · the team</p>
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">An entire product team. Zero headcount.</h2>
-    <p class="mt-4 max-w-2xl text-neutral-700">Three role agents, configured as plain markdown files you own. Orchestrated by one flow with five named human gates.</p>
-
-    <div class="mt-12 grid sm:grid-cols-3 gap-6">
-      <div class="border border-black/10 p-6 rounded-sm">
-        <p class="mono text-xs uppercase tracking-widest text-neutral-500">DISCOVER</p>
-        <h3 class="text-2xl font-semibold mt-2">PM</h3>
-        <ul class="mt-4 space-y-2 text-sm text-neutral-700">
-          <li>Interview Synthesizer</li>
-          <li>Market Radar</li>
-          <li>Competitor Teardown</li>
-          <li>PRD Drafter</li>
-          <li>Ticket Breaker</li>
-          <li>Feedback Triager</li>
-          <li>Metrics Reporter</li>
-          <li>Cross-squad Rollup</li>
-          <li class="pt-2 mono text-xs uppercase tracking-widest text-neutral-400">v0.6 — strategy &amp; ops</li>
-          <li>Narrative / Strategy Writer</li>
-          <li>Roadmap Snapshotter</li>
-          <li>OKR / Metric Tree</li>
-          <li>Experiment Designer</li>
-          <li>Experiment Readout</li>
-          <li>Research Plan</li>
-          <li>Launch Checklist</li>
-          <li>Decision Log</li>
-          <li>Stakeholder Update</li>
-          <li>Pricing &amp; Packaging</li>
-        </ul>
-      </div>
-      <div class="border border-black/10 p-6 rounded-sm">
-        <p class="mono text-xs uppercase tracking-widest text-neutral-500">DESIGN</p>
-        <h3 class="text-2xl font-semibold mt-2">Designer</h3>
-        <ul class="mt-4 space-y-2 text-sm text-neutral-700">
-          <li>Wireframe Drafter</li>
-          <li>UX Copy Writer</li>
-          <li>Figma Spec Generator</li>
-          <li>Design-system Auditor</li>
-          <li>A11y Reviewer</li>
-          <li class="pt-2 mono text-xs uppercase tracking-widest text-neutral-400">v0.6 — craft &amp; ops</li>
-          <li>Crit Facilitator</li>
-          <li>Interaction &amp; Motion Spec</li>
-          <li>Content Design / Microcopy</li>
-          <li>Design QA</li>
-          <li>Usability Synthesis</li>
-          <li>Design Ops / Token Hygiene</li>
-        </ul>
-      </div>
-      <div class="border border-black/10 p-6 rounded-sm relative">
-        <p class="mono text-xs uppercase tracking-widest text-neutral-500">SHIP</p>
-        <h3 class="text-2xl font-semibold mt-2">Engineer</h3>
-        <ul class="mt-4 space-y-2 text-sm text-neutral-700">
-          <li>Repo Scout</li>
-          <li>PR Builder <span class="mono text-xs accent px-1.5 py-0.5 ml-1">draft only</span></li>
-          <li>Code Reviewer</li>
-          <li>Test Plan Writer</li>
-          <li>Release Note Generator</li>
-          <li class="pt-2 mono text-xs uppercase tracking-widest text-neutral-400">v0.6 — design &amp; ops</li>
-          <li>Tech Spec / RFC Writer</li>
-          <li>ADR Writer</li>
-          <li>Migration Plan</li>
-          <li>Runbook Generator</li>
-          <li>Incident Postmortem</li>
-          <li>Performance Audit</li>
-          <li>Security Review (STRIDE)</li>
-          <li>Dependency Triage</li>
-          <li>Production Readiness Review</li>
-        </ul>
-      </div>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a href="/" class="brand" aria-label="paalto home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>paalto</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#system">System</a>
+        <a href="#agents">Agents</a>
+        <a href="#install">Install</a>
+        <a href="https://github.com/Niki92i/paalto">GitHub</a>
+      </nav>
     </div>
-    <p class="mt-8 mono text-xs uppercase tracking-widest text-neutral-500">+ Cross-role · Kickoff Doc · Async Standup · Product Postmortem</p>
-  </div>
-</section>
+  </header>
 
-<!-- ============ EDGES ============ -->
-<section id="edges" class="border-t border-black/10">
-  <div class="max-w-6xl mx-auto px-6 py-20">
-    <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">02 · the line</p>
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Humans own the edges.<br />The system compounds the middle.</h2>
-    <p class="mt-6 max-w-2xl text-neutral-700">Every AI coding agent wants to own the whole pipeline — from idea to merged PR. We think the opposite. Vision is human. Taste is human. Trust is human. Repeatable work in the middle is what a system should do.</p>
+  <main>
+    <section class="hero" aria-label="paalto introduction">
+      <div class="wrap hero-meta">
+        <div><span class="kicker">Version<span class="value">v0.7</span></span></div>
+        <div><span class="kicker">License<span class="value">MIT / open source</span></span></div>
+        <div><span class="kicker">Runtime<span class="value">Claude Code</span></span></div>
+        <div><span class="kicker">Mode<span class="value">local first</span></span></div>
+      </div>
+      <div class="wrap hero-main">
+        <div class="hero-copy">
+          <p class="kicker">Product operations / agent system</p>
+          <h1>Product teams, run as a system.</h1>
+          <p class="lede">paalto is an open-source operating system for PM, Design, Engineering, and launch work. Markdown agents do the repeatable work. Humans keep the gates.</p>
+          <div class="actions" aria-label="Primary actions">
+            <a class="button primary" href="https://github.com/Niki92i/paalto">Clone the repo <span aria-hidden="true">-&gt;</span></a>
+            <a class="button" href="mailto:hi@paalto.dev?subject=We%20run%20your%20product%20team">Implementation help <span aria-hidden="true">-&gt;</span></a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="System facts">
+          <div class="panel-block"><p class="panel-label">Skills wired</p><p class="panel-number">46</p><p class="panel-copy">PM, Designer, Engineer, and Orchestrator skills validated in CI.</p></div>
+          <div class="panel-block"><p class="panel-label">Human gates</p><p class="panel-number">5</p><p class="panel-copy">Vision, prioritization, design taste, merge approval, launch comms.</p></div>
+          <div class="panel-block"><p class="panel-label">Merge policy</p><p class="panel-number">0</p><p class="panel-copy">No auto-merge path. Engineer opens draft pull requests only.</p></div>
+        </aside>
+      </div>
+      <div class="wrap thesis"><span>Humans own the edges.</span><span>The system compounds the middle.</span><span><strong>PRs ship as drafts. Always.</strong></span></div>
+    </section>
 
-    <div class="mt-12 grid md:grid-cols-3 gap-6 text-sm">
-      <div class="border border-black/10 p-6">
-        <p class="mono text-xs uppercase tracking-widest text-neutral-500">FIRST MILE · OPERATORS</p>
-        <h3 class="text-lg font-semibold mt-2">The bet</h3>
-        <ul class="mt-3 space-y-1.5 text-neutral-700">
-          <li>→ Define the ICP</li>
-          <li>→ Pick the play</li>
-          <li>→ Set the measure</li>
-          <li>→ Decide what NOT to build</li>
-        </ul>
+    <section id="system">
+      <div class="wrap section-grid">
+        <div class="section-index"><p class="kicker">01 / System boundary</p></div>
+        <div class="section-body">
+          <h2 class="section-title">No autonomous theater. A clear operating line.</h2>
+          <p class="section-intro">paalto does not pretend the product function can be replaced end to end. It compresses the repeatable work between human decisions, while preserving accountability at the moments that matter.</p>
+          <div class="line-grid">
+            <div class="line-cell"><p class="panel-label">First mile / operator</p><h3>The bet</h3><ul><li>Define the customer</li><li>Choose the problem</li><li>Name the metric</li><li>Decide what not to build</li></ul></div>
+            <div class="line-cell dark"><p class="panel-label">Middle / paalto</p><h3>The work</h3><ul><li>Synthesize signal</li><li>Draft PRDs and specs</li><li>Create tickets</li><li>Open draft PRs</li><li>Log every action</li></ul></div>
+            <div class="line-cell"><p class="panel-label">Last mile / operator</p><h3>The close</h3><ul><li>Pick the design</li><li>Approve the merge</li><li>Send the launch message</li><li>Talk to customers</li></ul></div>
+          </div>
+        </div>
       </div>
-      <div class="border border-black p-6 bg-black text-white">
-        <p class="mono text-xs uppercase tracking-widest text-neutral-400">MIDDLE · SYSTEM</p>
-        <h3 class="text-lg font-semibold mt-2">The work</h3>
-        <ul class="mt-3 space-y-1.5 text-neutral-200">
-          <li>→ Synthesize interviews</li>
-          <li>→ Draft PRDs and tickets</li>
-          <li>→ Scaffold draft PRs</li>
-          <li>→ Write release notes</li>
-          <li>→ Log, audit, report</li>
-        </ul>
-      </div>
-      <div class="border border-black/10 p-6">
-        <p class="mono text-xs uppercase tracking-widest text-neutral-500">LAST MILE · OPERATORS</p>
-        <h3 class="text-lg font-semibold mt-2">The close</h3>
-        <ul class="mt-3 space-y-1.5 text-neutral-700">
-          <li>→ Approve the merge</li>
-          <li>→ Talk to the customer</li>
-          <li>→ Send the launch post</li>
-          <li>→ Read the signal</li>
-        </ul>
-      </div>
-    </div>
+    </section>
 
-    <p class="mt-10 mono text-sm text-neutral-600">The system never auto-merges. The operator never wastes a Tuesday on ticket grooming.</p>
-  </div>
-</section>
+    <section id="agents">
+      <div class="wrap section-grid">
+        <div class="section-index"><p class="kicker">02 / Role agents</p></div>
+        <div class="section-body">
+          <h2 class="section-title">A product team expressed as files.</h2>
+          <p class="section-intro">Agents, skills, and workflows are plain markdown. You can inspect the instructions, change the rules, remove what you do not need, and add the skills your company runs on.</p>
+          <div class="capability-grid">
+            <article class="capability"><div class="capability-head"><p class="panel-label">Discover / define</p><h3>PM</h3></div><ul class="skill-list"><li><span>01</span><span>Interview synthesis</span></li><li><span>02</span><span>Market radar</span></li><li><span>03</span><span>PRD drafting</span></li><li><span>04</span><span>Roadmaps and OKRs</span></li><li><span>05</span><span>Experiments and readouts</span></li><li><span>06</span><span>Launch, decisions, pricing</span></li></ul></article>
+            <article class="capability"><div class="capability-head"><p class="panel-label">Design / specify</p><h3>Designer</h3></div><ul class="skill-list"><li><span>01</span><span>Wireframes</span></li><li><span>02</span><span>UX and content design</span></li><li><span>03</span><span>Figma handoff</span></li><li><span>04</span><span>Design critique</span></li><li><span>05</span><span>A11y and QA</span></li><li><span>06</span><span>Design ops</span></li></ul></article>
+            <article class="capability"><div class="capability-head"><p class="panel-label">Build / operate</p><h3>Engineer</h3></div><ul class="skill-list"><li><span>01</span><span>Repo scout</span></li><li><span>02</span><span>Tech specs and ADRs</span></li><li><span>03</span><span>Migrations and PRs</span></li><li><span>04</span><span>Tests and review</span></li><li><span>05</span><span>Security and performance</span></li><li><span>06</span><span>PRR, runbooks, incidents</span></li></ul></article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- ============ PROPERTIES ============ -->
-<section class="border-t border-black/10 bg-white">
-  <div class="max-w-6xl mx-auto px-6 py-20">
-    <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">03 · how it behaves</p>
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Six properties, not features.</h2>
+    <section>
+      <div class="wrap section-grid">
+        <div class="section-index"><p class="kicker">03 / Properties</p></div>
+        <div class="section-body">
+          <h2 class="section-title">Designed to be inspected.</h2>
+          <p class="section-intro">The system should feel more like infrastructure than software theater. Every important behavior is named, logged, and constrained.</p>
+          <div class="properties">
+            <article class="property"><p class="panel-label">01</p><h3>Local first</h3><p>Runs on your machine with your keys. There is no paalto backend.</p></article>
+            <article class="property"><p class="panel-label">02</p><h3>Plain files</h3><p>Agents and skills are markdown. Workflows are readable. Runs are folders.</p></article>
+            <article class="property"><p class="panel-label">03</p><h3>Scoped access</h3><p>GitHub, Linear, Notion, Slack, Figma, Posthog, and Jira use least-privilege setup.</p></article>
+            <article class="property"><p class="panel-label">04</p><h3>Audited output</h3><p>Every step appends to events.jsonl. Drafts are saved before anything external is touched.</p></article>
+            <article class="property"><p class="panel-label">05</p><h3>Human gates</h3><p>Vision, prioritization, taste, merge approval, and launch comms never auto-advance.</p></article>
+            <article class="property"><p class="panel-label">06</p><h3>Drafts only</h3><p>Code arrives as draft PRs. Launch copy arrives as a draft. The operator closes the loop.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="mt-12 grid sm:grid-cols-2 gap-x-12 gap-y-10">
-      <div>
-        <p class="mono text-xs text-neutral-500">01 · AGNOSTIC</p>
-        <h3 class="text-xl font-semibold mt-1">Your data, your stack, your models.</h3>
-        <p class="mt-2 text-neutral-700">Works with whatever repo, CRM, warehouse, or model you already run. Not locked to any vendor, including us.</p>
-      </div>
-      <div>
-        <p class="mono text-xs text-neutral-500">02 · INTEROPERABLE</p>
-        <h3 class="text-xl font-semibold mt-1">Talks to everything with an API.</h3>
-        <p class="mt-2 text-neutral-700">GitHub, Linear, Notion, Slack on day one. Figma, Posthog, Jira shipped. Anything with an MCP plugs in.</p>
-      </div>
-      <div>
-        <p class="mono text-xs text-neutral-500">03 · INTELLIGENT</p>
-        <h3 class="text-xl font-semibold mt-1">Frontier models under the hood.</h3>
-        <p class="mt-2 text-neutral-700">Claude by default. Updated as new models ship. The system inherits their intelligence directly.</p>
-      </div>
-      <div>
-        <p class="mono text-xs text-neutral-500">04 · COMPOUNDING</p>
-        <h3 class="text-xl font-semibold mt-1">Every run sharpens the next.</h3>
-        <p class="mt-2 text-neutral-700">Every action lands in <span class="mono">runs/&lt;id&gt;</span> as a transcript and structured events. What worked becomes default.</p>
-      </div>
-      <div>
-        <p class="mono text-xs text-neutral-500">05 · MODIFIABLE</p>
-        <h3 class="text-xl font-semibold mt-1">Markdown configs, code you own.</h3>
-        <p class="mt-2 text-neutral-700">Skills, agents, prompts — all <span class="mono">.md</span> files. Fork it, extend it, prune it. No magic. No lock-in.</p>
-      </div>
-      <div>
-        <p class="mono text-xs text-neutral-500">06 · HEADLESS</p>
-        <h3 class="text-xl font-semibold mt-1">Chat is the interface.</h3>
-        <p class="mt-2 text-neutral-700">No dashboard to fight. Conversation is how you operate it. The transcript is your audit trail.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ INSTALL ============ -->
-<section id="install" class="border-t border-black/10">
-  <div class="max-w-6xl mx-auto px-6 py-20">
-    <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">04 · get running</p>
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">In 60 minutes, on a fresh clone.</h2>
-    <p class="mt-4 max-w-2xl text-neutral-700">A stranger should be able to clone the repo, fill in <span class="mono">.env</span>, and reach a green-CI draft PR using the <span class="mono">loom-to-pr</span> example. If they can't, the README is broken — open an issue.</p>
-
-    <div class="mt-10 grid md:grid-cols-2 gap-6">
-      <div class="border border-black/10 p-6 rounded-sm bg-white">
-        <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">SELF-SERVE · OPEN SOURCE</p>
-        <h3 class="text-2xl font-semibold">Clone the repo</h3>
-        <pre class="mono text-sm bg-neutral-100 p-4 mt-4 overflow-x-auto rounded-sm"><code>git clone https://github.com/Niki92i/paalto.git
+    <section id="install">
+      <div class="wrap section-grid">
+        <div class="section-index"><p class="kicker">04 / Install</p></div>
+        <div class="section-body">
+          <h2 class="section-title">Clone, configure, run the reference flow.</h2>
+          <p class="section-intro">The bar is simple: a stranger should be able to clone the repo, fill in .env, and reach a green-CI draft PR using the Loom-to-PR example.</p>
+          <div class="install-grid">
+            <div class="install-cell"><p class="panel-label">Open source</p><h3>Run it yourself.</h3><pre><code>git clone https://github.com/Niki92i/paalto.git
 cd paalto
 cp .env.example .env
-# open in Claude Code, then:
-#   "run workflows/ship-a-feature.md
-#    on examples/loom-to-pr"</code></pre>
-        <a href="https://github.com/Niki92i/paalto" class="inline-block mt-4 text-sm font-medium underline">github.com/Niki92i/paalto →</a>
+node scripts/validate-skills.mjs</code></pre><div class="button-row actions"><a class="button primary" href="https://github.com/Niki92i/paalto">GitHub <span aria-hidden="true">-&gt;</span></a></div></div>
+            <div class="install-cell"><p class="panel-label">Implementation</p><h3>Wire it into your stack.</h3><ul style="margin-top: 28px; display: grid; gap: 12px;"><li>Connect GitHub, Linear, Notion, Slack.</li><li>Add Figma, Posthog, Jira, Intercom, Zendesk as needed.</li><li>Load your design system and product voice.</li><li>Run the first workflow with your team.</li></ul><div class="button-row actions"><a class="button primary" href="mailto:hi@paalto.dev?subject=We%20run%20your%20product%20team">Get help <span aria-hidden="true">-&gt;</span></a></div></div>
+          </div>
+        </div>
       </div>
-      <div class="border border-black p-6 rounded-sm bg-black text-white">
-        <p class="mono text-xs uppercase tracking-widest text-neutral-400 mb-3">DONE FOR YOU</p>
-        <h3 class="text-2xl font-semibold">We run your product team</h3>
-        <ul class="mt-4 space-y-2 text-sm text-neutral-200">
-          <li>→ Full install on your machine</li>
-          <li>→ Your data sources connected with your keys</li>
-          <li>→ Your design system + voice loaded</li>
-          <li>→ Live walkthrough with your team</li>
-          <li>→ Ongoing support</li>
-        </ul>
-        <a href="mailto:hi@paalto.dev?subject=We%20run%20your%20product%20team" class="inline-block mt-6 accent text-black font-medium px-5 py-2.5 rounded-sm hover:opacity-90">Book a call →</a>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ============ AUDIT ============ -->
-<section class="border-t border-black/10 bg-white">
-  <div class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-10">
-    <div>
-      <p class="mono text-xs uppercase tracking-widest text-neutral-500">HUMAN GUARDRAILS</p>
-      <h3 class="text-xl font-semibold mt-2">Five named gates.</h3>
-      <p class="mt-2 text-neutral-700 text-sm">Vision · Prioritization · Design taste · Merge approval · Launch comms. Skippable: never.</p>
-    </div>
-    <div>
-      <p class="mono text-xs uppercase tracking-widest text-neutral-500">FULL AUDIT TRAIL</p>
-      <h3 class="text-xl font-semibold mt-2">Every action is a line of JSON.</h3>
-      <p class="mt-2 text-neutral-700 text-sm">Each agent appends to <span class="mono">runs/&lt;id&gt;/events.jsonl</span>. Diff, grep, ship.</p>
-    </div>
-    <div>
-      <p class="mono text-xs uppercase tracking-widest text-neutral-500">SCOPED ACCESS</p>
-      <h3 class="text-xl font-semibold mt-2">Minimum permissions, by default.</h3>
-      <p class="mt-2 text-neutral-700 text-sm">GitHub fine-grained PAT, one repo. Notion shared per-database. Slack one channel. No admin.</p>
-    </div>
-  </div>
-</section>
+    <section><div class="wrap audit-strip" aria-label="Project guarantees"><div class="audit-item"><p class="panel-label">Gate 01</p><h3>Vision</h3><p>Is this the right thing to build?</p></div><div class="audit-item"><p class="panel-label">Gate 02</p><h3>Prioritization</h3><p>Is this the right thing to build now?</p></div><div class="audit-item"><p class="panel-label">Gate 03</p><h3>Design taste</h3><p>Which option wins?</p></div><div class="audit-item"><p class="panel-label">Gate 04/05</p><h3>Merge and launch</h3><p>Humans approve the PR and send the message.</p></div></div></section>
 
-<!-- ============ FAQ ============ -->
-<section class="border-t border-black/10">
-  <div class="max-w-3xl mx-auto px-6 py-20">
-    <p class="mono text-xs uppercase tracking-widest text-neutral-500 mb-3">05 · questions</p>
-    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Questions.</h2>
+    <section>
+      <div class="wrap section-grid">
+        <div class="section-index"><p class="kicker">05 / Questions</p></div>
+        <div class="section-body faq">
+          <h2 class="section-title">Operational answers.</h2>
+          <dl style="margin-top: 36px;">
+            <div class="faq-item"><dt>Where does the data live?</dt><dd>On your machine and in the tools you connect. Runs are local folders. There is no paalto hosted backend.</dd></div>
+            <div class="faq-item"><dt>Does it merge code?</dt><dd>No. Engineer opens draft PRs only. Merge approval is a named human gate.</dd></div>
+            <div class="faq-item"><dt>What is actually open source?</dt><dd>The agents, skills, workflows, docs, examples, validators, and static site. MIT licensed.</dd></div>
+            <div class="faq-item"><dt>Can teams add their own process?</dt><dd>Yes. Add a markdown skill, list it in the role agent, and run the validator.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
 
-    <dl class="mt-10 space-y-8">
-      <div>
-        <dt class="font-semibold">Do I need to be technical?</dt>
-        <dd class="mt-2 text-neutral-700">No. You drive paalto in plain English in Claude Code. If you can describe the outcome, the system can run it. The Engineer agent handles the code.</dd>
+    <section class="final">
+      <div class="wrap section-grid">
+        <div class="section-index"><p class="kicker">06 / Start</p></div>
+        <div class="section-body"><h2 class="section-title">A product operating system you can inspect.</h2><p class="section-intro">No black box. No automatic launch. No green button pretending strategy has been solved.</p><div class="actions"><a class="button primary" href="https://github.com/Niki92i/paalto">Clone the repo <span aria-hidden="true">-&gt;</span></a><a class="button" href="mailto:hi@paalto.dev?subject=We%20run%20your%20product%20team">Implementation help <span aria-hidden="true">-&gt;</span></a></div></div>
       </div>
-      <div>
-        <dt class="font-semibold">Where does my data live?</dt>
-        <dd class="mt-2 text-neutral-700">On your machine. paalto runs locally. Your transcripts, PRDs, and keys never go to a paalto backend — there isn't one. Model API calls go directly from your machine to your model provider.</dd>
-      </div>
-      <div>
-        <dt class="font-semibold">Will it auto-merge my code?</dt>
-        <dd class="mt-2 text-neutral-700"><span class="font-semibold">No.</span> Every PR opens as draft. The PR Builder skill is hard-coded to refuse merge calls. Merge approval is a named human gate.</dd>
-      </div>
-      <div>
-        <dt class="font-semibold">What's the difference between paid and OSS?</dt>
-        <dd class="mt-2 text-neutral-700">Time and friction. The OSS repo is free and documented; getting it fully wired into your stack takes a few hours of setup. The paid implementation compresses that into a single session with the team that runs paalto every day.</dd>
-      </div>
-      <div>
-        <dt class="font-semibold">Can I add my own skills?</dt>
-        <dd class="mt-2 text-neutral-700">Yes — that's the whole point. A skill is a single <span class="mono">.md</span> file. See <a href="https://github.com/Niki92i/paalto/blob/main/CONTRIBUTING.md" class="underline">CONTRIBUTING.md</a>.</dd>
-      </div>
-    </dl>
-  </div>
-</section>
+    </section>
+  </main>
 
-<!-- ============ CTA ============ -->
-<section class="border-t border-black/10 bg-black text-white">
-  <div class="max-w-6xl mx-auto px-6 py-24 text-center">
-    <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.05]">
-      Be one of the first teams<br />running product the AI-native way.
-    </h2>
-    <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
-      <a href="https://github.com/Niki92i/paalto" class="accent text-black font-medium px-6 py-3 rounded-sm hover:opacity-90">Clone the repo →</a>
-      <a href="mailto:hi@paalto.dev?subject=We%20run%20your%20product%20team" class="border border-white px-6 py-3 rounded-sm hover:bg-white hover:text-black">We run your product team</a>
-    </div>
-    <p class="mt-12 mono text-sm text-neutral-500">PRs ship as drafts. <span class="text-white">Always.</span></p>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer class="border-t border-black/10">
-  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-wrap items-center justify-between text-sm text-neutral-600 gap-4">
-    <p>© 2026 paalto · MIT</p>
-    <nav class="flex flex-wrap gap-6">
-      <a href="https://github.com/Niki92i/paalto" class="hover:text-black">GitHub</a>
-      <a href="https://github.com/Niki92i/paalto/discussions" class="hover:text-black">Discussions</a>
-      <a href="https://github.com/Niki92i/paalto/blob/main/docs/security.md" class="hover:text-black">Security</a>
-      <a href="mailto:hi@paalto.dev" class="hover:text-black">hi@paalto.dev</a>
-    </nav>
-  </div>
-</footer>
-
+  <footer><div class="wrap footer-grid"><p class="mono" style="font-size: 13px;">(c) 2026 paalto / MIT</p><nav class="footer-links" aria-label="Footer navigation"><a href="https://github.com/Niki92i/paalto">GitHub</a><a href="https://github.com/Niki92i/paalto/discussions">Discussions</a><a href="https://github.com/Niki92i/paalto/blob/main/docs/security.md">Security</a><a href="mailto:hi@paalto.dev">hi@paalto.dev</a></nav></div></footer>
 </body>
 </html>
