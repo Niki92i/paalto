@@ -84,12 +84,12 @@ requireIncludes('runs/README.md', ['events.jsonl', 'gate.requested', 'gate.appro
 requireIncludes('docs/security.md', ['Draft PRs only', 'No auto-send to customers', 'Human gates are not skippable', 'Per-agent tool scopes', 'No telemetry leaves your machine'], 'security posture must document the hard guarantees');
 
 const packageJson = JSON.parse(read('package.json'));
-for (const scriptName of ['validate', 'guardrails', 'doctor', 'demo']) {
+for (const scriptName of ['build', 'validate', 'guardrails', 'doctor', 'demo']) {
   if (!packageJson.scripts?.[scriptName]) errors.push(`package.json: missing npm script ${scriptName}`);
 }
 
 const workflow = read('.github/workflows/validate.yml');
-for (const command of ['npm run validate', 'npm run guardrails', 'npm run doctor']) {
+for (const command of ['npm run validate', 'npm run guardrails', 'npm run doctor', 'npm run build']) {
   if (!workflow.includes(command)) errors.push(`.github/workflows/validate.yml: missing ${command}`);
 }
 

@@ -64,6 +64,7 @@ git clone https://github.com/Niki92i/paalto.git
 cd paalto
 npm run doctor             # checks structure, Node, MCP config, and setup gaps
 npm run demo               # creates a local no-API run in runs/<id>/
+npm run build              # builds the static site to dist/ for Vercel
 cp .env.example .env       # add API keys when you are ready for real tool writes
 # open this folder in Claude Code, then in chat:
 #   "run workflows/ship-a-feature.md on examples/loom-to-pr"

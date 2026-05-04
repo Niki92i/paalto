@@ -19,3 +19,5 @@ jobs:
         run: npm run guardrails
       - name: Run setup doctor
         run: npm run doctor
+      - name: Build static site
+        run: npm run build

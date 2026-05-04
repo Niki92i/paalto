@@ -8,6 +8,7 @@
 		"node": ">=20"
 	},
 	"scripts": {
+		"build": "node scripts/build-site.mjs",
 		"validate": "node scripts/validate-skills.mjs",
 		"guardrails": "node scripts/validate-guardrails.mjs",
 		"doctor": "node scripts/doctor.mjs",

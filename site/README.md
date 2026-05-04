@@ -1,6 +1,6 @@
 # paalto.dev landing page
 
-Single-file static site. Deploy anywhere — Vercel, Netlify, GitHub Pages, your own server. No build step.
+Single-file static site. Deploy anywhere — Vercel, Netlify, GitHub Pages, your own server. The repo root includes a tiny static build script for platforms that expect an output directory.
 
 ## Structure
 
@@ -17,6 +17,17 @@ python3 -m http.server 4000
 ```
 
 ## Deploy to Vercel
+
+Preferred from the repo root:
+
+```bash
+npm run build
+npx vercel --prod
+```
+
+The root `vercel.json` runs `npm run build` and serves `dist/`, which is copied from `site/`.
+
+Alternative if the Vercel project Root Directory is explicitly set to `site`:
 
 ```bash
 npx vercel --prod ./site
