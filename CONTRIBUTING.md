@@ -39,7 +39,7 @@ docs/           install, quickstart, security
 
 ## PRs
 
-- Open as **draft**. The maintainer (Niki92i) merges.
+- Open as **draft**. A maintainer merges.
 - Include a `runs/` excerpt showing the new skill or integration working end-to-end.
 - Update `docs/skills.md` if you added a skill.
 
