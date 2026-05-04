@@ -9,13 +9,14 @@
   <g transform="translate(78 78)">
     <rect width="44" height="44" fill="#000"/>
     <rect x="11" y="11" width="11" height="11" fill="#fff"/>
-    <rect x="22" y="22" width="11" height="11" fill="#fff"/>
+    <rect x="22" y="22" width="11" height="11" fill="#d4ff00"/>
   </g>
   <text x="142" y="109" font-family="IBM Plex Sans, Arial, sans-serif" font-size="36" font-weight="600" fill="#000">paalto</text>
   <text x="880" y="92" font-family="IBM Plex Mono, monospace" font-size="18" fill="#525252">OPEN SOURCE</text>
   <text x="880" y="122" font-family="IBM Plex Mono, monospace" font-size="18" fill="#525252">PRODUCT OS</text>
   <text x="78" y="270" font-family="IBM Plex Sans, Arial, sans-serif" font-size="86" font-weight="500" fill="#000">Product teams,</text>
   <text x="78" y="360" font-family="IBM Plex Sans, Arial, sans-serif" font-size="86" font-weight="500" fill="#000">run as a system.</text>
-  <text x="78" y="525" font-family="IBM Plex Mono, monospace" font-size="22" fill="#000">46 skills / 5 human gates / draft PRs only</text>
+  <rect x="78" y="500" width="92" height="14" fill="#d4ff00"/>
+  <text x="78" y="545" font-family="IBM Plex Mono, monospace" font-size="22" fill="#000">46 skills / 5 human gates / draft PRs only</text>
   <text x="880" y="525" font-family="IBM Plex Mono, monospace" font-size="22" fill="#000">paalto.dev</text>
 </svg>

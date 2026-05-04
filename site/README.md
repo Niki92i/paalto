@@ -37,5 +37,6 @@ git subtree push --prefix site origin gh-pages
 - Background: `#fff`
 - Text: `#000`
 - Lines: `#000` hard grid, 1px borders
+- Signal accent: `#D4FF00`, used only for primary actions and validation marks
 - Type: IBM Plex Sans + IBM Plex Mono
-- No accent color, gradients, shadows, rounded cards, or decorative illustrations.
+- No gradients, shadows, rounded cards, or decorative illustrations.

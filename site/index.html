@@ -22,6 +22,7 @@
       --gray-70: #525252;
       --gray-20: #d9d9d9;
       --gray-10: #f4f4f4;
+      --signal: #d4ff00;
       --max: 1280px;
       --gutter: clamp(16px, 3vw, 48px);
       --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -42,7 +43,8 @@
     .nav { min-height: 56px; display: grid; grid-template-columns: 1fr auto; align-items: stretch; }
     .brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
     .brand-mark { width: 28px; height: 28px; border: 1px solid var(--black); display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); }
-    .brand-mark span:nth-child(1), .brand-mark span:nth-child(4) { background: var(--black); }
+    .brand-mark span:nth-child(1) { background: var(--black); }
+    .brand-mark span:nth-child(4) { background: var(--signal); }
     .nav-links { display: flex; align-items: stretch; border-left: 1px solid var(--black); }
     .nav-links a { display: flex; align-items: center; padding: 0 18px; border-right: 1px solid var(--black); font-size: 14px; }
     .nav-links a:last-child { background: var(--black); color: var(--white); }
@@ -60,13 +62,14 @@
     .actions { display: flex; flex-wrap: wrap; margin-top: 44px; border: 1px solid var(--black); width: fit-content; max-width: 100%; }
     .button { min-width: 0; min-height: 52px; display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 22px; font-weight: 500; border-right: 1px solid var(--black); }
     .button:last-child { border-right: 0; }
-    .button.primary { background: var(--black); color: var(--white); }
+    .button.primary { background: var(--signal); color: var(--black); }
     .button:hover { text-decoration: none; background: var(--gray-10); color: var(--black); }
-    .button.primary:hover { background: var(--gray-90); color: var(--white); }
+    .button.primary:hover { background: var(--black); color: var(--white); }
     .hero-panel { border-left: 1px solid var(--black); display: flex; flex-direction: column; }
     .panel-block { padding: 24px; border-bottom: 1px solid var(--black); min-height: 168px; }
     .panel-block:last-child { border-bottom: 0; flex: 1; }
     .panel-number { margin-top: 18px; font-size: clamp(38px, 6vw, 72px); line-height: 1; font-weight: 500; }
+    .panel-number::after { content: ""; display: block; width: 34px; height: 8px; margin-top: 12px; background: var(--signal); }
     .panel-copy { margin-top: 14px; color: var(--gray-70); max-width: 26ch; }
     .thesis { padding-top: 18px; padding-bottom: 18px; font-family: var(--mono); font-size: 13px; color: var(--gray-70); display: flex; justify-content: space-between; gap: 24px; }
     .thesis strong { color: var(--black); font-weight: 500; }
@@ -120,7 +123,7 @@
     .final .kicker, .final .section-intro { color: #bdbdbd; }
     .final .actions { border-color: var(--white); }
     .final .button { border-color: var(--white); color: var(--white); }
-    .final .button.primary { background: var(--white); color: var(--black); }
+    .final .button.primary { background: var(--signal); color: var(--black); border-color: var(--signal); }
     footer { border-top: 1px solid var(--black); }
     .footer-grid { min-height: 92px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 20px; color: var(--gray-70); font-size: 14px; }
