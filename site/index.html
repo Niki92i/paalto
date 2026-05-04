@@ -85,9 +85,13 @@
     .line-grid { grid-template-columns: repeat(3, 1fr); }
     .properties { grid-template-columns: repeat(2, 1fr); }
     .line-cell, .property { border-right: 1px solid var(--black); border-bottom: 1px solid var(--black); }
-    .line-cell { min-height: 360px; padding: 22px; display: flex; flex-direction: column; }
+    .line-cell { min-height: 360px; padding: 22px; display: flex; flex-direction: column; position: relative; transition: background 160ms ease, color 160ms ease; }
+    .line-cell::after { content: ""; position: absolute; left: 22px; right: 22px; bottom: 0; height: 0; background: var(--signal); transition: height 160ms ease; }
     .line-cell.dark { background: var(--black); color: var(--white); }
     .line-cell.dark .panel-label { color: #bdbdbd; }
+    .line-cell:hover { background: var(--black); color: var(--white); }
+    .line-cell:hover::after { height: 8px; }
+    .line-cell:hover .panel-label { color: var(--signal); }
     .line-cell h3 { margin-top: 26px; font-size: 28px; line-height: 1; font-weight: 500; }
     .line-cell ul { margin-top: auto; }
     .line-cell li { border-top: 1px solid currentColor; padding: 10px 0; font-size: 15px; }
@@ -121,10 +125,15 @@
     .install-cell:last-child p, .install-cell:last-child li { color: #d0d0d0; }
     .button-row { margin-top: auto; }
     .audit-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--black); }
-    .audit-item { min-height: 190px; padding: 22px; border-right: 1px solid var(--black); }
+    .audit-item { min-height: 190px; padding: 22px; border-right: 1px solid var(--black); position: relative; transition: background 160ms ease, color 160ms ease; }
+    .audit-item::after { content: ""; position: absolute; left: 22px; right: 22px; bottom: 0; height: 0; background: var(--signal); transition: height 160ms ease; }
     .audit-item:last-child { border-right: 0; }
+    .audit-item:hover { background: var(--black); color: var(--white); }
+    .audit-item:hover::after { height: 8px; }
+    .audit-item:hover .panel-label { color: var(--signal); }
     .audit-item h3 { margin-top: 24px; font-size: 22px; line-height: 1.1; font-weight: 500; }
     .audit-item p { margin-top: 12px; color: var(--gray-70); font-size: 14px; }
+    .audit-item:hover p { color: #d0d0d0; }
     .faq { max-width: 860px; }
     .faq-item { border-top: 1px solid var(--black); padding: 22px 0; display: grid; grid-template-columns: 260px 1fr; gap: 32px; }
     .faq-item dt { font-weight: 500; }
