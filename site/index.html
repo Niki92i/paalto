@@ -194,7 +194,9 @@
       .hero-meta div:nth-child(1), .hero-meta div:nth-child(2) { border-bottom: 1px solid var(--black); }
       .hero-main, .section-grid, .install-grid, .faq-item { grid-template-columns: 1fr; }
       .hero-copy { padding-right: 0; }
-      .hero-panel, .section-index { border-left: 0; border-right: 0; border-top: 1px solid var(--black); }
+      .hero-panel { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); border-left: 0; border-right: 0; border-top: 1px solid var(--black); }
+      .panel-block { padding-left: var(--gutter); padding-right: var(--gutter); }
+      .section-index { border-left: 0; border-right: 0; border-top: 1px solid var(--black); }
       .section-body { padding-left: 0; }
       .line-grid, .properties, .plain-grid, .plain-script, .audit-strip { grid-template-columns: 1fr; }
       .role-matrix th { height: 128px; padding: 20px; }
