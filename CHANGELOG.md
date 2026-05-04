@@ -8,6 +8,7 @@
 - Added `context/` templates for product voice, company strategy, design system, and engineering standards.
 - Added `docs/proof-path.md` so reviewers can verify local readiness, no-key artifacts, context loading, and live sandbox expectations.
 - Added `npm run guardrails` to enforce gates, draft-only behavior, secret hygiene, MCP env references, ignored run artifacts, and CI coverage.
+- Added final-launch social metadata, absolute Open Graph/Twitter preview URLs, favicon PNG, Apple touch icon, and web app manifest icons.
 - Added `docs/how-it-works.md` with the product model, control gates, real-run flow, and why the repo is inspectable rather than AI theater.
 - Added `docs/guardrails.md` with security boundaries and expected edge-case behavior.
 - Added `docs/live-integration-test.md` with the sandbox acceptance test for real GitHub, Linear, Notion, Slack, and gate behavior.
