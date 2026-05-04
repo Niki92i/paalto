@@ -13,6 +13,8 @@
 	"scripts": {
 		"cli": "node scripts/paalto.mjs",
 		"init": "node scripts/paalto.mjs init",
+		"setup:local": "node scripts/paalto.mjs init --local",
+		"setup:full": "node scripts/paalto.mjs init --full",
 		"run:loom-to-pr": "node scripts/paalto.mjs run loom-to-pr",
 		"build": "node scripts/build-site.mjs",
 		"validate": "node scripts/validate-skills.mjs",

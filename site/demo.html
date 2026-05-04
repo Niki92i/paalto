@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>paalto demo - Loom to PRD, tickets, PR plan, launch note</title>
+  <meta name="description" content="Try paalto in the browser with no setup. See a Loom transcript become a PRD, tickets, draft PR plan, release notes, and audit trail." />
+  <link rel="canonical" href="https://paalto.dev/demo.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#d4ff00" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="paalto" />
+  <meta property="og:title" content="Try paalto in the browser" />
+  <meta property="og:description" content="No setup demo: a Loom transcript becomes a PRD, tickets, draft PR plan, launch note, and audit trail." />
+  <meta property="og:image" content="https://paalto.dev/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://paalto.dev/demo.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Try paalto in the browser" />
+  <meta name="twitter:description" content="No setup demo: a Loom transcript becomes product artifacts and an audit trail." />
+  <meta name="twitter:image" content="https://paalto.dev/og.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --black: #000; --white: #fff; --gray-90: #1f1f1f; --gray-70: #525252; --gray-20: #d9d9d9; --gray-10: #f4f4f4; --signal: #d4ff00; --gutter: clamp(20px, 4vw, 72px); --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--white); color: var(--black); font-family: var(--sans); font-size: 16px; line-height: 1.45; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    p, h1, h2, h3 { margin: 0; }
+    button { font: inherit; }
+    pre, code, .mono, .kicker { font-family: var(--mono); }
+    .wrap { width: 100%; padding-left: var(--gutter); padding-right: var(--gutter); }
+    .site-header { position: sticky; top: 0; z-index: 10; background: var(--white); border-bottom: 1px solid var(--black); }
+    .nav { min-height: 56px; display: grid; grid-template-columns: 1fr auto; align-items: stretch; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+    .brand-mark { width: 28px; height: 28px; border: 1px solid var(--black); display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); }
+    .brand-mark span:nth-child(1) { background: var(--black); }
+    .brand-mark span:nth-child(4) { background: var(--signal); }
+    .nav-links { display: flex; align-items: stretch; border-left: 1px solid var(--black); }
+    .nav-links a { display: flex; align-items: center; padding: 0 18px; border-right: 1px solid var(--black); font-size: 14px; }
+    .nav-links a:last-child { background: var(--black); color: var(--white); }
+    .hero { min-height: calc(100vh - 56px); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr); border-bottom: 1px solid var(--black); }
+    .hero-copy { min-width: 0; padding: clamp(44px, 8vw, 108px) var(--gutter) clamp(44px, 8vw, 88px) 0; }
+    .hero-panel { border-left: 1px solid var(--black); display: grid; grid-template-rows: auto 1fr; }
+    .kicker { color: var(--gray-70); font-size: 12px; line-height: 1.4; text-transform: uppercase; }
+    h1 { margin-top: 18px; max-width: 10ch; font-size: clamp(48px, 8vw, 108px); line-height: 0.96; font-weight: 500; }
+    .lede { margin-top: 28px; max-width: 720px; color: var(--gray-90); font-size: clamp(19px, 2vw, 27px); line-height: 1.32; }
+    .actions { display: flex; flex-wrap: wrap; width: fit-content; max-width: 100%; margin-top: 40px; border: 1px solid var(--black); }
+    .button { min-height: 52px; display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 22px; border: 0; border-right: 1px solid var(--black); background: var(--white); color: var(--black); cursor: pointer; font-weight: 500; }
+    .button:last-child { border-right: 0; }
+    .button.primary { background: var(--signal); }
+    .button:hover, .button[aria-selected="true"] { background: var(--black); color: var(--white); text-decoration: none; }
+    .input-block { padding: 24px; border-bottom: 1px solid var(--black); }
+    .input-title { margin-top: 18px; font-size: 30px; line-height: 1; font-weight: 500; }
+    .transcript { margin-top: 24px; padding: 18px; max-height: 380px; overflow: auto; background: var(--gray-10); border: 1px solid var(--black); font-family: var(--mono); font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
+    .run-status { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--black); }
+    .step { min-height: 128px; padding: 18px; border-right: 1px solid var(--black); position: relative; background: var(--white); transition: background 160ms ease, color 160ms ease; }
+    .step:last-child { border-right: 0; }
+    .step::after { content: ""; position: absolute; left: 18px; right: 18px; bottom: 0; height: 0; background: var(--signal); transition: height 160ms ease; }
+    .step.done { background: var(--black); color: var(--white); }
+    .step.done::after { height: 8px; }
+    .step-name { display: block; margin-top: 18px; font-size: 17px; line-height: 1.15; }
+    .outputs { border-top: 1px solid var(--black); }
+    .outputs-grid { display: grid; grid-template-columns: minmax(220px, 0.28fr) minmax(0, 1fr); }
+    .tabs { border-right: 1px solid var(--black); }
+    .tab { width: 100%; min-height: 64px; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; border: 0; border-bottom: 1px solid var(--black); background: var(--white); text-align: left; cursor: pointer; }
+    .tab:hover, .tab[aria-selected="true"] { background: var(--black); color: var(--white); }
+    .artifact { min-width: 0; padding: clamp(24px, 4vw, 44px); }
+    .artifact h2 { font-size: clamp(32px, 4vw, 58px); line-height: 1; font-weight: 500; }
+    .artifact-copy { margin-top: 18px; max-width: 860px; color: var(--gray-70); font-size: 18px; }
+    .artifact-body { margin-top: 30px; padding: 22px; background: var(--gray-10); border: 1px solid var(--black); overflow-x: auto; font-family: var(--mono); font-size: 13px; line-height: 1.62; white-space: pre-wrap; }
+    .handoff { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--black); }
+    .handoff-cell { min-height: 210px; padding: 22px; border-right: 1px solid var(--black); transition: background 160ms ease, color 160ms ease; }
+    .handoff-cell:last-child { border-right: 0; }
+    .handoff-cell:hover { background: var(--black); color: var(--white); }
+    .handoff-cell h3 { margin-top: 24px; font-size: 26px; line-height: 1; font-weight: 500; }
+    .handoff-cell p { margin-top: 14px; color: var(--gray-70); }
+    .handoff-cell:hover p, .handoff-cell:hover .kicker { color: #d0d0d0; }
+    footer { border-top: 1px solid var(--black); }
+    .footer-grid { min-height: 92px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; }
+    @media (max-width: 980px) { .hero, .outputs-grid, .handoff { grid-template-columns: 1fr; } .hero-copy { padding-right: 0; } .hero-panel, .tabs { border-left: 0; border-right: 0; border-top: 1px solid var(--black); } .run-status { grid-template-columns: 1fr; } .step { border-right: 0; border-bottom: 1px solid var(--black); } .step:last-child { border-bottom: 0; } .nav-links { display: none; } }
+    @media (max-width: 560px) { .actions { width: 100%; } .button { width: 100%; border-right: 0; border-bottom: 1px solid var(--black); } .button:last-child { border-bottom: 0; } h1 { max-width: 100%; overflow-wrap: anywhere; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a href="/" class="brand" aria-label="paalto home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span>paalto</span></a>
+      <nav class="nav-links" aria-label="Primary navigation"><a href="/">Home</a><a href="#outputs">Outputs</a><a href="https://github.com/Niki92i/paalto">GitHub</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Browser demo">
+      <div class="wrap hero-copy">
+        <p class="kicker">No setup browser demo</p>
+        <h1>Watch a Loom become product work.</h1>
+        <p class="lede">This static demo shows the first paalto workflow without Claude Code, terminal commands, or credentials. A messy product input becomes a PRD, tickets, UX copy, draft PR plan, launch note, and audit trail.</p>
+        <div class="actions"><button class="button primary" id="run-demo" type="button">Run demo <span aria-hidden="true">-&gt;</span></button><a class="button" href="https://github.com/Niki92i/paalto">Clone after this <span aria-hidden="true">-&gt;</span></a></div>
+      </div>
+      <aside class="hero-panel" aria-label="Input transcript">
+        <div class="input-block"><p class="kicker">Input / customer signal</p><h2 class="input-title">First-run users close the app before reaching value.</h2><div class="transcript">00:00:13 Maya: I'm a designer. I came here because someone said it was good for design reviews. But the dashboard was empty and immediately asked me to connect a data source. So I closed the tab.
+
+00:00:29 PM brief: Three of the last five user interviews said the same thing. We need a no-risk first-run path that shows value before setup.
+
+00:00:46 Success target: New users should hit an aha action in under 90 seconds without connecting production data.</div></div>
+        <div class="run-status" aria-label="Simulated workflow status">
+          <div class="step" data-step><span class="kicker">01</span><span class="step-name">Synthesize signal</span></div>
+          <div class="step" data-step><span class="kicker">02</span><span class="step-name">Draft PRD</span></div>
+          <div class="step" data-step><span class="kicker">03</span><span class="step-name">Create tickets</span></div>
+          <div class="step" data-step><span class="kicker">04</span><span class="step-name">Plan draft PR</span></div>
+          <div class="step" data-step><span class="kicker">05</span><span class="step-name">Prepare launch</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="outputs" id="outputs" aria-label="Generated outputs">
+      <div class="outputs-grid">
+        <div class="tabs" role="tablist" aria-label="Generated artifacts">
+          <button class="tab" type="button" role="tab" aria-selected="true" data-tab="prd">PRD <span aria-hidden="true">01</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="tickets">Tickets <span aria-hidden="true">02</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="copy">UX copy <span aria-hidden="true">03</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="pr">Draft PR plan <span aria-hidden="true">04</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="launch">Launch note <span aria-hidden="true">05</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="audit">Audit trail <span aria-hidden="true">06</span></button>
+        </div>
+        <article class="artifact" aria-live="polite">
+          <p class="kicker" id="artifact-kicker">Generated artifact</p>
+          <h2 id="artifact-title">PRD</h2>
+          <p class="artifact-copy" id="artifact-copy">A concise product decision document that names the problem, the bet, scope, and acceptance criteria.</p>
+          <pre class="artifact-body" id="artifact-body"></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="handoff" aria-label="Next steps">
+      <div class="handoff-cell"><p class="kicker">For PMs</p><h3>Understand the workflow without setup.</h3><p>Use this page to judge whether the outputs would help your team before asking anyone to connect tools.</p></div>
+      <div class="handoff-cell"><p class="kicker">For teammates</p><h3>Send the tester guide.</h3><p>The repo includes a plain-English tester path for people who do not live in terminals.</p></div>
+      <div class="handoff-cell"><p class="kicker">For live proof</p><h3>Then run a sandbox.</h3><p>Connect GitHub, Linear, Notion, and Slack only after the local demo makes sense.</p></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-grid"><p class="mono" style="font-size: 13px;">(c) 2026 paalto / MIT</p><a href="mailto:hellopaalto@gmail.com">hellopaalto@gmail.com</a></div></footer>
+
+  <script>
+    const artifacts = {
+      prd: {
+        title: 'PRD',
+        copy: 'A concise product decision document that names the problem, the bet, scope, and acceptance criteria.',
+        body: `PRD - First-run "Try a demo project" path
+
+One-line: New users hit one big button on the empty dashboard, land in a pre-loaded demo project, and reach an "aha" action in under 90 seconds.
+
+Problem
+First-run users land on an empty dashboard with four blank panels and a + button that asks for a data-source connection.
+- Maya: "I'm a designer. I came here because someone said it was good for design reviews. So I closed the tab."
+- Three of the last five user interviews said the same thing.
+
+The bet
+If first-run users land in a populated demo project rather than an empty dashboard, day-1 retention will improve materially.
+
+v0 scope
+1. Detect "no projects" state on first dashboard render.
+2. Replace empty state with a primary CTA: "Try a demo project."
+3. Copy a pre-built demo project into the user's workspace.
+4. Track first_run.demo_clicked and first_run.aha_reached.
+
+Acceptance criteria
+- Zero-project users see the demo CTA, not the empty + panel.
+- Click creates a demo project within 2s.
+- User lands inside the demo project.
+- Existing users see no change.`
+      },
+      tickets: {
+        title: 'Tickets',
+        copy: 'Four buildable tickets, ordered as a small vertical slice first.',
+        body: `1/4 - Detect zero-projects state on dashboard
+Estimate: S
+Labels: paalto, frontend
+ACs: zero-project users see distinct empty state; existing users see no change.
+
+2/4 - Render "Try a demo project" CTA
+Estimate: S
+Labels: paalto, frontend, design
+ACs: zero-project users see the demo CTA, not the empty + panel.
+
+3/4 - Demo-project template + copy-on-click endpoint
+Estimate: M
+Labels: paalto, backend
+ACs: click creates a demo project within 2s and routes into it.
+
+4/4 - Instrument first-run analytics events
+Estimate: S
+Labels: paalto, analytics
+ACs: first_run.demo_clicked and first_run.aha_reached fire at the right moments.`
+      },
+      copy: {
+        title: 'UX Copy',
+        copy: 'Screen copy and states for the designer and engineer to implement consistently.',
+        body: `Empty dashboard
+H1: Start with a demo project
+Subhead: See what paalto does in 90 seconds.
+Primary CTA: Try a demo project
+Secondary link: I'll start from scratch
+Loading: Setting up your demo...
+Error: We couldn't set up the demo. Try again, or start a project from scratch.
+
+Inside demo project
+Banner: This is a demo project. Click around - nothing here is real.
+Banner CTA: Got it
+Highlight: Try this first
+
+After aha action
+Toast: You did the thing. That's the demo.
+Toast CTA: Start a real project`
+      },
+      pr: {
+        title: 'Draft PR Plan',
+        copy: 'The engineer agent prepares a draft PR description and verification plan. It does not merge.',
+        body: `Why
+- PRD: First-run "Try a demo project" path
+- Ticket: PAA-101 - Detect zero-projects state on dashboard
+
+What changed
+- src/components/Dashboard.tsx - branch on projects.length === 0.
+- src/components/EmptyDashboard.tsx - new component using approved copy.
+- src/components/__tests__/Dashboard.test.tsx - tests for zero-project and existing-user paths.
+
+How to verify
+1. npm test -- Dashboard
+2. Sign in as a user with no projects: dashboard shows the demo CTA.
+3. Sign in as a user with projects: dashboard is unchanged.
+
+Drafted by paalto engineer agent. This PR will not be auto-merged.`
+      },
+      launch: {
+        title: 'Launch Note',
+        copy: 'A release draft the human can edit and send when ready.',
+        body: `Headline: Day-one users now start in a demo project, not an empty screen.
+
+New
+Try a demo project - when you sign in for the first time, you'll see a single button that drops you straight into a working sample. Click around, break things, then start your own when you're ready.
+
+Improved
+The empty dashboard is gone. Instead of staring at four blank panels, new accounts get a populated workspace they can actually use.
+
+Slack draft
+First-run got faster. New accounts now land inside a demo project instead of an empty dashboard. One click, 90 seconds to aha. Existing accounts: nothing changes.
+
+send: false`
+      },
+      audit: {
+        title: 'Audit Trail',
+        copy: 'A local record of what happened and where humans approved the gates.',
+        body: `{"event":"run.started","workflow":"ship-a-feature","input":"loom-to-pr"}
+{"event":"gate.waiting","gate":"g1_vision","question":"Is this the right thing to build?"}
+{"event":"gate.approved","gate":"g1_vision","actor":"human"}
+{"event":"artifact.created","path":"prd.md"}
+{"event":"artifact.created","path":"tickets.md"}
+{"event":"artifact.created","path":"copy.md"}
+{"event":"gate.waiting","gate":"g3_design_taste","question":"Which option wins?"}
+{"event":"artifact.created","path":"pr-description.md","mode":"draft"}
+{"event":"gate.waiting","gate":"g4_merge_approval","policy":"no auto-merge"}
+{"event":"artifact.created","path":"slack-draft.json","send":false}
+{"event":"run.completed","external_calls":0}`
+      }
+    };
+
+    const title = document.querySelector('#artifact-title');
+    const copy = document.querySelector('#artifact-copy');
+    const body = document.querySelector('#artifact-body');
+    const tabs = [...document.querySelectorAll('[data-tab]')];
+    const steps = [...document.querySelectorAll('[data-step]')];
+
+    function showArtifact(key) {
+      const artifact = artifacts[key];
+      title.textContent = artifact.title;
+      copy.textContent = artifact.copy;
+      body.textContent = artifact.body;
+      tabs.forEach((tab) => tab.setAttribute('aria-selected', tab.dataset.tab === key ? 'true' : 'false'));
+    }
+
+    tabs.forEach((tab) => tab.addEventListener('click', () => showArtifact(tab.dataset.tab)));
+    document.querySelector('#run-demo').addEventListener('click', () => {
+      steps.forEach((step) => step.classList.remove('done'));
+      steps.forEach((step, index) => window.setTimeout(() => step.classList.add('done'), index * 260));
+      document.querySelector('#outputs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    showArtifact('prd');
+  </script>
+</body>
+</html>

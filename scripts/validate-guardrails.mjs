@@ -84,7 +84,7 @@ requireIncludes('runs/README.md', ['events.jsonl', 'gate.requested', 'gate.appro
 requireIncludes('docs/security.md', ['Draft PRs only', 'No auto-send to customers', 'Human gates are not skippable', 'Per-agent tool scopes', 'No telemetry leaves your machine'], 'security posture must document the hard guarantees');
 
 const packageJson = JSON.parse(read('package.json'));
-for (const scriptName of ['cli', 'init', 'run:loom-to-pr', 'build', 'validate', 'guardrails', 'doctor', 'demo']) {
+for (const scriptName of ['cli', 'init', 'setup:local', 'setup:full', 'run:loom-to-pr', 'build', 'validate', 'guardrails', 'doctor', 'demo']) {
   if (!packageJson.scripts?.[scriptName]) errors.push(`package.json: missing npm script ${scriptName}`);
 }
 if (!packageJson.bin?.paalto) errors.push('package.json: missing bin.paalto CLI entry');

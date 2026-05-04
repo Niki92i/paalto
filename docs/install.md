@@ -2,6 +2,20 @@
 
 paalto runs as markdown agents inside Claude Code on your machine. There's no service to deploy, no account to create — just a repo and a few API keys.
 
+## No-setup path
+
+If you are evaluating paalto as a PM, designer, operator, founder, or non-technical tester, start here:
+
+```text
+https://paalto.dev/demo.html
+```
+
+No GitHub clone, API key, Claude Code setup, or terminal is required.
+
+## Cloud path
+
+If you want the repo without local machine setup, use [cloud-setup.md](cloud-setup.md) for GitHub Codespaces.
+
 ## Prerequisites
 
 - **Claude Code** ([install](https://docs.anthropic.com/claude-code)) — paalto's host runtime.
@@ -22,11 +36,12 @@ git clone https://github.com/Niki92i/paalto.git
 cd paalto
 
 # 2. Verify the local project before adding secrets
-npm run init
+npm run setup:local
 npm run doctor
 npm run demo
 
 # 3. Configure real integrations when ready
+npm run setup:full
 $EDITOR .env       # fill day-one keys first; optional integrations can stay blank
 $EDITOR context/product-voice.md
 $EDITOR context/design-system.md

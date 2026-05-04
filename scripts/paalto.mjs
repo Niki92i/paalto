@@ -181,8 +181,103 @@ const contextTemplates = {
 `
 };
 
+function runId(prefix) {
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const suffix = Math.random().toString(16).slice(2, 8);
+  return `${stamp}__setup__${prefix}__${suffix}`;
+}
+
+function setupChecklist(mode) {
+  const local = mode === 'local';
+  return `# paalto Setup Checklist
+
+Mode: ${local ? 'Local no-key demo' : 'Full sandbox integration'}
+
+## Goal
+
+${local ? 'Understand paalto without connecting external tools.' : 'Run paalto against sandbox GitHub, Linear, Notion, and Slack tools before production.'}
+
+## Do This First
+
+- [ ] Open https://paalto.dev/demo.html and click Run demo.
+- [ ] Run npm run doctor.
+- [ ] Run npm run demo.
+- [ ] Inspect the newest runs/<id>/ folder.
+
+## Local Artifacts To Inspect
+
+- [ ] events.jsonl
+- [ ] transcript.md
+- [ ] prd.md
+- [ ] tickets.md
+- [ ] copy.md
+- [ ] pr-description.md
+- [ ] release-notes.md
+- [ ] slack-draft.json with send: false
+
+## Team Context
+
+- [ ] Fill context/product-voice.md.
+- [ ] Fill context/company-strategy.md.
+- [ ] Fill context/design-system.md.
+- [ ] Fill context/engineering-standards.md.
+
+${local ? `## Stop Here
+
+Do not add API keys for the local demo. Send docs/tester-guide.md to PM, design, or ops testers and ask them whether the browser demo explains the value.
+` : `## Sandbox Credentials
+
+- [ ] GITHUB_TOKEN targets one sandbox repo only.
+- [ ] LINEAR_API_KEY belongs to a sandbox workspace/team.
+- [ ] NOTION_API_KEY is connected to a test PRD database.
+- [ ] SLACK_BOT_TOKEN can write only to a test channel.
+- [ ] GITHUB_DEFAULT_OWNER and GITHUB_DEFAULT_REPO point to the sandbox repo.
+
+## Live Safety Check
+
+- [ ] npm run validate passes.
+- [ ] npm run guardrails passes.
+- [ ] npm run run:loom-to-pr prints the Claude Code prompt.
+- [ ] Human confirms draft PR only, no auto-merge.
+- [ ] Human confirms Slack draft only, no auto-send.
+`}
+`;
+}
+
+function liveTestPlan() {
+  return `# Live Sandbox Test Plan
+
+Use this only with sandbox tools.
+
+## Acceptance Criteria
+
+- [ ] Notion PRD created in Draft status.
+- [ ] Linear tickets created in the sandbox team.
+- [ ] GitHub draft PR opened against the sandbox repo.
+- [ ] Slack release note drafted locally and not sent.
+- [ ] Five gates appear: vision, prioritization, design taste, merge approval, launch comms.
+- [ ] No secrets appear in git status, generated markdown, PR body, or logs.
+
+## Prompt
+
+Run workflows/ship-a-feature.md using examples/loom-to-pr/input/brief.md as the brief and examples/loom-to-pr/input/loom-transcript.vtt as the transcript. Repo: <sandbox-owner>/<sandbox-repo>.
+
+Use the five human gates exactly as written. Do not merge code. Do not send Slack messages. Open draft PRs only. Write all local artifacts to runs/<run_id>/.
+`;
+}
+
+function writeSetupArtifacts(mode) {
+  const setupDir = path.join(root, 'runs', runId(mode));
+  fs.mkdirSync(setupDir, { recursive: true });
+  fs.writeFileSync(path.join(setupDir, 'setup-checklist.md'), setupChecklist(mode));
+  if (mode === 'full') fs.writeFileSync(path.join(setupDir, 'live-test-plan.md'), liveTestPlan());
+  return path.relative(root, setupDir).split(path.sep).join('/');
+}
+
 function init() {
   ensureRoot();
+  const modeArg = args.find((arg) => ['--local-demo', '--local', '--full', '--sandbox'].includes(arg));
+  const setupMode = modeArg === '--full' || modeArg === '--sandbox' ? 'full' : modeArg ? 'local' : null;
   const created = [];
   const skipped = [];
 
@@ -200,13 +295,27 @@ function init() {
     else skipped.push(file);
   }
 
+  let setupDir = null;
+  if (setupMode) setupDir = writeSetupArtifacts(setupMode);
+
   console.log('paalto init complete.');
   if (created.length) console.log(`created: ${created.join(', ')}`);
   if (skipped.length) console.log(`already present: ${skipped.join(', ')}`);
+  if (setupDir) console.log(`setup checklist: ${setupDir}/setup-checklist.md`);
   console.log('\nNext:');
-  console.log('1. Fill .env with sandbox tool credentials when you are ready for live writes.');
-  console.log('2. Edit context/*.md with your product voice, design system, strategy, and engineering rules.');
-  console.log('3. Run npm run doctor && npm run demo.');
+  if (setupMode === 'local') {
+    console.log('1. Open https://paalto.dev/demo.html for the no-setup browser demo.');
+    console.log('2. Run npm run doctor && npm run demo.');
+    console.log('3. Send docs/tester-guide.md to non-technical testers.');
+  } else if (setupMode === 'full') {
+    console.log('1. Fill .env with sandbox GitHub, Linear, Notion, and Slack credentials.');
+    console.log('2. Edit context/*.md with your product voice, design system, strategy, and engineering rules.');
+    console.log('3. Run npm run doctor && npm run validate && npm run guardrails.');
+  } else {
+    console.log('1. For non-technical testers, open https://paalto.dev/demo.html.');
+    console.log('2. For local testing, run npm run setup:local && npm run demo.');
+    console.log('3. For sandbox integrations, run npm run setup:full after credentials exist.');
+  }
 }
 
 function runWorkflow() {
@@ -228,7 +337,7 @@ function runWorkflow() {
 }
 
 function help() {
-  console.log(`paalto\n\nUsage:\n  paalto init             Create .env from .env.example and point to context files\n  paalto doctor           Check setup, wiring, guardrails, MCP, and artifact safety\n  paalto demo             Create a no-API local Loom-to-PR run folder\n  paalto validate         Validate skill structure and agent wiring\n  paalto guardrails       Validate security boundaries and edge cases\n  paalto build            Build the static site into dist/\n  paalto run loom-to-pr   Print the Claude Code prompt for the live workflow\n`);
+  console.log(`paalto\n\nUsage:\n  paalto init             Create .env from .env.example and point to context files\n  paalto init --local     Create a local no-key setup checklist\n  paalto init --full      Create a sandbox integration setup checklist\n  paalto doctor           Check setup, wiring, guardrails, MCP, and artifact safety\n  paalto demo             Create a no-API local Loom-to-PR run folder\n  paalto validate         Validate skill structure and agent wiring\n  paalto guardrails       Validate security boundaries and edge cases\n  paalto build            Build the static site into dist/\n  paalto run loom-to-pr   Print the Claude Code prompt for the live workflow\n`);
 }
 
 switch (command) {

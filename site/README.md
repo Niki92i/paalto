@@ -4,9 +4,11 @@ Single-file static site. Deploy anywhere — Vercel, Netlify, GitHub Pages, your
 
 ## Structure
 
-- `index.html` — the whole site, one page, semantic HTML, no build step.
+- `index.html` — main launch page, semantic HTML, no framework.
+- `demo.html` — no-setup browser demo for non-technical testers.
 - `og.svg` — Open Graph image source. Render to PNG at 1200×630 before launch.
-- `favicon.svg` — square logomark.
+- `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` — launch icons.
+- `site.webmanifest` — install/share metadata.
 
 ## Local preview
 

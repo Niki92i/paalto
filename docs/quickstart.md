@@ -1,6 +1,12 @@
 # Quickstart
 
-After [install](install.md), the fastest way to feel paalto is to run the reference example end-to-end.
+The fastest way to feel paalto is to start in the browser, then run the reference example end-to-end only if the workflow makes sense.
+
+## 60-second browser path
+
+Open [paalto.dev/demo.html](https://paalto.dev/demo.html), click **Run demo**, and review the generated PRD, tickets, UX copy, draft PR plan, launch note, and audit trail.
+
+Use [tester-guide.md](tester-guide.md) when you want a PM, designer, operator, or founder to evaluate paalto without installing anything.
 
 ## 5-minute no-API path
 
@@ -9,7 +15,7 @@ This is the fastest way to prove the repo is real before you trust it with keys:
 ```bash
 git clone https://github.com/Niki92i/paalto.git
 cd paalto
-npm run init
+npm run setup:local
 npm run doctor
 npm run demo
 ```
@@ -27,21 +33,22 @@ No external API is called in this path.
 
 ## 60-minute real-tool path
 
-1. **Make sure all four day-one keys are in `.env`** (GITHUB, LINEAR, NOTION, SLACK).
-2. **Pick a sandbox repo on GitHub** that you don't mind paalto opening draft PRs against. (Don't point it at production on day one.) Set it as `GITHUB_DEFAULT_REPO` in `.env`.
-3. **Open the `paalto/` folder in Claude Code.**
-4. **Generate the live-run prompt:**
+1. **Run `npm run setup:full`** to create the sandbox checklist.
+2. **Make sure all four day-one keys are in `.env`** (GITHUB, LINEAR, NOTION, SLACK).
+3. **Pick a sandbox repo on GitHub** that you don't mind paalto opening draft PRs against. (Don't point it at production on day one.) Set it as `GITHUB_DEFAULT_REPO` in `.env`.
+4. **Open the `paalto/` folder in Claude Code.**
+5. **Generate the live-run prompt:**
 
    ```bash
    npm run run:loom-to-pr
    ```
 
-5. **In chat, paste the generated prompt:**
+6. **In chat, paste the generated prompt:**
 
    > Run `workflows/ship-a-feature.md` using `examples/loom-to-pr/input/brief.md` as the brief and `examples/loom-to-pr/input/loom-transcript.vtt` as the transcript. Repo: `<your-sandbox-repo>`.
 
-6. **Approve at each gate.** You'll see five pauses — Vision, Prioritization, Design taste, Merge approval, Launch comms. Approve, revise, or stop.
-7. **At the end** you should have:
+7. **Approve at each gate.** You'll see five pauses — Vision, Prioritization, Design taste, Merge approval, Launch comms. Approve, revise, or stop.
+8. **At the end** you should have:
    - A PRD page in your Notion `PRD` database (Draft status).
    - 4 tickets in your Linear `LINEAR_TEAM_ID` team.
    - 1 draft PR on GitHub with green CI.

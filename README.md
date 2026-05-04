@@ -59,10 +59,12 @@ All orchestrated by [`agents/orchestrator.md`](agents/orchestrator.md), which kn
 
 ## Quickstart
 
+No terminal path for PM/design/ops testers: open [paalto.dev/demo.html](https://paalto.dev/demo.html), click **Run demo**, and review the generated PRD, tickets, UX copy, draft PR plan, launch note, and audit trail.
+
 ```bash
 git clone https://github.com/Niki92i/paalto.git
 cd paalto
-npm run init               # creates .env and points you at editable team context
+npm run setup:local        # creates .env, context files, and a local tester checklist
 npm run doctor             # checks structure, Node, MCP config, and setup gaps
 npm run demo               # creates a local no-API run in runs/<id>/
 npm run build              # builds the static site to dist/ for Vercel
@@ -74,7 +76,7 @@ Local CLI equivalents are available through `npm run cli -- <command>` or, after
 
 The no-API demo proves the local run folder and audit trail without touching external services. A real Claude Code run takes the Loom transcript and can produce a PRD in Notion, Linear tickets, a draft GitHub PR, and a Slack release-note draft — without auto-merging anything. Target: under 60 minutes on a fresh clone after keys are configured.
 
-Full setup: [docs/install.md](docs/install.md) · [docs/quickstart.md](docs/quickstart.md) · [docs/how-it-works.md](docs/how-it-works.md) · [docs/proof-path.md](docs/proof-path.md) · [docs/guardrails.md](docs/guardrails.md) · [docs/live-integration-test.md](docs/live-integration-test.md)
+Full setup: [docs/install.md](docs/install.md) · [docs/quickstart.md](docs/quickstart.md) · [docs/tester-guide.md](docs/tester-guide.md) · [docs/cloud-setup.md](docs/cloud-setup.md) · [docs/how-it-works.md](docs/how-it-works.md) · [docs/proof-path.md](docs/proof-path.md) · [docs/guardrails.md](docs/guardrails.md) · [docs/live-integration-test.md](docs/live-integration-test.md)
 
 Team context lives in [`context/`](context/): product voice, company strategy, design system, and engineering standards. Fill those files before a serious live run.
 

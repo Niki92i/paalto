@@ -14,9 +14,12 @@ This is the current "world-class open source" checklist for paalto. It is intent
 | Audit trail | Green | Every skill requires `events.jsonl`; `runs/README.md` documents schema. |
 | MCP integrations | Green | GitHub, Linear, Notion, Slack, Intercom, Zendesk, Figma, Posthog, Jira in `integrations/mcp.json`. |
 | Examples | Green | End-to-end Loom-to-PR, feedback-to-roadmap, PRD-to-Figma handoff examples. |
+| Browser demo | Green | `site/demo.html` lets non-technical testers see PRD, tickets, UX copy, draft PR plan, launch note, and audit trail without setup. |
 | No-key local run | Green | `npm run demo` creates a local ignored run folder with `events.jsonl` and reference artifacts. |
 | Setup doctor | Green | `npm run doctor` checks Node, required files, skill wiring, MCP config, env template, and run-artifact safety. |
 | Local CLI | Green | `npm run init`, `npm run run:loom-to-pr`, and `bin.paalto` provide a local command surface before packaging. |
+| Guided setup | Green | `npm run setup:local` and `npm run setup:full` create ignored setup checklists for local demos and sandbox live tests. |
+| Non-technical tester path | Green | [tester-guide.md](tester-guide.md) and [cloud-setup.md](cloud-setup.md) cover browser-first, teammate handoff, Claude Code, sandbox, and Codespaces paths. |
 | Team context templates | Green | `context/` includes product voice, company strategy, design system, and engineering standards templates. |
 | Guardrail validation | Green | `npm run guardrails` checks gates, draft-only PRs, draft-only launch comms, secrets, MCP env references, and CI coverage. |
 | Live external integration run | Yellow | [live-integration-test.md](live-integration-test.md) defines the acceptance test for GitHub, Linear, Notion, Slack, and all gates. It still needs to be run against sandbox credentials. |
@@ -27,11 +30,11 @@ This is the current "world-class open source" checklist for paalto. It is intent
 
 These are product roadmap items, not blockers for design partners:
 
-- Promote `npm run doctor` and `npm run demo` into a packaged CLI (`paalto init`, `paalto doctor`, `paalto demo`).
+- Publish the local `paalto` CLI package so users can run `npx paalto init` instead of cloning first.
 - Add recorded demo assets for every reference example.
 - Add integration-specific docs per service (`integrations/github.md`, `integrations/linear.md`, etc.) once the exact MCP server APIs stabilize.
 - Expand `npm run demo` into a fixture runner for all examples, not only Loom-to-PR.
-- Publish a design-partner onboarding checklist that maps their existing stack to the `.env` and MCP setup.
+- Convert the browser demo from static reference artifacts into an optional hosted workflow once auth, billing, and data boundaries are clear.
 
 ## Validation Command
 

@@ -1,0 +1,14 @@
+{
+  "name": "paalto",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ]
+    }
+  },
+  "postCreateCommand": "npm run setup:local && npm run doctor",
+  "remoteUser": "node"
+}

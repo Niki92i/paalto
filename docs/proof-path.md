@@ -4,8 +4,16 @@ paalto should prove itself before it touches customer systems. Use this sequence
 
 ## 1. Local readiness
 
+For non-technical testers, start with the browser demo:
+
+```text
+https://paalto.dev/demo.html
+```
+
+Then use the local path when someone can run commands:
+
 ```bash
-npm run init
+npm run setup:local
 npm run doctor
 npm run validate
 npm run guardrails
@@ -45,6 +53,7 @@ The goal is to keep outputs from sounding generic and to make PM, design, and en
 ## 4. Live sandbox run
 
 ```bash
+npm run setup:full
 npm run run:loom-to-pr
 ```
 
