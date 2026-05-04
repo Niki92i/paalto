@@ -7,6 +7,7 @@
 - Added `npm run guardrails` to enforce gates, draft-only behavior, secret hygiene, MCP env references, ignored run artifacts, and CI coverage.
 - Added `docs/how-it-works.md` with the product model, control gates, real-run flow, and why the repo is inspectable rather than AI theater.
 - Added `docs/guardrails.md` with security boundaries and expected edge-case behavior.
+- Added `docs/live-integration-test.md` with the sandbox acceptance test for real GitHub, Linear, Notion, Slack, and gate behavior.
 - Removed stale dependency-triage auto-merge guidance; dependency updates now stay draft-only until human merge.
 - Updated README, install, quickstart, support, contributing, example, readiness, and landing-page copy around the no-key path.
 - Removed stale Discord/support claims and standardized help email references.

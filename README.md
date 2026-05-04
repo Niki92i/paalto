@@ -71,7 +71,7 @@ cp .env.example .env       # add API keys when you are ready for real tool write
 
 The no-API demo proves the local run folder and audit trail without touching external services. A real Claude Code run takes the Loom transcript and can produce a PRD in Notion, Linear tickets, a draft GitHub PR, and a Slack release-note draft — without auto-merging anything. Target: under 60 minutes on a fresh clone after keys are configured.
 
-Full setup: [docs/install.md](docs/install.md) · [docs/quickstart.md](docs/quickstart.md) · [docs/how-it-works.md](docs/how-it-works.md) · [docs/guardrails.md](docs/guardrails.md)
+Full setup: [docs/install.md](docs/install.md) · [docs/quickstart.md](docs/quickstart.md) · [docs/how-it-works.md](docs/how-it-works.md) · [docs/guardrails.md](docs/guardrails.md) · [docs/live-integration-test.md](docs/live-integration-test.md)
 
 ## Capability coverage
 

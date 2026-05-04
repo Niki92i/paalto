@@ -50,6 +50,8 @@ It writes a local `runs/<timestamp>__demo__loom-to-pr__<id>/` folder with `trans
 
 Then run the real reference example in Claude Code: [examples/loom-to-pr/README.md](../examples/loom-to-pr/README.md).
 
+Before pointing paalto at production tools, run the sandbox acceptance test in [live-integration-test.md](live-integration-test.md).
+
 For a fast structural check before connecting real APIs, run the same validation the repo uses in CI:
 
 ```bash

@@ -66,5 +66,6 @@ This confirms every skill has the required frontmatter, `Procedure`, `Hard rules
 ## Next
 
 - Try a real ticket: skip the example, give it a brief from your own product.
+- Prove the external workflow with [live-integration-test.md](live-integration-test.md) before using production tools.
 - Read [docs/skills.md](skills.md) to see what's available and how to add your own.
 - Read [docs/security.md](security.md) before pointing it at a production repo.

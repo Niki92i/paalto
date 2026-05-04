@@ -17,6 +17,7 @@ This is the current "world-class open source" checklist for paalto. It is intent
 | No-key local run | Green | `npm run demo` creates a local ignored run folder with `events.jsonl` and reference artifacts. |
 | Setup doctor | Green | `npm run doctor` checks Node, required files, skill wiring, MCP config, env template, and run-artifact safety. |
 | Guardrail validation | Green | `npm run guardrails` checks gates, draft-only PRs, draft-only launch comms, secrets, MCP env references, and CI coverage. |
+| Live external integration run | Yellow | [live-integration-test.md](live-integration-test.md) defines the acceptance test for GitHub, Linear, Notion, Slack, and all gates. It still needs to be run against sandbox credentials. |
 | OSS trust files | Green | MIT license, contributing guide, security policy, support guide, code of conduct, roadmap, changelog. |
 | CI validation | Green | GitHub Actions validates skill structure and agent wiring on push/PR. |
 
