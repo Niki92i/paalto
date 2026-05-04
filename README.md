@@ -1,0 +1,88 @@
+# paalto
+
+**Your product team operating system, from Claude Code.**
+
+One conversation replaces the swivel-chair work between PM, Designer, and Engineer. paalto lives on your machine, uses your data, and gets sharper every time you ship.
+
+```
+We run your product team   ·   Clone the repo
+```
+
+---
+
+## Humans own the edges. The system compounds the middle.
+
+Every AI coding agent wants to own the whole pipeline — from idea to merged PR. We think the opposite.
+
+**Vision is human. Taste is human. Trust is human.** Repeatable work in the middle is what a system should do. paalto is built on that line.
+
+| First mile · Operators | Middle · System | Last mile · Operators |
+|---|---|---|
+| Vision, ICP, the bet | Synthesize, draft, scaffold, log | Approve the merge, ship the message |
+| Prioritization | PRDs, tickets, draft PRs, release notes | Talk to the customer |
+| Design taste sign-off | Design specs, a11y audits | Press the button |
+
+The system never auto-merges. The operator never wastes a Tuesday on ticket grooming.
+
+---
+
+## An entire product team. Zero headcount.
+
+Three role agents, configured as plain markdown files you own.
+
+### DISCOVER · PM
+Interview Synthesizer · Competitor Teardown · PRD Drafter · RFC Writer · Roadmap Snapshotter · Feedback Triager · Metrics Reporter
+
+### DESIGN · Designer
+Wireframe Drafter · UX Copy · Design-system Auditor · Figma Spec Generator · A11y Reviewer
+
+### SHIP · Engineer
+Ticket Breaker · Repo Scout · **PR Builder (draft only)** · Code Reviewer · Test Plan Writer · Release Note Generator
+
+All orchestrated by [`agents/orchestrator.md`](agents/orchestrator.md), which knows the long flow `brief → discovery → PRD → design → tickets → PRs → release notes` and pauses at five named human gates.
+
+---
+
+## Six properties
+
+1. **Agnostic** — your repo, your stack, your models. Claude by default; swap freely.
+2. **Interoperable** — GitHub, Linear, Notion, Slack on day one. Anything with an MCP or API.
+3. **Intelligent** — frontier models under the hood, updated as they ship.
+4. **Compounding** — every run lands in `runs/`. What worked becomes default.
+5. **Modifiable** — agents, skills, prompts are `.md` files. Fork, extend, prune.
+6. **Headless** — chat is the interface. Transcripts are the audit trail.
+
+---
+
+## Quickstart
+
+```bash
+git clone https://github.com/Niki92i/paalto.git
+cd paalto
+cp .env.example .env       # add your API keys
+# open this folder in Claude Code, then in chat:
+#   "run workflows/ship-a-feature.md on examples/loom-to-pr"
+```
+
+The reference example takes a real Loom transcript and produces a PRD in Notion, four Linear tickets, a draft PR on GitHub, and a release-note draft in Slack — without auto-merging anything. Target: under 60 minutes on a fresh clone.
+
+Full setup: [docs/install.md](docs/install.md) · [docs/quickstart.md](docs/quickstart.md)
+
+---
+
+## Built to be audited
+
+Every agent action is appended to `runs/<timestamp>/transcript.md` and a structured `events.jsonl`. Every sensitive move (open PR, post to Slack, write to Notion) gates on human approval. Each agent's tool scope is declared in its `.md` header.
+
+---
+
+## Two paths
+
+- **Done for you.** We deploy paalto on your machine, wire it to your stack, and run the motion alongside your team. → book a call.
+- **Open source.** This repo. MIT license. Documented setup. Pull new skills any time. Community support via Discussions and Discord.
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).

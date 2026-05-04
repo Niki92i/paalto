@@ -1,0 +1,21 @@
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+
+# Run artifacts (transcripts, events) — local-only by default
+runs/*/
+!runs/.gitkeep
+!runs/README.md
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Node / build (in case examples grow one)
+node_modules/
+dist/
+build/
+*.log
