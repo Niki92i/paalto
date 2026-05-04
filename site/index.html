@@ -136,6 +136,18 @@
     .property:hover h3 { color: var(--white); }
     .property:hover p { color: #d0d0d0; }
 
+    .plain-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--black); border-left: 1px solid var(--black); }
+    .plain-card { min-height: 260px; padding: 22px; border-right: 1px solid var(--black); border-bottom: 1px solid var(--black); position: relative; transition: background 160ms ease, color 160ms ease; }
+    .plain-card::after { content: ""; position: absolute; left: 22px; right: 22px; bottom: 0; height: 0; background: var(--signal); transition: height 160ms ease; }
+    .plain-card:hover { background: var(--black); color: var(--white); }
+    .plain-card:hover::after { height: 8px; }
+    .plain-card:hover .panel-label { color: var(--signal); }
+    .plain-card h3 { margin-top: 28px; font-size: 26px; line-height: 1.05; font-weight: 500; }
+    .plain-card p { margin-top: 14px; color: var(--gray-70); }
+    .plain-card:hover p { color: #d0d0d0; }
+    .plain-script { margin-top: 28px; padding: 24px; border: 1px solid var(--black); display: grid; grid-template-columns: minmax(180px, 0.55fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+    .plain-script p:last-child { color: var(--gray-90); font-size: clamp(20px, 2vw, 27px); line-height: 1.25; }
+
     .install-grid { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(340px, 0.8fr); border: 1px solid var(--black); }
     .install-cell { padding: 24px; min-height: 360px; border-right: 1px solid var(--black); display: flex; flex-direction: column; }
     .install-cell:last-child { border-right: 0; background: var(--black); color: var(--white); }
@@ -185,7 +197,7 @@
       .hero-copy { padding-right: 0; }
       .hero-panel, .section-index { border-left: 0; border-right: 0; border-top: 1px solid var(--black); }
       .section-body { padding-left: 0; }
-      .line-grid, .properties, .audit-strip { grid-template-columns: 1fr; }
+      .line-grid, .properties, .plain-grid, .plain-script, .audit-strip { grid-template-columns: 1fr; }
       .role-matrix th { height: 128px; padding: 20px; }
       .role-matrix th strong { font-size: 32px; }
       .role-entry { grid-template-columns: 44px 1fr; }
@@ -214,6 +226,7 @@
         <span>paalto</span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#explain">Explain it</a>
         <a href="#system">System</a>
         <a href="#agents">Agents</a>
         <a href="/demo.html">Demo</a>
@@ -249,6 +262,26 @@
         </aside>
       </div>
       <div class="wrap thesis"><span>Humans own the edges.</span><span>The system compounds the middle.</span><span><strong>PRs ship as drafts. Always.</strong></span></div>
+    </section>
+
+    <section id="explain">
+      <div class="wrap section-grid">
+        <div class="section-index"><p class="kicker">00 / Explain it like I am busy</p></div>
+        <div class="section-body">
+          <h2 class="section-title">paalto turns messy product signal into shippable product work.</h2>
+          <p class="section-intro">The customer, VC, and teammate version: paalto is a local AI product team that helps you go from raw input to the artifacts a real team needs before it builds, ships, and learns.</p>
+          <div class="plain-grid">
+            <article class="plain-card"><p class="panel-label">What it is</p><h3>A product-team operating system.</h3><p>PM, Designer, Engineer, and Orchestrator agents working from your company context, process, and guardrails.</p></article>
+            <article class="plain-card"><p class="panel-label">What it does</p><h3>Turns messy inputs into work.</h3><p>Looms, calls, tickets, briefs, and feedback become PRDs, tickets, design direction, PR plans, launch notes, and audit trails.</p></article>
+            <article class="plain-card"><p class="panel-label">Why it matters</p><h3>It compresses the messy middle.</h3><p>Teams spend less time translating ideas between PM, design, engineering, and launch, and more time making the decisions that matter.</p></article>
+            <article class="plain-card"><p class="panel-label">What it will not do</p><h3>It does not run wild.</h3><p>No secret backend, no auto-merge, no auto-send. Humans approve vision, priorities, design taste, code merge, and launch comms.</p></article>
+          </div>
+          <div class="plain-script" aria-label="Simple explanation script">
+            <p class="panel-label">The 20-second answer</p>
+            <p>paalto is like putting a PM, designer, engineer, and coordinator inside Claude Code. You give it messy product signal. It gives you structured product work, with human approval before anything important happens.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="system">
@@ -383,6 +416,6 @@ npm run demo</code></pre><div class="button-row actions"><a class="button primar
     </section>
   </main>
 
-  <footer><div class="wrap footer-grid"><p class="mono" style="font-size: 13px;">paalto is a product-team operating system for AI-native workflows. (c) 2026 / MIT</p><nav class="footer-links" aria-label="Footer navigation"><a href="/demo.html">Demo</a><a href="https://github.com/Niki92i/paalto">GitHub</a><a href="https://github.com/Niki92i/paalto/discussions">Discussions</a><a href="https://github.com/Niki92i/paalto/blob/main/SECURITY.md">Security</a><a href="mailto:hellopaalto@gmail.com">hellopaalto@gmail.com</a></nav></div></footer>
+  <footer><div class="wrap footer-grid"><p class="mono" style="font-size: 13px;">paalto is a product-team operating system for AI-native workflows. (c) 2026 / MIT</p><nav class="footer-links" aria-label="Footer navigation"><a href="#explain">Explain it</a><a href="/demo.html">Demo</a><a href="https://github.com/Niki92i/paalto">GitHub</a><a href="https://github.com/Niki92i/paalto/discussions">Discussions</a><a href="https://github.com/Niki92i/paalto/blob/main/SECURITY.md">Security</a><a href="mailto:hellopaalto@gmail.com">hellopaalto@gmail.com</a></nav></div></footer>
 </body>
 </html>
