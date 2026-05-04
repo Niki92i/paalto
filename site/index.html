@@ -67,11 +67,14 @@
     .button:hover { text-decoration: none; background: var(--gray-10); color: var(--black); }
     .button.primary:hover { background: var(--black); color: var(--white); }
     .hero-panel { border-left: 1px solid var(--black); display: flex; flex-direction: column; }
-    .panel-block { padding: 24px; border-bottom: 1px solid var(--black); min-height: 168px; }
+    .panel-block { padding: 24px; border-bottom: 1px solid var(--black); min-height: 168px; transition: background 160ms ease, color 160ms ease; }
     .panel-block:last-child { border-bottom: 0; flex: 1; }
+    .panel-block:hover { background: var(--black); color: var(--white); }
+    .panel-block:hover .panel-label { color: var(--signal); }
     .panel-number { margin-top: 18px; font-size: clamp(38px, 6vw, 72px); line-height: 1; font-weight: 500; }
     .panel-number::after { content: ""; display: block; width: 34px; height: 8px; margin-top: 12px; background: var(--signal); }
     .panel-copy { margin-top: 14px; color: var(--gray-70); max-width: 26ch; }
+    .panel-block:hover .panel-copy { color: #d0d0d0; }
     .thesis { padding-top: 18px; padding-bottom: 18px; font-family: var(--mono); font-size: 13px; color: var(--gray-70); display: flex; justify-content: space-between; gap: 24px; }
     .thesis strong { color: var(--black); font-weight: 500; }
 
