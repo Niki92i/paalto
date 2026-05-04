@@ -32,7 +32,7 @@
     a { color: inherit; text-decoration: none; }
     a:hover { text-decoration: underline; text-underline-offset: 4px; }
     p, h1, h2, h3 { margin: 0; }
-    button { font: inherit; }
+    button, textarea { font: inherit; }
     pre, code, .mono, .kicker { font-family: var(--mono); }
     .wrap { width: 100%; padding-left: var(--gutter); padding-right: var(--gutter); }
     .site-header { position: sticky; top: 0; z-index: 10; background: var(--white); border-bottom: 1px solid var(--black); }
@@ -55,14 +55,21 @@
     .button:last-child { border-right: 0; }
     .button.primary { background: var(--signal); }
     .button:hover, .button[aria-selected="true"] { background: var(--black); color: var(--white); text-decoration: none; }
+    .note { margin-top: 24px; max-width: 620px; padding: 14px 16px; border-left: 8px solid var(--signal); background: var(--gray-10); font-size: 14px; color: var(--gray-90); }
     .input-block { padding: clamp(22px, 3vw, 34px); border-bottom: 1px solid var(--black); }
     .input-title { margin-top: 16px; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.05; font-weight: 500; }
-    .transcript { margin-top: 22px; padding: 18px; max-height: 300px; overflow: auto; background: var(--gray-10); border: 1px solid var(--black); font-family: var(--mono); font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
+    .scenario-row { margin-top: 22px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--black); }
+    .scenario { min-height: 46px; padding: 0 14px; border: 0; border-right: 1px solid var(--black); background: var(--white); cursor: pointer; text-align: left; font-size: 14px; }
+    .scenario:last-child { border-right: 0; }
+    .scenario:hover, .scenario[aria-pressed="true"] { background: var(--black); color: var(--white); }
+    .transcript { width: 100%; min-height: 220px; margin-top: 18px; padding: 18px; resize: vertical; background: var(--gray-10); border: 1px solid var(--black); color: var(--black); font-family: var(--mono); font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
+    .input-meta { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 12px 18px; color: var(--gray-70); font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
     .run-status { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--black); border-bottom: 1px solid var(--black); background: var(--white); }
-    .step { min-height: 96px; padding: 16px 18px 18px; border-right: 1px solid var(--black); position: relative; background: var(--white); display: flex; flex-direction: column; justify-content: space-between; gap: 18px; transition: background 160ms ease, color 160ms ease; }
+    .step { min-height: 96px; padding: 16px 18px 18px; border: 0; border-right: 1px solid var(--black); position: relative; background: var(--white); display: flex; flex-direction: column; justify-content: space-between; gap: 18px; text-align: left; cursor: pointer; transition: background 160ms ease, color 160ms ease; }
     .step:last-child { border-right: 0; }
     .step::after { content: ""; position: absolute; left: 18px; right: 18px; bottom: 0; height: 0; background: var(--signal); transition: height 160ms ease; }
-    .step.done { background: var(--black); color: var(--white); }
+    .step:hover, .step.done { background: var(--black); color: var(--white); }
+    .step:hover .kicker, .step.done .kicker { color: var(--signal); }
     .step.done .kicker { color: var(--signal); }
     .step.done::after { height: 6px; }
     .step-name { display: block; font-size: clamp(15px, 1.35vw, 18px); line-height: 1.12; overflow-wrap: anywhere; }
@@ -72,6 +79,8 @@
     .tab { width: 100%; min-height: 64px; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; border: 0; border-bottom: 1px solid var(--black); background: var(--white); text-align: left; cursor: pointer; }
     .tab:hover, .tab[aria-selected="true"] { background: var(--black); color: var(--white); }
     .artifact { min-width: 0; padding: clamp(24px, 4vw, 44px); }
+    .artifact-header { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: start; }
+    .artifact-header .button { border: 1px solid var(--black); white-space: nowrap; }
     .artifact h2 { font-size: clamp(32px, 4vw, 58px); line-height: 1; font-weight: 500; }
     .artifact-copy { margin-top: 18px; max-width: 860px; color: var(--gray-70); font-size: 18px; }
     .artifact-body { margin-top: 30px; padding: 22px; background: var(--gray-10); border: 1px solid var(--black); overflow-x: auto; font-family: var(--mono); font-size: 13px; line-height: 1.62; white-space: pre-wrap; }
@@ -85,6 +94,7 @@
     footer { border-top: 1px solid var(--black); }
     .footer-grid { min-height: 92px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; }
     @media (max-width: 980px) { .hero, .outputs-grid, .handoff { grid-template-columns: 1fr; } .hero-copy { padding-right: var(--gutter); } .hero-panel, .tabs { border-left: 0; border-right: 0; border-top: 1px solid var(--black); } .run-status { grid-template-columns: 1fr; border-bottom: 0; } .step { min-height: 74px; border-right: 0; border-bottom: 1px solid var(--black); } .step:last-child { border-bottom: 0; } .nav-links { display: none; } }
+    @media (max-width: 700px) { .scenario-row, .artifact-header { grid-template-columns: 1fr; } .scenario { border-right: 0; border-bottom: 1px solid var(--black); } .scenario:last-child { border-bottom: 0; } }
     @media (max-width: 560px) { .actions { width: 100%; } .button { width: 100%; border-right: 0; border-bottom: 1px solid var(--black); } .button:last-child { border-bottom: 0; } h1 { max-width: 100%; overflow-wrap: anywhere; } }
   </style>
 </head>
@@ -101,21 +111,18 @@
       <div class="wrap hero-copy">
         <p class="kicker">No setup browser demo</p>
         <h1>Watch a Loom become product work.</h1>
-        <p class="lede">This static demo shows the first paalto workflow without Claude Code, terminal commands, or credentials. A messy product input becomes a PRD, tickets, UX copy, draft PR plan, launch note, and audit trail.</p>
+        <p class="lede">Choose a product signal, edit the input, and run the simulated workflow. A messy Loom, customer call, or product review becomes a PRD, tickets, UX copy, draft PR plan, launch note, and audit trail.</p>
+        <p class="note">Static preview: this page runs in your browser with example logic. Clone the repo to run paalto on real inputs with Claude Code and your own tools.</p>
         <div class="actions"><button class="button primary" id="run-demo" type="button">Run demo <span aria-hidden="true">-&gt;</span></button><a class="button" href="https://github.com/Niki92i/paalto">Clone after this <span aria-hidden="true">-&gt;</span></a></div>
       </div>
       <aside class="hero-panel" aria-label="Input transcript">
-        <div class="input-block"><p class="kicker">Input / customer signal</p><h2 class="input-title">First-run users close the app before reaching value.</h2><div class="transcript">00:00:13 Maya: I'm a designer. I came here because someone said it was good for design reviews. But the dashboard was empty and immediately asked me to connect a data source. So I closed the tab.
-
-00:00:29 PM brief: Three of the last five user interviews said the same thing. We need a no-risk first-run path that shows value before setup.
-
-00:00:46 Success target: New users should hit an aha action in under 90 seconds without connecting production data.</div></div>
+        <div class="input-block"><p class="kicker">Input / customer signal</p><h2 class="input-title" id="scenario-title">First-run users close the app before reaching value.</h2><div class="scenario-row" aria-label="Demo scenarios"><button class="scenario" type="button" data-scenario="onboarding" aria-pressed="true">First-run onboarding</button><button class="scenario" type="button" data-scenario="feedback" aria-pressed="false">Customer feedback</button><button class="scenario" type="button" data-scenario="design" aria-pressed="false">Design review</button></div><textarea class="transcript" id="signal-input" aria-label="Editable product signal"></textarea><div class="input-meta"><span id="input-lines">0 lines</span><span id="input-words">0 words</span><span>Editable preview</span></div></div>
         <div class="run-status" aria-label="Simulated workflow status">
-          <div class="step" data-step><span class="kicker">01</span><span class="step-name">Synthesize signal</span></div>
-          <div class="step" data-step><span class="kicker">02</span><span class="step-name">Draft PRD</span></div>
-          <div class="step" data-step><span class="kicker">03</span><span class="step-name">Create tickets</span></div>
-          <div class="step" data-step><span class="kicker">04</span><span class="step-name">Plan draft PR</span></div>
-          <div class="step" data-step><span class="kicker">05</span><span class="step-name">Prepare launch</span></div>
+          <button class="step" type="button" data-step data-tab-target="audit"><span class="kicker">01</span><span class="step-name">Synthesize signal</span></button>
+          <button class="step" type="button" data-step data-tab-target="prd"><span class="kicker">02</span><span class="step-name">Draft PRD</span></button>
+          <button class="step" type="button" data-step data-tab-target="tickets"><span class="kicker">03</span><span class="step-name">Create tickets</span></button>
+          <button class="step" type="button" data-step data-tab-target="pr"><span class="kicker">04</span><span class="step-name">Plan draft PR</span></button>
+          <button class="step" type="button" data-step data-tab-target="launch"><span class="kicker">05</span><span class="step-name">Prepare launch</span></button>
         </div>
       </aside>
     </section>
@@ -131,8 +138,7 @@
           <button class="tab" type="button" role="tab" aria-selected="false" data-tab="audit">Audit trail <span aria-hidden="true">06</span></button>
         </div>
         <article class="artifact" aria-live="polite">
-          <p class="kicker" id="artifact-kicker">Generated artifact</p>
-          <h2 id="artifact-title">PRD</h2>
+          <div class="artifact-header"><div><p class="kicker" id="artifact-kicker">Generated artifact</p><h2 id="artifact-title">PRD</h2></div><button class="button" id="copy-artifact" type="button">Copy artifact <span aria-hidden="true">-&gt;</span></button></div>
           <p class="artifact-copy" id="artifact-copy">A concise product decision document that names the problem, the bet, scope, and acceptance criteria.</p>
           <pre class="artifact-body" id="artifact-body"></pre>
         </article>
@@ -149,136 +155,118 @@
   <footer><div class="wrap footer-grid"><p class="mono" style="font-size: 13px;">(c) 2026 paalto / MIT</p><a href="mailto:hellopaalto@gmail.com">hellopaalto@gmail.com</a></div></footer>
 
   <script>
-    const artifacts = {
-      prd: {
-        title: 'PRD',
-        copy: 'A concise product decision document that names the problem, the bet, scope, and acceptance criteria.',
-        body: `PRD - First-run "Try a demo project" path
-
-One-line: New users hit one big button on the empty dashboard, land in a pre-loaded demo project, and reach an "aha" action in under 90 seconds.
-
-Problem
-First-run users land on an empty dashboard with four blank panels and a + button that asks for a data-source connection.
-- Maya: "I'm a designer. I came here because someone said it was good for design reviews. So I closed the tab."
-- Three of the last five user interviews said the same thing.
-
-The bet
-If first-run users land in a populated demo project rather than an empty dashboard, day-1 retention will improve materially.
-
-v0 scope
-1. Detect "no projects" state on first dashboard render.
-2. Replace empty state with a primary CTA: "Try a demo project."
-3. Copy a pre-built demo project into the user's workspace.
-4. Track first_run.demo_clicked and first_run.aha_reached.
-
-Acceptance criteria
-- Zero-project users see the demo CTA, not the empty + panel.
-- Click creates a demo project within 2s.
-- User lands inside the demo project.
-- Existing users see no change.`
+    const scenarios = {
+      onboarding: {
+        title: 'First-run users close the app before reaching value.',
+        signal: "00:00:13 Maya: I'm a designer. I came here because someone said it was good for design reviews. But the dashboard was empty and immediately asked me to connect a data source. So I closed the tab.\n\n00:00:29 PM brief: Three of the last five user interviews said the same thing. We need a no-risk first-run path that shows value before setup.\n\n00:00:46 Success target: New users should hit an aha action in under 90 seconds without connecting production data.",
+        oneLine: 'New users start in a working demo project instead of an empty dashboard.',
+        bet: 'If first-run users land in a populated demo project, more of them will reach value before setup friction appears.',
+        target: 'dashboard to first action in under 90 seconds',
+        object: 'demo project',
+        cta: 'Try a demo project',
+        metric: 'first_run.aha_reached'
       },
-      tickets: {
-        title: 'Tickets',
-        copy: 'Four buildable tickets, ordered as a small vertical slice first.',
-        body: `1/4 - Detect zero-projects state on dashboard
-Estimate: S
-Labels: paalto, frontend
-ACs: zero-project users see distinct empty state; existing users see no change.
-
-2/4 - Render "Try a demo project" CTA
-Estimate: S
-Labels: paalto, frontend, design
-ACs: zero-project users see the demo CTA, not the empty + panel.
-
-3/4 - Demo-project template + copy-on-click endpoint
-Estimate: M
-Labels: paalto, backend
-ACs: click creates a demo project within 2s and routes into it.
-
-4/4 - Instrument first-run analytics events
-Estimate: S
-Labels: paalto, analytics
-ACs: first_run.demo_clicked and first_run.aha_reached fire at the right moments.`
+      feedback: {
+        title: 'Customer feedback is scattered across calls and support threads.',
+        signal: "00:00:08 Customer: I told support this twice, then repeated it on the sales call. Nobody seemed to know the history.\n\n00:00:31 PM brief: Feedback exists in Zendesk, Slack, and call notes, but roadmap review still starts from memory.\n\n00:00:55 Success target: A PM can open one customer thread and see the summarized problem, affected accounts, and recommended next action.",
+        oneLine: 'Turn scattered customer feedback into one reviewable product signal.',
+        bet: 'If feedback is deduplicated and summarized before roadmap review, PMs will spend less time reconstructing context.',
+        target: 'feedback to roadmap decision in one review session',
+        object: 'customer signal summary',
+        cta: 'Review customer signal',
+        metric: 'feedback.review_completed'
       },
-      copy: {
-        title: 'UX Copy',
-        copy: 'Screen copy and states for the designer and engineer to implement consistently.',
-        body: `Empty dashboard
-H1: Start with a demo project
-Subhead: See what paalto does in 90 seconds.
-Primary CTA: Try a demo project
-Secondary link: I'll start from scratch
-Loading: Setting up your demo...
-Error: We couldn't set up the demo. Try again, or start a project from scratch.
-
-Inside demo project
-Banner: This is a demo project. Click around - nothing here is real.
-Banner CTA: Got it
-Highlight: Try this first
-
-After aha action
-Toast: You did the thing. That's the demo.
-Toast CTA: Start a real project`
-      },
-      pr: {
-        title: 'Draft PR Plan',
-        copy: 'The engineer agent prepares a draft PR description and verification plan. It does not merge.',
-        body: `Why
-- PRD: First-run "Try a demo project" path
-- Ticket: PAA-101 - Detect zero-projects state on dashboard
-
-What changed
-- src/components/Dashboard.tsx - branch on projects.length === 0.
-- src/components/EmptyDashboard.tsx - new component using approved copy.
-- src/components/__tests__/Dashboard.test.tsx - tests for zero-project and existing-user paths.
-
-How to verify
-1. npm test -- Dashboard
-2. Sign in as a user with no projects: dashboard shows the demo CTA.
-3. Sign in as a user with projects: dashboard is unchanged.
-
-Drafted by paalto engineer agent. This PR will not be auto-merged.`
-      },
-      launch: {
-        title: 'Launch Note',
-        copy: 'A release draft the human can edit and send when ready.',
-        body: `Headline: Day-one users now start in a demo project, not an empty screen.
-
-New
-Try a demo project - when you sign in for the first time, you'll see a single button that drops you straight into a working sample. Click around, break things, then start your own when you're ready.
-
-Improved
-The empty dashboard is gone. Instead of staring at four blank panels, new accounts get a populated workspace they can actually use.
-
-Slack draft
-First-run got faster. New accounts now land inside a demo project instead of an empty dashboard. One click, 90 seconds to aha. Existing accounts: nothing changes.
-
-send: false`
-      },
-      audit: {
-        title: 'Audit Trail',
-        copy: 'A local record of what happened and where humans approved the gates.',
-        body: `{"event":"run.started","workflow":"ship-a-feature","input":"loom-to-pr"}
-{"event":"gate.waiting","gate":"g1_vision","question":"Is this the right thing to build?"}
-{"event":"gate.approved","gate":"g1_vision","actor":"human"}
-{"event":"artifact.created","path":"prd.md"}
-{"event":"artifact.created","path":"tickets.md"}
-{"event":"artifact.created","path":"copy.md"}
-{"event":"gate.waiting","gate":"g3_design_taste","question":"Which option wins?"}
-{"event":"artifact.created","path":"pr-description.md","mode":"draft"}
-{"event":"gate.waiting","gate":"g4_merge_approval","policy":"no auto-merge"}
-{"event":"artifact.created","path":"slack-draft.json","send":false}
-{"event":"run.completed","external_calls":0}`
+      design: {
+        title: 'Design reviews lose decisions after critique ends.',
+        signal: "00:00:11 Designer: The critique was useful, but the action items disappeared into chat. I rebuilt the same empty state twice.\n\n00:00:37 PM brief: We need critique outcomes to become a design decision, implementation notes, and QA checks.\n\n00:01:04 Success target: After critique, the team leaves with one chosen direction, rejected alternatives, and acceptance criteria.",
+        oneLine: 'Turn design critique into a decision record and implementation-ready handoff.',
+        bet: 'If critique outcomes become structured handoff artifacts, design and engineering will avoid re-litigating decisions.',
+        target: 'critique to implementation-ready spec in one pass',
+        object: 'design decision record',
+        cta: 'Capture critique outcome',
+        metric: 'design.review_handoff_ready'
       }
     };
+
+    let currentScenario = 'onboarding';
+    let currentTab = 'prd';
+    let artifacts = {};
 
     const title = document.querySelector('#artifact-title');
     const copy = document.querySelector('#artifact-copy');
     const body = document.querySelector('#artifact-body');
+    const signalInput = document.querySelector('#signal-input');
+    const scenarioTitle = document.querySelector('#scenario-title');
+    const inputLines = document.querySelector('#input-lines');
+    const inputWords = document.querySelector('#input-words');
+    const copyButton = document.querySelector('#copy-artifact');
+    const scenarioButtons = [...document.querySelectorAll('[data-scenario]')];
     const tabs = [...document.querySelectorAll('[data-tab]')];
     const steps = [...document.querySelectorAll('[data-step]')];
 
+    function summarizeInput(input) {
+      const lines = input.split('\n').map((line) => line.trim()).filter(Boolean);
+      return lines.slice(0, 3).map((line) => `- ${line.replace(/^\d\d:\d\d:\d\d\s*/, '')}`).join('\n') || '- No signal entered yet.';
+    }
+
+    function inputStats(input) {
+      const lines = input.split('\n').filter((line) => line.trim()).length;
+      const words = input.trim() ? input.trim().split(/\s+/).length : 0;
+      inputLines.textContent = `${lines} ${lines === 1 ? 'line' : 'lines'}`;
+      inputWords.textContent = `${words} ${words === 1 ? 'word' : 'words'}`;
+    }
+
+    function generateArtifacts() {
+      const scenario = scenarios[currentScenario];
+      const input = signalInput.value.trim();
+      const evidence = summarizeInput(input);
+      artifacts = {
+        prd: {
+          title: 'PRD',
+          copy: 'A concise product decision document that names the problem, the bet, scope, and acceptance criteria.',
+          body: `PRD - ${scenario.title}\n\nOne-line: ${scenario.oneLine}\n\nSource signal\n${evidence}\n\nProblem\nThe team has enough signal to act, but the work is not yet shaped into a clear product decision, build scope, and success measure.\n\nThe bet\n${scenario.bet}\n\nv0 scope\n1. Create the ${scenario.object}.\n2. Add the primary action: ${scenario.cta}.\n3. Route the user to the next useful step without asking for production data first.\n4. Track ${scenario.metric} and review the result.\n\nAcceptance criteria\n- A user can understand the proposed next step without reading internal notes.\n- The first action is visible and specific.\n- The system records the decision and generated artifacts.\n- The human owner approves before live tool writes.`
+        },
+        tickets: {
+          title: 'Tickets',
+          copy: 'Four buildable tickets, ordered as a small vertical slice first.',
+          body: `1/4 - Shape ${scenario.object} data model\nEstimate: S\nLabels: paalto, product\nACs: source signal, decision, owner, and success metric can be stored.\n\n2/4 - Render ${scenario.cta} entry point\nEstimate: S\nLabels: paalto, frontend, design\nACs: target users see one primary action and one escape hatch.\n\n3/4 - Generate artifacts from selected signal\nEstimate: M\nLabels: paalto, workflow\nACs: PRD, tickets, copy, draft PR plan, launch note, and audit trail are created.\n\n4/4 - Instrument ${scenario.metric}\nEstimate: S\nLabels: paalto, analytics\nACs: event fires once when the user reaches the intended outcome.`
+        },
+        copy: {
+          title: 'UX Copy',
+          copy: 'Screen copy and states for the designer and engineer to implement consistently.',
+          body: `Primary screen\nH1: ${scenario.cta}\nSubhead: Turn the signal into a reviewable product decision before setup work starts.\nPrimary CTA: ${scenario.cta}\nSecondary link: I'll start from scratch\n\nLoading\nButton label: Building the first draft...\n\nSuccess\nToast: Draft ready for review.\nCTA: Review generated artifacts\n\nError\nInline: We could not build the draft. Try again, or clone the repo to run the workflow locally.`
+        },
+        pr: {
+          title: 'Draft PR Plan',
+          copy: 'The engineer agent prepares a draft PR description and verification plan. It does not merge.',
+          body: `Why\n- PRD: ${scenario.title}\n- Metric: ${scenario.metric}\n\nWhat changed\n- Add ${scenario.object} workflow entry point.\n- Generate product artifacts from the selected signal.\n- Log run events and approval gates.\n\nHow to verify\n1. Run the local demo.\n2. Confirm generated artifacts match the selected scenario.\n3. Confirm draft PR remains draft-only.\n\nDrafted by paalto engineer agent. This PR will not be auto-merged.`
+        },
+        launch: {
+          title: 'Launch Note',
+          copy: 'A release draft the human can edit and send when ready.',
+          body: `Headline: ${scenario.oneLine}\n\nSource signal\n${evidence}\n\nNew\n${scenario.cta} gives the team a clearer first action from messy product signal.\n\nImproved\nThe handoff now includes a PRD, tickets, UX copy, draft PR plan, launch note, and audit trail before live tool writes.\n\nSlack draft\n${scenario.oneLine} Human gates stay in place, and launch comms are still draft-only.\n\nsend: false`
+        },
+        audit: {
+          title: 'Audit Trail',
+          copy: 'A local record of what happened and where humans approved the gates.',
+          body: `{"event":"run.started","workflow":"browser-demo","scenario":"${currentScenario}"}\n{"event":"input.edited","words":${input.trim() ? input.trim().split(/\s+/).length : 0}}\n{"event":"gate.waiting","gate":"g1_vision","question":"Is this the right thing to build?"}\n{"event":"artifact.created","path":"prd.md"}\n{"event":"artifact.created","path":"tickets.md"}\n{"event":"artifact.created","path":"copy.md"}\n{"event":"artifact.created","path":"pr-description.md","mode":"draft"}\n{"event":"artifact.created","path":"slack-draft.json","send":false}\n{"event":"run.completed","external_calls":0}`
+        }
+      };
+      inputStats(signalInput.value);
+    }
+
+    function selectScenario(key) {
+      currentScenario = key;
+      const scenario = scenarios[key];
+      scenarioTitle.textContent = scenario.title;
+      signalInput.value = scenario.signal;
+      scenarioButtons.forEach((button) => button.setAttribute('aria-pressed', button.dataset.scenario === key ? 'true' : 'false'));
+      generateArtifacts();
+      showArtifact('prd');
+    }
+
     function showArtifact(key) {
+      currentTab = key;
       const artifact = artifacts[key];
       title.textContent = artifact.title;
       copy.textContent = artifact.copy;
@@ -287,12 +275,25 @@ send: false`
     }
 
     tabs.forEach((tab) => tab.addEventListener('click', () => showArtifact(tab.dataset.tab)));
+    steps.forEach((step) => step.addEventListener('click', () => showArtifact(step.dataset.tabTarget)));
+    scenarioButtons.forEach((button) => button.addEventListener('click', () => selectScenario(button.dataset.scenario)));
+    signalInput.addEventListener('input', () => {
+      generateArtifacts();
+      showArtifact(currentTab);
+    });
+    copyButton.addEventListener('click', () => {
+      if (navigator.clipboard) navigator.clipboard.writeText(body.textContent).catch(() => {});
+      copyButton.firstChild.textContent = 'Copied ';
+      window.setTimeout(() => { copyButton.firstChild.textContent = 'Copy artifact '; }, 1200);
+    });
     document.querySelector('#run-demo').addEventListener('click', () => {
+      generateArtifacts();
+      showArtifact('prd');
       steps.forEach((step) => step.classList.remove('done'));
       steps.forEach((step, index) => window.setTimeout(() => step.classList.add('done'), index * 260));
       document.querySelector('#outputs').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-    showArtifact('prd');
+    selectScenario('onboarding');
   </script>
 </body>
 </html>
