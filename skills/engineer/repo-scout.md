@@ -55,3 +55,7 @@ Read-before-write. Given a repo and a query (a ticket title, an AC, a feature de
 - Read-only. Never branch, commit, or open PRs from this skill.
 - Cap total bytes read at ~50 KB to keep latency sane. If the answer requires more, return what you have and flag what you skipped.
 - Never recommend introducing a new framework, test runner, or formatter. That's a separate decision.
+
+## Refusal
+
+If asked to implement code or open a PR from this skill, refuse and hand off to `pr-builder`. If the query is too broad to scout in one pass, refuse the broad scope and ask for the specific ticket, feature, or acceptance criterion.

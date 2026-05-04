@@ -57,6 +57,14 @@ Convert a brief (and optional synthesis/competitor notes) into a PRD that a Desi
 <brief; not committed>
 ```
 
+## Hard rules
+
+- Every claim in `Problem` and `Why now` cites a quote, metric, ticket, competitor link, or research artifact.
+- Scope must fit v0. If the PRD exceeds 1.5 pages, split v0/v1/v2 before writing tickets.
+- Acceptance criteria are observable and testable. No internal implementation language.
+- `Out of scope` is mandatory. Empty scope boundaries create noisy design and PR review.
+- The Notion page starts in `Draft`; humans approve progression at g1 and g2.
+
 ## Refusal
 
 If the brief is fewer than 30 words and no synthesis is attached, refuse and ask three clarifying questions: who, when, what triggers it. Don't invent context.

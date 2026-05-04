@@ -28,6 +28,14 @@ Turn an approved PRD into low-fidelity wireframes the operator can actually pick
 5. **Surface to operator (g3).** Post the comparison table + the mermaid renders to chat. Wait for explicit pick per screen.
 6. **Audit.** `events.jsonl`: `{ "type": "wireframes.drafted", "screens": N, "options_per_screen": 2|3 }`.
 
+## Hard rules
+
+- Always produce 2-3 credible options per screen. One option is not a design gate.
+- Recommendations cite a PRD AC or research quote, never personal taste.
+- Low fidelity only. No visual polish, gradients, fake product screenshots, or high-fi detail.
+- Required states are part of the wireframe set: default, loading, empty, error, success.
+- Reference existing components by name; do not silently invent system components.
+
 ## Refusal
 
 - If asked to ship a single "final" mock: refuse. Two-to-three options is the rule.

@@ -27,8 +27,14 @@ Convert an approved PRD (post-g2) into a small set of Linear tickets that the En
 6. **Audit.** Append `events.jsonl`:
    `{ "type": "tickets.created", "count": N, "team": "...", "prd_url": "...", "ticket_urls": [...] }`.
 
-## Sanity rules
+## Hard rules
 
 - If two tickets touch the same files and one cannot ship without the other, merge them.
 - If any AC is left uncovered by the ticket set, refuse and report the gap. Do not silently invent a ticket for it.
 - If the smallest first ticket is bigger than `M`, the PRD is wrong — escalate, don't carve.
+- Maximum 7 tickets per v0. More than that means prioritization failed at g2.
+- Ticket 1/N must be the smallest vertical slice that proves the bet end-to-end.
+
+## Refusal
+
+If asked to break tickets before g2 approval, refuse — ticketing unapproved scope creates fake momentum. If asked to split by engineering layer (backend/frontend/db) instead of user-visible slice, refuse and propose the smallest shippable slice.

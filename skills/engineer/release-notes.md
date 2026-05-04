@@ -27,6 +27,14 @@ Take one or more **merged** PRs and produce a release note that a real human wou
 7. **Audit.** Append `events.jsonl`:
    `{ "type": "release-notes.drafted", "pr_count": N, "categories": {...}, "slack_channel": "..." }`.
 
+## Hard rules
+
+- Customer-facing notes describe user-visible value, not internal implementation.
+- Ticket IDs, branch names, and framework/library names stay out of the customer draft unless the audience is explicitly developer-facing.
+- `Internal` changes are recorded in the long form but omitted from Slack/customer copy.
+- The Slack message is saved as a draft only. g5 owns sending.
+- If PR data and release-note body conflict, stop and surface the mismatch.
+
 ## Refusal
 
 If asked to auto-send the Slack message, refuse — g5 is a human gate. Save the draft and stop.

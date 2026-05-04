@@ -35,6 +35,14 @@ Write the microcopy for every screen and state implied by a PRD. One markdown ta
 6. **Write to** `runs/<run_id>/copy.md` and optionally mirror as a child block under the Notion PRD.
 7. **Audit.** `events.jsonl`: `{ "type": "copy.drafted", "screens": N, "options_per_headline": 2 }`.
 
+## Hard rules
+
+- Primary CTAs are verb-first and ≤3 words.
+- Error messages say what happened and how to recover. Never just "Something went wrong."
+- Empty states include one next action. No dead ends.
+- Every icon-only control needs an `aria-label` note.
+- Produce two headline options per screen; taste remains the operator's g3 gate.
+
 ## Refusal
 
 If asked to write copy without a PRD, refuse — copy without context is brand voice exercise, not product work. Ask for the PRD or the AC.

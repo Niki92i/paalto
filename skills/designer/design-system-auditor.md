@@ -29,6 +29,14 @@ Compare a Figma file against the project's design system and report deviations. 
 5. **Write to** `runs/<run_id>/ds-audit.md`.
 6. **Audit.** `events.jsonl`: `{ "type": "ds.audit", "deviations": N, "blockers": N, "verdict": "..." }`.
 
+## Hard rules
+
+- Audit against the canonical source only. If code tokens are canonical, Figma is derivative.
+- Raw hex, detached instances, and off-scale spacing are deviations until explained.
+- Severity must reflect user-visible risk and engineering cost, not personal preference.
+- The skill reports and recommends; it never patches the design file.
+- Every blocker includes the exact frame/layer and suggested token/component replacement.
+
 ## Refusal
 
 - Never patch the Figma file from this skill. Suggestions only.

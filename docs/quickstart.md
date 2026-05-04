@@ -18,6 +18,16 @@ After [install](install.md), the fastest way to feel paalto is to run the refere
    - 1 draft PR on GitHub with green CI.
    - 1 release-note draft saved to `runs/<id>/slack-draft.json`, surfaced in chat (not sent).
 
+## No-API dry check
+
+Before wiring real tools, run:
+
+```bash
+node scripts/validate-skills.mjs
+```
+
+This confirms every skill has the required frontmatter, `Procedure`, `Hard rules`, `Refusal`, and `events.jsonl` audit instruction; it also verifies every agent-listed skill file exists.
+
 ## Common failure points
 
 | Symptom | Likely cause | Fix |
@@ -28,6 +38,7 @@ After [install](install.md), the fastest way to feel paalto is to run the refere
 | GitHub 403 on PR open | PAT is not fine-grained, or scopes wrong | Recreate as fine-grained, target one repo, `contents` + `pull_requests` write. |
 | Slack 403 | Bot not in channel | Invite your bot user to `SLACK_DEFAULT_CHANNEL`. |
 | CI red after 3 fix attempts | Engineer escalates by design | Read `runs/<id>/plan.md` and `events.jsonl`; fix locally and push, or revise the PRD. |
+| Skill listed but not found | Agent wiring drift | Run `node scripts/validate-skills.mjs`; fix the missing path before running workflows. |
 
 ## Next
 

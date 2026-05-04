@@ -31,13 +31,16 @@ The system never auto-merges. The operator never wastes a Tuesday on ticket groo
 Three role agents, configured as plain markdown files you own.
 
 ### DISCOVER · PM
-Interview Synthesizer · Competitor Teardown · PRD Drafter · RFC Writer · Roadmap Snapshotter · Feedback Triager · Metrics Reporter
+Interview Synthesizer · Market Radar · Competitor Teardown · Research Plan · PRD Drafter · Narrative Writer · Roadmap Snapshotter · OKR Tree · Experiment Designer · Experiment Readout · Feedback Triager · Metrics Reporter · Launch Checklist · Decision Log · Stakeholder Update · Pricing & Packaging
 
 ### DESIGN · Designer
-Wireframe Drafter · UX Copy · Design-system Auditor · Figma Spec Generator · A11y Reviewer
+Wireframe Drafter · UX Copy · Content Design · Crit Facilitator · Interaction Spec · Figma Spec Generator · Design-system Auditor · A11y Reviewer · Design QA · Usability Synthesis · Design Ops
 
 ### SHIP · Engineer
-Ticket Breaker · Repo Scout · **PR Builder (draft only)** · Code Reviewer · Test Plan Writer · Release Note Generator
+Repo Scout · Tech Spec Writer · ADR Writer · Migration Plan · **PR Builder (draft only)** · Code Reviewer · Test Plan Writer · Security Review · Performance Audit · Dependency Triage · Production Readiness Review · Runbook Generator · Incident Postmortem · Release Note Generator
+
+### COORDINATE · Orchestrator
+Kickoff Doc · Async Standup · Product Postmortem · five non-skippable human gates
 
 All orchestrated by [`agents/orchestrator.md`](agents/orchestrator.md), which knows the long flow `brief → discovery → PRD → design → tickets → PRs → release notes` and pauses at five named human gates.
 
@@ -67,6 +70,10 @@ cp .env.example .env       # add your API keys
 The reference example takes a real Loom transcript and produces a PRD in Notion, four Linear tickets, a draft PR on GitHub, and a release-note draft in Slack — without auto-merging anything. Target: under 60 minutes on a fresh clone.
 
 Full setup: [docs/install.md](docs/install.md) · [docs/quickstart.md](docs/quickstart.md)
+
+## Capability coverage
+
+paalto currently ships **46 detailed skills** across PM, Design, Engineering, and orchestration. The full matrix is in [docs/skills.md](docs/skills.md); the readiness audit and remaining roadmap are in [docs/readiness.md](docs/readiness.md).
 
 ---
 

@@ -11,6 +11,7 @@ skills:
   - skills/pm/feedback-triager.md
   - skills/pm/metrics-reporter.md
   - skills/pm/cross-squad-rollup.md
+  - skills/pm/market-radar.md
   # v0.6 — top-operator coverage
   - skills/pm/narrative-writer.md
   - skills/pm/roadmap-snapshotter.md

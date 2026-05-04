@@ -24,10 +24,6 @@ Integrations added: Intercom (MCP), Zendesk (MCP), Granola / Fireflies / Loom (t
 
 Reference example: [examples/feedback-to-roadmap/](../examples/feedback-to-roadmap/README.md)
 
-## v0.2.next — still planned
-
-PM · Market Radar (trend ingestion from Hacker News / Product Hunt / Substack)
-
 ## v0.3 — Designer suite (shipped)
 
 | Role | Skill | Path |
@@ -107,6 +103,14 @@ The first five waves shipped the artifact production layer. v0.6 closes the gap 
 | Kickoff Doc | [skills/orchestrator/kickoff-doc.md](../skills/orchestrator/kickoff-doc.md) | PM/Des/Eng joint one-pager at start |
 | Async Standup | [skills/orchestrator/async-standup.md](../skills/orchestrator/async-standup.md) | 4-line written, blockers auto-escalate |
 | Product Postmortem | [skills/orchestrator/product-postmortem.md](../skills/orchestrator/product-postmortem.md) | T+14-28d launch retro, predicted vs actual |
+
+## v0.7 — OSS readiness + public signal (shipped)
+
+| Role | Skill / Capability | Path |
+|---|---|---|
+| PM | Market Radar | [skills/pm/market-radar.md](../skills/pm/market-radar.md) |
+| Project | Skill validator | [scripts/validate-skills.mjs](../scripts/validate-skills.mjs) |
+| Project | Readiness audit | [docs/readiness.md](readiness.md) |
 
 ## Adding a skill
 

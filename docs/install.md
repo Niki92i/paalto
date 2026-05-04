@@ -10,8 +10,9 @@ paalto runs as markdown agents inside Claude Code on your machine. There's no se
 - API access (any subset — paalto degrades gracefully):
   - GitHub fine-grained PAT, scoped to one repo, `contents` + `pull_requests` only.
   - Linear personal API key.
-  - Notion internal integration shared on your PRD database.
+  - Notion internal integration shared on your PRD, Roadmap, Strategy, Decisions, Research, and Retros databases if you use those skills.
   - Slack bot token with `chat:write` to one channel.
+  - Optional: Figma, Posthog, Jira, Intercom, Zendesk.
 
 ## Steps
 
@@ -22,7 +23,7 @@ cd paalto
 
 # 2. Configure
 cp .env.example .env
-$EDITOR .env       # fill in the four day-one keys
+$EDITOR .env       # fill day-one keys first; optional integrations can stay blank
 
 # 3. Wire MCP servers into Claude Code
 #    Either point Claude Code at integrations/mcp.json,
@@ -36,6 +37,12 @@ $EDITOR .env       # fill in the four day-one keys
 ## Verify the install
 
 Run the reference example: [examples/loom-to-pr/README.md](../examples/loom-to-pr/README.md).
+
+For a fast structural check before connecting real APIs, run the same validation the repo uses in CI:
+
+```bash
+node scripts/validate-skills.mjs
+```
 
 If you reach a green-CI draft PR in under 60 minutes, the install is good. If not, see [docs/quickstart.md](quickstart.md) for the common failure points.
 

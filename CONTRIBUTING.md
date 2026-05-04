@@ -29,6 +29,7 @@ docs/           install, quickstart, security
 4. List the skill under the matching role agent in `agents/<role>.md`.
 5. If it touches a new external service, add an entry to `integrations/` and to `.env.example`.
 6. Add a worked invocation to an example, or extend `examples/loom-to-pr/`.
+7. Run `node scripts/validate-skills.mjs` before opening a PR.
 
 ## Adding an integration
 

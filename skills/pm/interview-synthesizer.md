@@ -51,6 +51,14 @@ Convert raw interview transcripts (Loom, Granola, Fireflies, plain VTT) into a s
 ## Theme 2 — ...
 ```
 
+## Hard rules
+
+- Pass 1 is verbatim only. Never paraphrase before clustering.
+- A theme requires support from at least 2 participants, unless clearly labeled as a single-participant anecdote.
+- Theme names use user language, not internal taxonomy.
+- Implications are hedged. Interviews suggest; they do not prove.
+- Every quote keeps participant and timestamp provenance.
+
 ## Refusal
 
 - If asked to add a theme that has no supporting quote: refuse and label it `[NO QUOTE]` in open questions.
