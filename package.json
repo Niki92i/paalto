@@ -1,7 +1,7 @@
 {
 	"name": "paalto",
 	"version": "0.8.0",
-	"description": "Open-source product team operating system for Claude Code.",
+	"description": "Open-source product-team operating system for AI-native workflows.",
 	"license": "MIT",
 	"private": false,
 	"bin": {

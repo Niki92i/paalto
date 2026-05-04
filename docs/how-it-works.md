@@ -1,6 +1,6 @@
 # How paalto works
 
-paalto is not a hosted app and it is not an autonomous merge bot. It is a local operating system for product work that Claude Code can run from plain files.
+paalto is a product-team operating system for AI-native workflows. It is not a hosted app and it is not an autonomous merge bot; it is a local system for product work that Claude Code can run from plain files.
 
 ## The moving parts
 

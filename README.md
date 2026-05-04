@@ -1,8 +1,8 @@
 # paalto
 
-**Your product team operating system, from Claude Code.**
+**A product-team operating system for AI-native workflows.**
 
-One conversation replaces the swivel-chair work between PM, Designer, and Engineer. paalto lives on your machine, uses your data, and gets sharper every time you ship.
+paalto turns Looms, customer calls, and product briefs into PRDs, tickets, design direction, draft PR plans, launch notes, and audit trails. It lives on your machine, uses your data, and gets sharper every time you ship.
 
 ```
 We run your product team   ·   Clone the repo
