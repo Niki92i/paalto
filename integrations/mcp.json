@@ -29,6 +29,22 @@
         "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
         "SLACK_DEFAULT_CHANNEL": "${SLACK_DEFAULT_CHANNEL}"
       }
+    },
+    "intercom": {
+      "_phase": "v0.2",
+      "command": "npx",
+      "args": ["-y", "@intercom/mcp-server"],
+      "env": {
+        "INTERCOM_ACCESS_TOKEN": "${INTERCOM_ACCESS_TOKEN}"
+      }
+    },
+    "zendesk": {
+      "_phase": "v0.2",
+      "command": "npx",
+      "args": ["-y", "@zendesk/mcp-server"],
+      "env": {
+        "ZENDESK_API_TOKEN": "${ZENDESK_API_TOKEN}"
+      }
     }
   }
 }

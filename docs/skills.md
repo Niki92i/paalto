@@ -12,10 +12,21 @@ A skill is a single `.md` file that an agent knows how to execute. Skills are th
 | Engineer | PR Builder | [skills/engineer/pr-builder.md](../skills/engineer/pr-builder.md) |
 | Engineer | Release Note Generator | [skills/engineer/release-notes.md](../skills/engineer/release-notes.md) |
 
-## v0.2 — Discovery suite (planned)
+## v0.2 — Discovery suite (shipped)
 
-PM · Interview Synthesizer · Competitor Teardown · Feedback Triager · Market Radar
-Integrations · Intercom · Zendesk · Granola · Fireflies · Loom
+| Role | Skill | Path |
+|---|---|---|
+| PM | Interview Synthesizer | [skills/pm/interview-synthesizer.md](../skills/pm/interview-synthesizer.md) |
+| PM | Competitor Teardown | [skills/pm/competitor-teardown.md](../skills/pm/competitor-teardown.md) |
+| PM | Feedback Triager | [skills/pm/feedback-triager.md](../skills/pm/feedback-triager.md) |
+
+Integrations added: Intercom (MCP), Zendesk (MCP), Granola / Fireflies / Loom (transcript ingest is filesystem-based — drop files into `runs/<id>/transcripts/`).
+
+Reference example: [examples/feedback-to-roadmap/](../examples/feedback-to-roadmap/README.md)
+
+## v0.2.next — still planned
+
+PM · Market Radar (trend ingestion from Hacker News / Product Hunt / Substack)
 
 ## v0.3 — Designer with teeth (planned)
 

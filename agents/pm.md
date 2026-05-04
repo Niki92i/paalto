@@ -6,7 +6,6 @@ tools: [filesystem, mcp:notion, mcp:linear, mcp:slack]
 skills:
   - skills/pm/prd-drafter.md
   - skills/pm/ticket-breaker.md
-  # v0.2+
   - skills/pm/interview-synthesizer.md
   - skills/pm/competitor-teardown.md
   - skills/pm/feedback-triager.md

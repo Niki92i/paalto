@@ -1,0 +1,21 @@
+{
+  "_note": "Fabricated Intercom-shaped export for the feedback-to-roadmap example. All names/emails are placeholders.",
+  "exported_at": "2026-05-04T09:00:00Z",
+  "since": "2026-04-27T00:00:00Z",
+  "conversations": [
+    { "id": "c-001", "created_at": "2026-04-28T10:12:00Z", "user": "[customer]", "body": "When I click 'Try a demo project' nothing happens for like 8 seconds. I thought it was broken." },
+    { "id": "c-002", "created_at": "2026-04-28T13:44:00Z", "user": "[customer]", "body": "Demo project loads but the share button does nothing. No error, no loading state." },
+    { "id": "c-003", "created_at": "2026-04-28T17:02:00Z", "user": "[customer]", "body": "Loved the new demo flow! Got me from 'huh' to 'oh I see' in like a minute. Thanks." },
+    { "id": "c-004", "created_at": "2026-04-29T08:30:00Z", "user": "[customer]", "body": "I want to invite my whole team at once. Right now I have to invite people one by one which is painful for 12 people." },
+    { "id": "c-005", "created_at": "2026-04-29T09:15:00Z", "user": "[customer]", "body": "Bulk invite would be amazing. CSV upload?" },
+    { "id": "c-006", "created_at": "2026-04-29T11:48:00Z", "user": "[customer]", "body": "Demo share button still broken on Firefox. Works in Chrome." },
+    { "id": "c-007", "created_at": "2026-04-29T14:20:00Z", "user": "[customer]", "body": "Where do I change my billing email? I can't find it anywhere in settings." },
+    { "id": "c-008", "created_at": "2026-04-30T07:55:00Z", "user": "[customer]", "body": "Can paalto integrate with Jira? We're a Jira shop and Linear isn't on the table." },
+    { "id": "c-009", "created_at": "2026-04-30T10:11:00Z", "user": "[customer]", "body": "+1 on Jira. We'd switch off our current tool tomorrow if you had Jira parity." },
+    { "id": "c-010", "created_at": "2026-04-30T15:30:00Z", "user": "[customer]", "body": "Jira integration request — we have 4 squads on Jira, no plans to migrate to Linear." },
+    { "id": "c-011", "created_at": "2026-05-01T09:00:00Z", "user": "[customer]", "body": "I keep losing my place in the demo. There's no breadcrumb or 'back to dashboard' link. I had to use the browser back button." },
+    { "id": "c-012", "created_at": "2026-05-01T12:42:00Z", "user": "[customer]", "body": "Where's the back button in the demo? Genuine question. I clicked around for 2 minutes." },
+    { "id": "c-013", "created_at": "2026-05-02T08:18:00Z", "user": "[customer]", "body": "Demo share button doesn't work for me either. Safari. iPhone." },
+    { "id": "c-014", "created_at": "2026-05-03T16:30:00Z", "user": "[customer]", "body": "Pricing page seems to be down? Getting a 500." }
+  ]
+}

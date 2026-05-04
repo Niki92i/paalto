@@ -1,0 +1,46 @@
+name: New skill proposal
+description: Propose a new .md skill for an existing role agent.
+labels: [skill, enhancement]
+body:
+  - type: dropdown
+    id: role
+    attributes:
+      label: Which role agent owns this skill?
+      options: [pm, designer, engineer]
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Skill name (kebab-case)
+      placeholder: "interview-synthesizer"
+    validations:
+      required: true
+  - type: textarea
+    id: job
+    attributes:
+      label: What single, parameterised job does it do?
+      description: One sentence. If it's two jobs, propose two skills.
+    validations:
+      required: true
+  - type: textarea
+    id: io
+    attributes:
+      label: Inputs and outputs
+      placeholder: "inputs: [...]\noutputs: [...]"
+    validations:
+      required: true
+  - type: textarea
+    id: integrations
+    attributes:
+      label: New integrations needed?
+      description: List MCP servers or REST endpoints. "None" is a valid answer.
+    validations:
+      required: true
+  - type: checkboxes
+    id: edges
+    attributes:
+      label: Edges check
+      options:
+        - label: This skill does not auto-merge code, auto-send to customers, or skip a human gate.
+          required: true
