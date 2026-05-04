@@ -9,6 +9,13 @@ skills:
   - skills/designer/figma-spec-generator.md
   - skills/designer/design-system-auditor.md
   - skills/designer/a11y-reviewer.md
+  # v0.6 — top-operator coverage
+  - skills/designer/crit-facilitator.md
+  - skills/designer/interaction-spec.md
+  - skills/designer/content-design.md
+  - skills/designer/design-qa.md
+  - skills/designer/usability-synthesis.md
+  - skills/designer/design-ops.md
 gates_owned: [g3_design_taste]
 ---
 

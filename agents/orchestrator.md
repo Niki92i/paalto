@@ -4,6 +4,11 @@ role: orchestrator
 description: Routes work between PM, Designer, and Engineer agents. Owns the long flow and the five human gates.
 tools: [filesystem, mcp:linear, mcp:github, mcp:notion, mcp:slack]
 gates: [g1_vision, g2_prioritization, g3_design_taste, g4_merge_approval, g5_launch_comms]
+skills:
+  # v0.6 — cross-role orchestration
+  - skills/orchestrator/kickoff-doc.md
+  - skills/orchestrator/async-standup.md
+  - skills/orchestrator/product-postmortem.md
 ---
 
 # Orchestrator

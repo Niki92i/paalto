@@ -9,6 +9,16 @@ skills:
   - skills/engineer/repo-scout.md
   - skills/engineer/code-reviewer.md
   - skills/engineer/test-plan.md
+  # v0.6 — top-operator coverage
+  - skills/engineer/tech-spec-writer.md
+  - skills/engineer/adr-writer.md
+  - skills/engineer/migration-plan.md
+  - skills/engineer/runbook-generator.md
+  - skills/engineer/incident-postmortem.md
+  - skills/engineer/perf-audit.md
+  - skills/engineer/security-review.md
+  - skills/engineer/dependency-triage.md
+  - skills/engineer/prod-readiness.md
 gates_owned: [g4_merge_approval]
 ---
 

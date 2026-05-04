@@ -11,6 +11,17 @@ skills:
   - skills/pm/feedback-triager.md
   - skills/pm/metrics-reporter.md
   - skills/pm/cross-squad-rollup.md
+  # v0.6 — top-operator coverage
+  - skills/pm/narrative-writer.md
+  - skills/pm/roadmap-snapshotter.md
+  - skills/pm/okr-tree.md
+  - skills/pm/experiment-designer.md
+  - skills/pm/experiment-readout.md
+  - skills/pm/research-plan.md
+  - skills/pm/launch-checklist.md
+  - skills/pm/decision-log.md
+  - skills/pm/stakeholder-update.md
+  - skills/pm/pricing-packaging.md
 gates_owned: [g1_vision, g2_prioritization]
 ---
 

@@ -60,6 +60,54 @@ Integrations added: Posthog (MCP), Jira (MCP), Amplitude / Mixpanel (REST wrappe
 
 Folder convention: `runs/<squad>/<timestamp>__*` for per-squad audit isolation.
 
+## v0.6 — Top-operator coverage (shipped)
+
+The first five waves shipped the artifact production layer. v0.6 closes the gap to what top PMs / Designers / Engineers actually do day-to-day: strategy, decisions, experimentation, operations, ops-readiness, and cross-functional rituals. Built from canonical templates (Cagan/Wodtke for product strategy, Statsig/CXL for experimentation, Nielsen-Norman for usability and content, Nygard for ADRs, Google SRE for production readiness, expand-contract pattern for migrations).
+
+### PM (10)
+| Skill | Path | Source pattern |
+|---|---|---|
+| Narrative / Strategy Writer | [skills/pm/narrative-writer.md](../skills/pm/narrative-writer.md) | Amazon 6-pager |
+| Roadmap Snapshotter | [skills/pm/roadmap-snapshotter.md](../skills/pm/roadmap-snapshotter.md) | Now/Next/Later, Cagan |
+| OKR / Metric Tree | [skills/pm/okr-tree.md](../skills/pm/okr-tree.md) | Wodtke radical focus |
+| Experiment Designer | [skills/pm/experiment-designer.md](../skills/pm/experiment-designer.md) | Statsig / CXL |
+| Experiment Readout | [skills/pm/experiment-readout.md](../skills/pm/experiment-readout.md) | Pre-committed decision rule |
+| Research Plan | [skills/pm/research-plan.md](../skills/pm/research-plan.md) | Teresa Torres / NN-g |
+| Launch Checklist | [skills/pm/launch-checklist.md](../skills/pm/launch-checklist.md) | Support-readiness gating |
+| Decision Log | [skills/pm/decision-log.md](../skills/pm/decision-log.md) | Bezos type-1/type-2 |
+| Stakeholder Update | [skills/pm/stakeholder-update.md](../skills/pm/stakeholder-update.md) | <3min, R/Y/G, asks |
+| Pricing & Packaging | [skills/pm/pricing-packaging.md](../skills/pm/pricing-packaging.md) | WTP empirical, segments first |
+
+### Designer (6)
+| Skill | Path | Source pattern |
+|---|---|---|
+| Crit Facilitator | [skills/designer/crit-facilitator.md](../skills/designer/crit-facilitator.md) | Silent-first, assigned skeptic |
+| Interaction & Motion Spec | [skills/designer/interaction-spec.md](../skills/designer/interaction-spec.md) | Motion = affordance |
+| Content Design / Microcopy | [skills/designer/content-design.md](../skills/designer/content-design.md) | NN-g error patterns |
+| Design QA | [skills/designer/design-qa.md](../skills/designer/design-qa.md) | Weekly mid-build |
+| Usability Synthesis | [skills/designer/usability-synthesis.md](../skills/designer/usability-synthesis.md) | Rainbow sheet, 3+/5 rule |
+| Design Ops / Token Hygiene | [skills/designer/design-ops.md](../skills/designer/design-ops.md) | Tokens-in-code source of truth |
+
+### Engineer (9)
+| Skill | Path | Source pattern |
+|---|---|---|
+| Tech Spec / RFC Writer | [skills/engineer/tech-spec-writer.md](../skills/engineer/tech-spec-writer.md) | Non-Goals + 3-5 alternatives |
+| ADR Writer | [skills/engineer/adr-writer.md](../skills/engineer/adr-writer.md) | Nygard format |
+| Migration Plan | [skills/engineer/migration-plan.md](../skills/engineer/migration-plan.md) | Expand-contract, double-write |
+| Runbook Generator | [skills/engineer/runbook-generator.md](../skills/engineer/runbook-generator.md) | Decision trees, time escalation |
+| Incident Postmortem | [skills/engineer/incident-postmortem.md](../skills/engineer/incident-postmortem.md) | Blameless, 3-day publish |
+| Performance Audit | [skills/engineer/perf-audit.md](../skills/engineer/perf-audit.md) | Budget-first, user-perceived |
+| Security Review | [skills/engineer/security-review.md](../skills/engineer/security-review.md) | STRIDE, 5-15 pages |
+| Dependency Triage | [skills/engineer/dependency-triage.md](../skills/engineer/dependency-triage.md) | Bundle by risk class |
+| Production Readiness Review | [skills/engineer/prod-readiness.md](../skills/engineer/prod-readiness.md) | Google SRE PRR |
+
+### Cross-role / Orchestrator (3)
+| Skill | Path | Purpose |
+|---|---|---|
+| Kickoff Doc | [skills/orchestrator/kickoff-doc.md](../skills/orchestrator/kickoff-doc.md) | PM/Des/Eng joint one-pager at start |
+| Async Standup | [skills/orchestrator/async-standup.md](../skills/orchestrator/async-standup.md) | 4-line written, blockers auto-escalate |
+| Product Postmortem | [skills/orchestrator/product-postmortem.md](../skills/orchestrator/product-postmortem.md) | T+14-28d launch retro, predicted vs actual |
+
 ## Adding a skill
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md). Short version:
