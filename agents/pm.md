@@ -9,8 +9,8 @@ skills:
   - skills/pm/interview-synthesizer.md
   - skills/pm/competitor-teardown.md
   - skills/pm/feedback-triager.md
-  # v0.4+
   - skills/pm/metrics-reporter.md
+  - skills/pm/cross-squad-rollup.md
 gates_owned: [g1_vision, g2_prioritization]
 ---
 

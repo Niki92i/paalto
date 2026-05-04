@@ -6,7 +6,6 @@ tools: [filesystem, mcp:github, mcp:linear, mcp:slack, shell:sandboxed]
 skills:
   - skills/engineer/pr-builder.md
   - skills/engineer/release-notes.md
-  # v0.4+
   - skills/engineer/repo-scout.md
   - skills/engineer/code-reviewer.md
   - skills/engineer/test-plan.md

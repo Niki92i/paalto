@@ -41,11 +41,24 @@ Integrations added: Figma Dev Mode (MCP).
 
 Reference example: [examples/prd-to-figma-handoff/](../examples/prd-to-figma-handoff/README.md)
 
-## v0.4 — Engineer & Analytics (planned)
+## v0.4 — Engineer & Analytics (shipped)
 
-PM · Metrics Reporter
-Engineer · Code Reviewer · Test Plan Writer · Repo Scout
-Integrations · Posthog · Amplitude · Mixpanel · Jira
+| Role | Skill | Path |
+|---|---|---|
+| Engineer | Repo Scout | [skills/engineer/repo-scout.md](../skills/engineer/repo-scout.md) |
+| Engineer | Code Reviewer | [skills/engineer/code-reviewer.md](../skills/engineer/code-reviewer.md) |
+| Engineer | Test Plan Writer | [skills/engineer/test-plan.md](../skills/engineer/test-plan.md) |
+| PM | Metrics Reporter | [skills/pm/metrics-reporter.md](../skills/pm/metrics-reporter.md) |
+
+Integrations added: Posthog (MCP), Jira (MCP), Amplitude / Mixpanel (REST wrappers).
+
+## v0.5 — Head of Product mode (shipped)
+
+| Role | Skill | Path |
+|---|---|---|
+| PM | Cross-squad Rollup | [skills/pm/cross-squad-rollup.md](../skills/pm/cross-squad-rollup.md) |
+
+Folder convention: `runs/<squad>/<timestamp>__*` for per-squad audit isolation.
 
 ## Adding a skill
 

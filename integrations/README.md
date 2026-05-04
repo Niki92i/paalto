@@ -23,5 +23,6 @@ paalto talks to your stack via MCP servers (preferred) or thin REST wrappers (fa
 
 - **v0.1** — github, linear, notion, slack
 - **v0.2** (now) — intercom, zendesk · transcripts (granola, fireflies, loom) ingested as files
-- **v0.3** (now) — figma (Dev Mode MCP)
-- **v0.4** — posthog, amplitude, mixpanel, jira
+- **v0.3** — figma (Dev Mode MCP)
+- **v0.4** (now) — posthog, amplitude, mixpanel, jira
+- **v0.5** — Head-of-Product mode (no new integrations; folder convention only)
