@@ -4,6 +4,9 @@
 
 - Added `npm run doctor` to check Node, required project files, skill wiring, MCP config, env templates, and run-artifact safety.
 - Added `npm run demo` to create a local ignored Loom-to-PR run folder with `events.jsonl` and reference artifacts without calling external APIs.
+- Added a local `paalto` CLI surface through `bin.paalto`, `npm run init`, and `npm run run:loom-to-pr`.
+- Added `context/` templates for product voice, company strategy, design system, and engineering standards.
+- Added `docs/proof-path.md` so reviewers can verify local readiness, no-key artifacts, context loading, and live sandbox expectations.
 - Added `npm run guardrails` to enforce gates, draft-only behavior, secret hygiene, MCP env references, ignored run artifacts, and CI coverage.
 - Added `docs/how-it-works.md` with the product model, control gates, real-run flow, and why the repo is inspectable rather than AI theater.
 - Added `docs/guardrails.md` with security boundaries and expected edge-case behavior.

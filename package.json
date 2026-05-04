@@ -4,10 +4,16 @@
 	"description": "Open-source product team operating system for Claude Code.",
 	"license": "MIT",
 	"private": false,
+	"bin": {
+		"paalto": "scripts/paalto.mjs"
+	},
 	"engines": {
 		"node": ">=20"
 	},
 	"scripts": {
+		"cli": "node scripts/paalto.mjs",
+		"init": "node scripts/paalto.mjs init",
+		"run:loom-to-pr": "node scripts/paalto.mjs run loom-to-pr",
 		"build": "node scripts/build-site.mjs",
 		"validate": "node scripts/validate-skills.mjs",
 		"guardrails": "node scripts/validate-guardrails.mjs",

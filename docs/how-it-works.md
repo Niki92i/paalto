@@ -10,6 +10,7 @@ paalto is not a hosted app and it is not an autonomous merge bot. It is a local 
 | Skills | `skills/<role>/*.md` | Reusable procedures for product tasks: synthesis, PRDs, wireframes, tickets, PRs, reviews, launch notes, and more. |
 | Workflow | `workflows/ship-a-feature.md` | The canonical gated path from brief to PRD to tickets to draft PR to launch draft. |
 | Integrations | `integrations/mcp.json` | MCP server configuration for GitHub, Linear, Notion, Slack, Figma, Posthog, Jira, Intercom, and Zendesk. |
+| Team context | `context/*.md` | Product voice, strategy, design system, and engineering standards the agents can read before running. |
 | Runs | `runs/<run_id>/` | Local audit folders with `transcript.md`, `events.jsonl`, and intermediate artifacts. |
 | Examples | `examples/*` | Reference inputs and expected outputs you can compare against. |
 | Checks | `scripts/*.mjs` | Structural validation, setup doctor, and a no-API demo runner. |
@@ -47,6 +48,8 @@ Run:
 npm run doctor
 npm run demo
 ```
+
+Use `npm run init` first if you want `.env` created and a reminder to fill in `context/*.md`.
 
 `doctor` checks Node, repo structure, skill wiring, MCP config, `.env.example`, and run-artifact safety.
 

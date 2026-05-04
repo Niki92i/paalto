@@ -11,9 +11,14 @@ const requiredPaths = [
   'workflows/ship-a-feature.md',
   'integrations/mcp.json',
   '.env.example',
+  'context/product-voice.md',
+  'context/design-system.md',
+  'context/company-strategy.md',
+  'context/engineering-standards.md',
   'examples/loom-to-pr/input/brief.md',
   'examples/loom-to-pr/input/loom-transcript.vtt',
   'examples/loom-to-pr/expected/prd.md',
+  'docs/proof-path.md',
   'runs/README.md'
 ];
 const dayOneEnv = ['GITHUB_TOKEN', 'LINEAR_API_KEY', 'NOTION_API_KEY', 'SLACK_BOT_TOKEN'];

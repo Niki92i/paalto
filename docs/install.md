@@ -22,12 +22,16 @@ git clone https://github.com/Niki92i/paalto.git
 cd paalto
 
 # 2. Verify the local project before adding secrets
+npm run init
 npm run doctor
 npm run demo
 
 # 3. Configure real integrations when ready
-cp .env.example .env
 $EDITOR .env       # fill day-one keys first; optional integrations can stay blank
+$EDITOR context/product-voice.md
+$EDITOR context/design-system.md
+$EDITOR context/company-strategy.md
+$EDITOR context/engineering-standards.md
 
 # 4. Wire MCP servers into Claude Code
 #    Either point Claude Code at integrations/mcp.json,
