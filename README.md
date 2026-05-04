@@ -71,7 +71,7 @@ cp .env.example .env       # add API keys when you are ready for real tool write
 
 The no-API demo proves the local run folder and audit trail without touching external services. A real Claude Code run takes the Loom transcript and can produce a PRD in Notion, Linear tickets, a draft GitHub PR, and a Slack release-note draft — without auto-merging anything. Target: under 60 minutes on a fresh clone after keys are configured.
 
-Full setup: [docs/install.md](docs/install.md) · [docs/quickstart.md](docs/quickstart.md) · [docs/how-it-works.md](docs/how-it-works.md)
+Full setup: [docs/install.md](docs/install.md) · [docs/quickstart.md](docs/quickstart.md) · [docs/how-it-works.md](docs/how-it-works.md) · [docs/guardrails.md](docs/guardrails.md)
 
 ## Capability coverage
 
@@ -82,6 +82,8 @@ paalto currently ships **46 detailed skills** across PM, Design, Engineering, an
 ## Built to be audited
 
 Every agent action is appended to `runs/<timestamp>/transcript.md` and a structured `events.jsonl`. Every sensitive move (open PR, post to Slack, write to Notion) gates on human approval. Each agent's tool scope is declared in its `.md` header.
+
+Guardrails are checked by `npm run guardrails`: five gates, draft-only PRs, draft-only launch comms, ignored secrets/run artifacts, MCP env references, and CI coverage.
 
 ---
 

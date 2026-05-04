@@ -45,6 +45,7 @@ Before wiring real tools, run:
 ```bash
 npm run doctor
 npm run validate
+npm run guardrails
 ```
 
 This confirms every skill has the required frontmatter, `Procedure`, `Hard rules`, `Refusal`, and `events.jsonl` audit instruction; it also verifies every agent-listed skill file exists.

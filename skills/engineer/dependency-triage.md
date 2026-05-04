@@ -9,7 +9,7 @@ gates: []
 
 # Skill — Dependency Triage
 
-Weekly triage of dependency updates and security advisories. Bundles by risk level. Auto-merge only for non-security patches with green CI. Security-with-breaking-change is always P0.
+Weekly triage of dependency updates and security advisories. Bundles by risk level. Open draft PRs with green CI and human review. Security-with-breaking-change is always P0.
 
 ## Procedure
 
@@ -25,8 +25,8 @@ Weekly triage of dependency updates and security advisories. Bundles by risk lev
 | **R1 — Security + non-breaking** | CVE patch in patch/minor | Bundle into a security-only PR within 48h |
 | **R2 — Major version bump** | New major of a runtime dep | Tech-spec sized; treat as a project, not a triage item |
 | **R3 — Minor version bump** | New minor of a runtime dep | Bundle weekly; manual review of changelog |
-| **R4 — Patch bump (runtime dep)** | Patch of a runtime dep | Bundle weekly; auto-merge if CI green |
-| **R5 — Patch bump (dev dep)** | Patch of a dev dep | Auto-merge if CI green |
+| **R4 — Patch bump (runtime dep)** | Patch of a runtime dep | Bundle weekly; draft PR with green CI |
+| **R5 — Patch bump (dev dep)** | Patch of a dev dep | Draft PR with green CI |
 
 3. **Bundle by risk level.** Don't open one PR per dependency — open one PR per risk class:
    - `security/<date>` — all R1
@@ -49,7 +49,7 @@ Weekly triage of dependency updates and security advisories. Bundles by risk lev
 | R1 | N | Bundle: <link to security PR> |
 | R2 | N | Sized as projects: <list> |
 | R3 | N | Bundle: <link to minor PR> |
-| R4+R5 | N | Bundle: <link to patch PR>, auto-merge on green CI |
+| R4+R5 | N | Bundle: <link to patch draft PR>, request human review after green CI |
 
 ## R0 details (security + breaking)
 | Dep | Current → Target | CVE | Severity | Owner | Plan |
@@ -65,11 +65,11 @@ Weekly triage of dependency updates and security advisories. Bundles by risk lev
 - ...
 ```
 
-6. **Audit.** `events.jsonl`: `{ "type": "dependency.triage", "r0": N, "r1": N, "r2": N, "r3": N, "r4_r5": N, "auto_merged": N }`.
+6. **Audit.** `events.jsonl`: `{ "type": "dependency.triage", "r0": N, "r1": N, "r2": N, "r3": N, "r4_r5": N, "draft_prs_opened": N }`.
 
 ## Hard rules
 
-- **Auto-merge only R4 patch (runtime) and R5 patch (dev) with green CI.** Anything else needs human eyes.
+- **No auto-merge path.** Even low-risk patch bundles stay as draft PRs until a human reviews and merges.
 - **Security + breaking = P0.** Always hand-merge. Always named approver.
 - **Bundle by risk class, not one-per-dep.** One PR per dep buries the team.
 - **R2 (major bumps) is a project, not a triage item.** Spin out with `tech-spec-writer` if needed.
@@ -77,5 +77,5 @@ Weekly triage of dependency updates and security advisories. Bundles by risk lev
 
 ## Refusal
 
-- Asked to auto-merge a security PR without CI? Refuse — security regressions ship that way.
+- Asked to auto-merge any dependency PR? Refuse — all dependency changes require a draft PR and human merge.
 - Asked to delay a R0 because "we don't have time"? Refuse — escalate to engineering lead with the CVE link.

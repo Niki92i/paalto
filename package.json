@@ -9,6 +9,7 @@
 	},
 	"scripts": {
 		"validate": "node scripts/validate-skills.mjs",
+		"guardrails": "node scripts/validate-guardrails.mjs",
 		"doctor": "node scripts/doctor.mjs",
 		"demo": "node scripts/demo-run.mjs"
 	}

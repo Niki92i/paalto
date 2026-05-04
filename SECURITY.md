@@ -6,7 +6,7 @@ For the full security posture, see [docs/security.md](docs/security.md).
 
 ## Reporting a Vulnerability
 
-Please do not open a public issue for security vulnerabilities. Use GitHub private security advisories on this repository, or contact the maintainer through the private channel listed in GitHub Discussions.
+Please do not open a public issue for security vulnerabilities. Use GitHub private security advisories on this repository, or email `hellopaalto@gmail.com` with `[security]` in the subject.
 
 ## Defaults We Intend to Preserve
 

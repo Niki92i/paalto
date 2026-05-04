@@ -14,4 +14,8 @@ jobs:
         with:
           node-version: '20'
       - name: Validate skill structure and agent wiring
-        run: node scripts/validate-skills.mjs
+        run: npm run validate
+      - name: Validate guardrails and security posture
+        run: npm run guardrails
+      - name: Run setup doctor
+        run: npm run doctor

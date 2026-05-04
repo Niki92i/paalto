@@ -9,6 +9,8 @@ paalto runs locally with your keys. The trust model is: **your machine, your dat
 3. **Human gates are not skippable.** The orchestrator pauses at five named gates ([`workflows/ship-a-feature.md`](../workflows/ship-a-feature.md)). It will refuse "skip the gate" requests and explain which gate is being bypassed.
 4. **Per-agent tool scopes.** Each agent's frontmatter declares `tools:`. The orchestrator should not pass tools an agent did not declare.
 
+Run `npm run guardrails` to verify these guarantees have not drifted. The check fails if core gates, draft-only instructions, secret hygiene, MCP env references, or CI guardrail coverage are removed.
+
 ## Recommended defaults
 
 - **GitHub:** fine-grained PAT, **one repo**, scopes `contents: read+write` and `pull_requests: read+write`. No admin, no delete, no merge scope. Rotate every 90 days.
@@ -27,6 +29,10 @@ paalto runs locally with your keys. The trust model is: **your machine, your dat
 - Not a hardened multi-tenant SaaS. If you put paalto on a shared box, the operator boundary is the OS account.
 - Not a replacement for code review. The Engineer's draft PRs are starting points; merge approval is a real review.
 - Not safe to point at production secrets without a real least-privilege audit. Start with a sandbox repo.
+
+## Edge-case checklist
+
+See [guardrails.md](guardrails.md) for the full list of expected edge-case behavior: missing `.env`, missing skill files, removed gates, red CI after retries, auto-send requests, merge requests, MCP/env drift, and ignored run artifacts.
 
 ## Reporting an issue
 

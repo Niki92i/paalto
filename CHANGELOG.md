@@ -4,7 +4,10 @@
 
 - Added `npm run doctor` to check Node, required project files, skill wiring, MCP config, env templates, and run-artifact safety.
 - Added `npm run demo` to create a local ignored Loom-to-PR run folder with `events.jsonl` and reference artifacts without calling external APIs.
+- Added `npm run guardrails` to enforce gates, draft-only behavior, secret hygiene, MCP env references, ignored run artifacts, and CI coverage.
 - Added `docs/how-it-works.md` with the product model, control gates, real-run flow, and why the repo is inspectable rather than AI theater.
+- Added `docs/guardrails.md` with security boundaries and expected edge-case behavior.
+- Removed stale dependency-triage auto-merge guidance; dependency updates now stay draft-only until human merge.
 - Updated README, install, quickstart, support, contributing, example, readiness, and landing-page copy around the no-key path.
 - Removed stale Discord/support claims and standardized help email references.
 

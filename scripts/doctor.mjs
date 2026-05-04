@@ -82,6 +82,15 @@ else {
   process.stderr.write(validation.stderr);
 }
 
+const guardrails = spawnSync(process.execPath, ['scripts/validate-guardrails.mjs'], { cwd: root, encoding: 'utf8' });
+if (guardrails.status === 0) print('ok', 'Guardrail, security, and edge-case checks validate');
+else {
+  failures.push('Guardrail validation failed');
+  print('fail', 'Guardrail validation failed');
+  process.stdout.write(guardrails.stdout);
+  process.stderr.write(guardrails.stderr);
+}
+
 try {
   const mcp = JSON.parse(fs.readFileSync(path.join(root, 'integrations/mcp.json'), 'utf8'));
   const servers = Object.keys(mcp.mcpServers ?? {});

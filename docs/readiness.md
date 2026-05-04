@@ -16,6 +16,7 @@ This is the current "world-class open source" checklist for paalto. It is intent
 | Examples | Green | End-to-end Loom-to-PR, feedback-to-roadmap, PRD-to-Figma handoff examples. |
 | No-key local run | Green | `npm run demo` creates a local ignored run folder with `events.jsonl` and reference artifacts. |
 | Setup doctor | Green | `npm run doctor` checks Node, required files, skill wiring, MCP config, env template, and run-artifact safety. |
+| Guardrail validation | Green | `npm run guardrails` checks gates, draft-only PRs, draft-only launch comms, secrets, MCP env references, and CI coverage. |
 | OSS trust files | Green | MIT license, contributing guide, security policy, support guide, code of conduct, roadmap, changelog. |
 | CI validation | Green | GitHub Actions validates skill structure and agent wiring on push/PR. |
 
@@ -33,6 +34,8 @@ These are product roadmap items, not blockers for design partners:
 
 ```bash
 npm run validate
+npm run guardrails
+npm run doctor
 ```
 
 Expected output:

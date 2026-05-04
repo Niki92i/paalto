@@ -13,6 +13,7 @@ Run:
 ```bash
 npm run doctor
 npm run validate
+npm run guardrails
 ```
 
 Then include:
