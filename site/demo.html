@@ -64,7 +64,7 @@
     .scenario:hover, .scenario[aria-pressed="true"] { background: var(--black); color: var(--white); }
     .transcript { width: 100%; min-height: 220px; margin-top: 18px; padding: 18px; resize: vertical; background: var(--gray-10); border: 1px solid var(--black); color: var(--black); font-family: var(--mono); font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
     .input-meta { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 12px 18px; color: var(--gray-70); font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
-    .run-status { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--black); border-bottom: 1px solid var(--black); background: var(--white); }
+    .run-status { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid var(--black); border-bottom: 1px solid var(--black); background: var(--white); }
     .step { min-height: 96px; padding: 16px 18px 18px; border: 0; border-right: 1px solid var(--black); position: relative; background: var(--white); display: flex; flex-direction: column; justify-content: space-between; gap: 18px; text-align: left; cursor: pointer; transition: background 160ms ease, color 160ms ease; }
     .step:last-child { border-right: 0; }
     .step::after { content: ""; position: absolute; left: 18px; right: 18px; bottom: 0; height: 0; background: var(--signal); transition: height 160ms ease; }
@@ -118,11 +118,12 @@
       <aside class="hero-panel" aria-label="Input transcript">
         <div class="input-block"><p class="kicker">Input / customer signal</p><h2 class="input-title" id="scenario-title">First-run users close the app before reaching value.</h2><div class="scenario-row" aria-label="Demo scenarios"><button class="scenario" type="button" data-scenario="onboarding" aria-pressed="true">First-run onboarding</button><button class="scenario" type="button" data-scenario="feedback" aria-pressed="false">Customer feedback</button><button class="scenario" type="button" data-scenario="design" aria-pressed="false">Design review</button></div><textarea class="transcript" id="signal-input" aria-label="Editable product signal"></textarea><div class="input-meta"><span id="input-lines">0 lines</span><span id="input-words">0 words</span><span>Editable preview</span></div></div>
         <div class="run-status" aria-label="Simulated workflow status">
-          <button class="step" type="button" data-step data-tab-target="audit"><span class="kicker">01</span><span class="step-name">Synthesize signal</span></button>
+          <button class="step" type="button" data-step data-tab-target="audit"><span class="kicker">01</span><span class="step-name">Signal + audit</span></button>
           <button class="step" type="button" data-step data-tab-target="prd"><span class="kicker">02</span><span class="step-name">Draft PRD</span></button>
           <button class="step" type="button" data-step data-tab-target="tickets"><span class="kicker">03</span><span class="step-name">Create tickets</span></button>
-          <button class="step" type="button" data-step data-tab-target="pr"><span class="kicker">04</span><span class="step-name">Plan draft PR</span></button>
-          <button class="step" type="button" data-step data-tab-target="launch"><span class="kicker">05</span><span class="step-name">Prepare launch</span></button>
+          <button class="step" type="button" data-step data-tab-target="copy"><span class="kicker">04</span><span class="step-name">Write UX copy</span></button>
+          <button class="step" type="button" data-step data-tab-target="pr"><span class="kicker">05</span><span class="step-name">Plan draft PR</span></button>
+          <button class="step" type="button" data-step data-tab-target="launch"><span class="kicker">06</span><span class="step-name">Prepare launch</span></button>
         </div>
       </aside>
     </section>
@@ -130,16 +131,16 @@
     <section class="outputs" id="outputs" aria-label="Generated outputs">
       <div class="outputs-grid">
         <div class="tabs" role="tablist" aria-label="Generated artifacts">
-          <button class="tab" type="button" role="tab" aria-selected="true" data-tab="prd">PRD <span aria-hidden="true">01</span></button>
-          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="tickets">Tickets <span aria-hidden="true">02</span></button>
-          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="copy">UX copy <span aria-hidden="true">03</span></button>
-          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="pr">Draft PR plan <span aria-hidden="true">04</span></button>
-          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="launch">Launch note <span aria-hidden="true">05</span></button>
-          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="audit">Audit trail <span aria-hidden="true">06</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="true" data-tab="audit">Signal + audit <span aria-hidden="true">01</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="prd">PRD <span aria-hidden="true">02</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="tickets">Tickets <span aria-hidden="true">03</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="copy">UX copy <span aria-hidden="true">04</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="pr">Draft PR plan <span aria-hidden="true">05</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="launch">Launch note <span aria-hidden="true">06</span></button>
         </div>
         <article class="artifact" aria-live="polite">
-          <div class="artifact-header"><div><p class="kicker" id="artifact-kicker">Generated artifact</p><h2 id="artifact-title">PRD</h2></div><button class="button" id="copy-artifact" type="button">Copy artifact <span aria-hidden="true">-&gt;</span></button></div>
-          <p class="artifact-copy" id="artifact-copy">A concise product decision document that names the problem, the bet, scope, and acceptance criteria.</p>
+          <div class="artifact-header"><div><p class="kicker" id="artifact-kicker">Generated artifact</p><h2 id="artifact-title">Signal + Audit</h2></div><button class="button" id="copy-artifact" type="button">Copy artifact <span aria-hidden="true">-&gt;</span></button></div>
+          <p class="artifact-copy" id="artifact-copy">A local record of the source signal, generated artifacts, and human gates.</p>
           <pre class="artifact-body" id="artifact-body"></pre>
         </article>
       </div>
@@ -247,8 +248,8 @@
           body: `Headline: ${scenario.oneLine}\n\nSource signal\n${evidence}\n\nNew\n${scenario.cta} gives the team a clearer first action from messy product signal.\n\nImproved\nThe handoff now includes a PRD, tickets, UX copy, draft PR plan, launch note, and audit trail before live tool writes.\n\nSlack draft\n${scenario.oneLine} Human gates stay in place, and launch comms are still draft-only.\n\nsend: false`
         },
         audit: {
-          title: 'Audit Trail',
-          copy: 'A local record of what happened and where humans approved the gates.',
+          title: 'Signal + Audit',
+          copy: 'A local record of the source signal, generated artifacts, and human gates.',
           body: `{"event":"run.started","workflow":"browser-demo","scenario":"${currentScenario}"}\n{"event":"input.edited","words":${input.trim() ? input.trim().split(/\s+/).length : 0}}\n{"event":"gate.waiting","gate":"g1_vision","question":"Is this the right thing to build?"}\n{"event":"artifact.created","path":"prd.md"}\n{"event":"artifact.created","path":"tickets.md"}\n{"event":"artifact.created","path":"copy.md"}\n{"event":"artifact.created","path":"pr-description.md","mode":"draft"}\n{"event":"artifact.created","path":"slack-draft.json","send":false}\n{"event":"run.completed","external_calls":0}`
         }
       };
@@ -262,7 +263,7 @@
       signalInput.value = scenario.signal;
       scenarioButtons.forEach((button) => button.setAttribute('aria-pressed', button.dataset.scenario === key ? 'true' : 'false'));
       generateArtifacts();
-      showArtifact('prd');
+      showArtifact('audit');
     }
 
     function showArtifact(key) {
@@ -288,7 +289,7 @@
     });
     document.querySelector('#run-demo').addEventListener('click', () => {
       generateArtifacts();
-      showArtifact('prd');
+      showArtifact('audit');
       steps.forEach((step) => step.classList.remove('done'));
       steps.forEach((step, index) => window.setTimeout(() => step.classList.add('done'), index * 260));
       document.querySelector('#outputs').scrollIntoView({ behavior: 'smooth', block: 'start' });
