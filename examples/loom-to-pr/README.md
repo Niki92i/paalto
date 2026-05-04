@@ -39,7 +39,7 @@ This creates a local `runs/<timestamp>__demo__loom-to-pr__<id>/` folder using th
 2. Open the `paalto/` repo root in Claude Code.
 3. In chat, paste:
 
-   > Run `workflows/ship-a-feature.md` using `examples/loom-to-pr/input/brief.md` as the brief and `examples/loom-to-pr/input/loom-transcript.vtt` as the transcript. Repo: `Niki92i/paalto-sandbox`.
+   > Run `workflows/ship-a-feature.md` using `examples/loom-to-pr/input/brief.md` as the brief and `examples/loom-to-pr/input/loom-transcript.vtt` as the transcript. Repo: `<owner>/<sandbox-repo>`.
 
 4. Approve at each gate when prompted.
 5. Compare your run's `runs/<id>/` folder against `expected/`.

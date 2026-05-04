@@ -25,7 +25,7 @@ Send them this:
 ```text
 Can you test paalto for me?
 
-1. Clone https://github.com/Niki92i/paalto
+1. Clone https://github.com/paalto-dev/paalto
 2. Run:
    npm run setup:local
    npm run doctor
@@ -38,7 +38,7 @@ Please do not connect production tools. Local demo only.
 ## Path C: I use Claude Code
 
 ```bash
-git clone https://github.com/Niki92i/paalto.git
+git clone https://github.com/paalto-dev/paalto.git
 cd paalto
 npm run setup:local
 npm run doctor

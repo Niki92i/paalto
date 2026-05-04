@@ -32,7 +32,7 @@ If you want the repo without local machine setup, use [cloud-setup.md](cloud-set
 
 ```bash
 # 1. Clone
-git clone https://github.com/Niki92i/paalto.git
+git clone https://github.com/paalto-dev/paalto.git
 cd paalto
 
 # 2. Verify the local project before adding secrets

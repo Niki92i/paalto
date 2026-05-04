@@ -62,7 +62,7 @@ All orchestrated by [`agents/orchestrator.md`](agents/orchestrator.md), which kn
 No terminal path for PM/design/ops testers: open [paalto.dev/demo.html](https://paalto.dev/demo.html), click **Run demo**, and review the generated PRD, tickets, UX copy, draft PR plan, launch note, and audit trail.
 
 ```bash
-git clone https://github.com/Niki92i/paalto.git
+git clone https://github.com/paalto-dev/paalto.git
 cd paalto
 npm run setup:local        # creates .env, context files, and a local tester checklist
 npm run doctor             # checks structure, Node, MCP config, and setup gaps

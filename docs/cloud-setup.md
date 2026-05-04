@@ -4,7 +4,7 @@ Use this path when a tester does not want to install Node or configure a local m
 
 ## GitHub Codespaces
 
-1. Open the repo on GitHub: `https://github.com/Niki92i/paalto`.
+1. Open the repo on GitHub: `https://github.com/paalto-dev/paalto`.
 2. Choose **Code** -> **Codespaces** -> **Create codespace on main**.
 3. Wait for the container to finish setup.
 4. Run:

@@ -13,7 +13,7 @@ Use [tester-guide.md](tester-guide.md) when you want a PM, designer, operator, o
 This is the fastest way to prove the repo is real before you trust it with keys:
 
 ```bash
-git clone https://github.com/Niki92i/paalto.git
+git clone https://github.com/paalto-dev/paalto.git
 cd paalto
 npm run setup:local
 npm run doctor
